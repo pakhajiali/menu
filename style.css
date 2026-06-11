@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #fefaf5;
+    padding-bottom: 30px;
+}
+
+/* Logo Banner */
+.header {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Google Maps Card */
+.map-section {
+    margin: 20px 16px;
+}
+
+.map-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #1e2a2f;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.map-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-card img {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+}
+
+.map-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.map-subtitle {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+/* Category Heading */
+.category {
+    margin: 32px 16px 14px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #222;
+    position: relative;
+    padding-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+.category::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    background: #d62828;
+    margin: 10px auto 0;
+    border-radius: 20px;
+}
+
+.category.most-ordered::before {
+    content: "⭐ ";
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+/* Product Cards */
+.product {
+    background: #ffffff;
+    margin: 14px 16px;
+    padding: 14px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+    border: 1px solid #fff3e8;
+}
+
+.product:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.1);
+    border-color: #ffddd3;
+}
+
+.product img {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+    background: #f8f0ea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-info {
+    flex: 1;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e2a2f;
+    line-height: 1.25;
+}
+
+.desc {
+    margin-top: 8px;
+    color: #5a6872;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.price {
+    margin-top: 12px;
+    font-size: 27px;
+    font-weight: 800;
+    color: #c52828;
+    letter-spacing: -0.5px;
+}
+
+/* Mobile refinements */
+@media (max-width: 550px) {
+    .product {
+        padding: 12px;
+        gap: 12px;
+    }
+    .product img {
+        width: 100px;
+        height: 100px;
+        border-radius: 18px;
+    }
+    .name {
+        font-size: 18px;
+    }
+    .price {
+        font-size: 23px;
+    }
+    .category {
+        font-size: 22px;
+        margin-top: 28px;
+    }
+    .category.most-ordered::before {
+        font-size: 20px;
+    }
+}
+
+.category:not(:first-of-type) {
+    margin-top: 38px;
+}
+
+/* Address card */
+.address-card {
+    background: #fff;
+    margin: 0 16px 20px 16px;
+    padding: 14px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.7;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+}
+
+/* Best value badge */
+.badge {
+    display: inline-block;
+    background: #d62828;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+/* Floating WhatsApp button with text */
+.floating-wa {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 60px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 800;
+    font-size: 16px;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
+.floating-wa:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.floating-wa img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 550px) {
+    .floating-wa {
+        padding: 10px 16px;
+        font-size: 14px;
+        bottom: 20px;
+        right: 16px;
+    }
+    .floating-wa img {
+        width: 24px;
+        height: 24px;
+    }
+}
