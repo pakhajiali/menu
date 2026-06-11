@@ -127,9 +127,9 @@ body {
     border: 1px solid #fff3e8;
     animation: fadeInUp 0.5s ease-out;
     animation-fill-mode: both;
+    cursor: pointer;
 }
 
-/* Staggered animation delay for each product */
 .product:nth-child(1) { animation-delay: 0.05s; }
 .product:nth-child(2) { animation-delay: 0.1s; }
 .product:nth-child(3) { animation-delay: 0.15s; }
@@ -210,7 +210,6 @@ body {
     color: #a51f1f;
 }
 
-/* Mobile refinements */
 @media (max-width: 550px) {
     .product {
         padding: 12px;
@@ -278,7 +277,7 @@ body {
     background: #b01e1e;
 }
 
-/* Floating WhatsApp button with text */
+/* Floating WhatsApp button */
 .floating-wa {
     position: fixed;
     bottom: 24px;
@@ -318,14 +317,134 @@ body {
     transform: rotate(5deg) scale(1.1);
 }
 
-/* Animations definitions */
-@keyframes fadeInBody {
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    animation: modalPopIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+.modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: cover;
+    background: #f8f0ea;
+}
+
+.modal-info {
+    padding: 24px;
+}
+
+.modal-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1e2a2f;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.modal-desc {
+    font-size: 15px;
+    color: #5a6872;
+    line-height: 1.6;
+    margin: 12px 0;
+}
+
+.modal-price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #c52828;
+    margin: 16px 0 20px;
+}
+
+.modal-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 14px 24px;
+    border-radius: 60px;
+    width: 100%;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-wa-btn:hover {
+    background: #1da15a;
+    transform: scale(1.02);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.modal-close:hover {
+    background: #d62828;
+    transform: scale(1.1);
+}
+
+/* Keyframes */
+@keyframes modalPopIn {
     from {
         opacity: 0;
+        transform: scale(0.9);
     }
     to {
         opacity: 1;
+        transform: scale(1);
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
@@ -351,33 +470,15 @@ body {
 }
 
 @keyframes starPulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.4);
-    }
-    70% {
-        transform: scale(1.03);
-        box-shadow: 0 0 0 6px rgba(214, 40, 40, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(214, 40, 40, 0);
-    }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.4); }
+    70% { transform: scale(1.03); box-shadow: 0 0 0 6px rgba(214, 40, 40, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 40, 40, 0); }
 }
 
 @keyframes floatIn {
@@ -392,32 +493,10 @@ body {
 }
 
 @keyframes softGlow {
-    0% {
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    }
-    100% {
-        box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
-    }
+    0% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); }
+    100% { box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6); }
 }
 
-/* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
-}
-
-/* Responsive animations */
-@media (max-width: 550px) {
-    .floating-wa {
-        animation: floatInMobile 0.5s ease-out;
-    }
-    @keyframes floatInMobile {
-        from {
-            opacity: 0;
-            transform: translateX(40px) scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-        }
-    }
 }
