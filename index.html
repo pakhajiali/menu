@@ -33,6 +33,19 @@ body{
     display:block;
 }
 
+/* Category Heading */
+.category{
+    margin:20px 15px 10px;
+    padding:14px;
+    background:#d62828;
+    color:#fff;
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    border-radius:14px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
 /* Product Cards */
 .product{
     background:#fff;
@@ -43,6 +56,10 @@ body{
     align-items:center;
     box-shadow:0 3px 12px rgba(0,0,0,0.08);
     transition:0.2s;
+}
+
+.product:hover{
+    transform:translateY(-2px);
 }
 
 .product img{
@@ -96,6 +113,10 @@ body{
     .price{
         font-size:22px;
     }
+
+    .category{
+        font-size:18px;
+    }
 }
 </style>
 </head>
@@ -107,13 +128,18 @@ body{
     <img src="logo.jpg" alt="Restoran Pak Haji Ali & Muiz Hot Chicken">
 </div>
 
+<!-- Category -->
+<div class="category">
+    Muiz Hot Chicken Regular Box
+</div>
+
 <!-- Product 1 -->
 <div class="product">
     <img src="originalregularbox.jpg" alt="Original Regular Box">
     <div class="product-info">
         <div class="name">Original Regular Box</div>
         <div class="desc">
-            2 Pieces of Muiz Hot Chicken 🍗 
+            2 Pieces of Muiz Hot Chicken 🍗
         </div>
         <div class="price">RM9.00</div>
     </div>
@@ -137,7 +163,7 @@ body{
     <div class="product-info">
         <div class="name">Korean Spicy Regular Box</div>
         <div class="desc">
-            2 Pieces of Muiz Hot Chicken + 1 Cup of Korean Spicy Sauce
+            2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce
         </div>
         <div class="price">RM12.00</div>
     </div>
