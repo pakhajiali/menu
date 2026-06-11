@@ -8,12 +8,18 @@ body {
     font-family: 'Segoe UI', Roboto, Arial, sans-serif;
     background: #fefaf5;
     padding-bottom: 30px;
+    animation: fadeInBody 0.6s ease-out;
 }
 
 /* Logo Banner */
 .header {
     background: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.header:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header img {
@@ -26,6 +32,7 @@ body {
 /* Google Maps Card */
 .map-section {
     margin: 20px 16px;
+    animation: slideUp 0.5s ease-out;
 }
 
 .map-card {
@@ -38,19 +45,24 @@ body {
     text-decoration: none;
     color: #1e2a2f;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .map-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.12);
 }
 
 .map-card img {
     width: 44px;
     height: 44px;
     border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.map-card:hover img {
+    transform: scale(1.05);
 }
 
 .map-title {
@@ -75,6 +87,7 @@ body {
     position: relative;
     padding-bottom: 10px;
     letter-spacing: -0.3px;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 .category::after {
@@ -85,12 +98,19 @@ body {
     background: #d62828;
     margin: 10px auto 0;
     border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+.category:hover::after {
+    width: 140px;
 }
 
 .category.most-ordered::before {
     content: "⭐ ";
     font-size: 24px;
     letter-spacing: 2px;
+    animation: starPulse 1.5s infinite ease-in-out;
+    display: inline-block;
 }
 
 /* Product Cards */
@@ -103,13 +123,37 @@ body {
     align-items: center;
     gap: 14px;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-    transition: all 0.25s ease;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border: 1px solid #fff3e8;
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
 }
 
+/* Staggered animation delay for each product */
+.product:nth-child(1) { animation-delay: 0.05s; }
+.product:nth-child(2) { animation-delay: 0.1s; }
+.product:nth-child(3) { animation-delay: 0.15s; }
+.product:nth-child(4) { animation-delay: 0.2s; }
+.product:nth-child(5) { animation-delay: 0.25s; }
+.product:nth-child(6) { animation-delay: 0.3s; }
+.product:nth-child(7) { animation-delay: 0.35s; }
+.product:nth-child(8) { animation-delay: 0.4s; }
+.product:nth-child(9) { animation-delay: 0.45s; }
+.product:nth-child(10) { animation-delay: 0.5s; }
+.product:nth-child(11) { animation-delay: 0.55s; }
+.product:nth-child(12) { animation-delay: 0.6s; }
+.product:nth-child(13) { animation-delay: 0.65s; }
+.product:nth-child(14) { animation-delay: 0.7s; }
+.product:nth-child(15) { animation-delay: 0.75s; }
+.product:nth-child(16) { animation-delay: 0.8s; }
+.product:nth-child(17) { animation-delay: 0.85s; }
+.product:nth-child(18) { animation-delay: 0.9s; }
+.product:nth-child(19) { animation-delay: 0.95s; }
+.product:nth-child(20) { animation-delay: 1s; }
+
 .product:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 28px rgba(0, 0, 0, 0.12);
     border-color: #ffddd3;
 }
 
@@ -120,6 +164,12 @@ body {
     object-fit: cover;
     background: #f8f0ea;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .product-info {
@@ -131,6 +181,11 @@ body {
     font-weight: 800;
     color: #1e2a2f;
     line-height: 1.25;
+    transition: color 0.2s ease;
+}
+
+.product:hover .name {
+    color: #d62828;
 }
 
 .desc {
@@ -138,6 +193,7 @@ body {
     color: #5a6872;
     font-size: 13px;
     line-height: 1.45;
+    transition: color 0.2s ease;
 }
 
 .price {
@@ -146,6 +202,12 @@ body {
     font-weight: 800;
     color: #c52828;
     letter-spacing: -0.5px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.product:hover .price {
+    transform: scale(1.02);
+    color: #a51f1f;
 }
 
 /* Mobile refinements */
@@ -188,6 +250,13 @@ body {
     font-weight: 600;
     line-height: 1.7;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.address-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Best value badge */
@@ -200,6 +269,13 @@ body {
     font-size: 12px;
     font-weight: 800;
     margin-bottom: 8px;
+    transition: all 0.2s ease;
+    animation: pulse 1.8s infinite;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+    background: #b01e1e;
 }
 
 /* Floating WhatsApp button with text */
@@ -216,16 +292,18 @@ body {
     text-decoration: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     z-index: 999;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     font-weight: 800;
     font-size: 16px;
     color: white;
     letter-spacing: 0.3px;
+    animation: floatIn 0.6s ease-out, softGlow 2s infinite alternate;
 }
 
 .floating-wa:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+    background: #20b359;
 }
 
 .floating-wa img {
@@ -233,17 +311,113 @@ body {
     height: 28px;
     display: block;
     object-fit: contain;
+    transition: transform 0.2s ease;
 }
 
+.floating-wa:hover img {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Animations definitions */
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes starPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.4);
+    }
+    70% {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 6px rgba(214, 40, 40, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(214, 40, 40, 0);
+    }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes softGlow {
+    0% {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+    100% {
+        box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+    }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive animations */
 @media (max-width: 550px) {
     .floating-wa {
-        padding: 10px 16px;
-        font-size: 14px;
-        bottom: 20px;
-        right: 16px;
+        animation: floatInMobile 0.5s ease-out;
     }
-    .floating-wa img {
-        width: 24px;
-        height: 24px;
+    @keyframes floatInMobile {
+        from {
+            opacity: 0;
+            transform: translateX(40px) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
     }
 }
