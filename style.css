@@ -35,7 +35,46 @@ body {
     margin: 20px 16px;
     animation: slideUp 0.5s ease-out;
 }
-
+/* Google Review Card */
+.review-card {
+    margin: 16px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease-out;
+}
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+.review-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: #1e2a2f;
+    font-weight: 600;
+}
+.review-icon {
+    font-size: 24px;
+    margin-right: 12px;
+}
+.review-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 700;
+    color: #d62828;
+}
+.review-arrow {
+    font-size: 20px;
+    color: #d62828;
+    transition: transform 0.2s ease;
+}
+.review-link:hover .review-arrow {
+    transform: translateX(5px);
+}
 .map-card {
     background: #fff;
     border-radius: 24px;
