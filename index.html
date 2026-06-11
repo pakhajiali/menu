@@ -20,7 +20,7 @@
 body{
     font-family:'Segoe UI', Roboto, Arial, sans-serif;
     background:#fefaf5;
-    padding-bottom:85px;  /* extra space for sticky order bar */
+    padding-bottom:30px;
 }
 
 /* Logo Banner */
@@ -193,80 +193,6 @@ body{
     margin-top:38px;
 }
 
-/* ----- WhatsApp Card - exactly matching Google Maps card dimensions and style ----- */
-.wa-contact-wrapper {
-    margin: 12px 16px 20px 16px;
-}
-
-.wa-card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    text-decoration: none;
-    color: #1e2a2f;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-    transition: all 0.2s ease;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    cursor: pointer;
-}
-
-.wa-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-}
-
-.wa-icon {
-    width: 44px;
-    height: 44px;
-    background: #25D366;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.wa-icon svg {
-    width: 26px;
-    height: 26px;
-    display: block;
-}
-
-.wa-title {
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: -0.2px;
-    color: #075e54;
-}
-
-.wa-number {
-    font-size: 13px;
-    color: #4a5b66;
-    margin-top: 4px;
-    font-weight: 500;
-    letter-spacing: 0.2px;
-}
-
-@media(max-width:550px) {
-    .wa-title {
-        font-size: 16px;
-    }
-    .wa-number {
-        font-size: 12px;
-    }
-    .wa-icon {
-        width: 44px;
-        height: 44px;
-    }
-    .wa-icon svg {
-        width: 26px;
-        height: 26px;
-    }
-}
-
 /* Address card */
 .address-card {
     background: #fff;
@@ -291,58 +217,52 @@ body{
     margin-bottom: 8px;
 }
 
-/* Floating WhatsApp button */
+/* ========== SINGLE FLOATING WHATSAPP BUTTON WITH TEXT (no duplicate) ========== */
 .floating-wa {
     position: fixed;
-    right: 18px;
-    bottom: 85px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    bottom: 24px;
+    right: 20px;
     background: #25D366;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 28px;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 60px;
     text-decoration: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    z-index: 998;
-    transition: transform 0.2s ease;
-}
-.floating-wa:hover {
-    transform: scale(1.05);
-}
-
-/* Sticky order bar */
-.order-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #25D366;
-    padding: 14px;
     z-index: 999;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
-}
-.order-btn {
-    display: block;
-    text-align: center;
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    font-size: 16px;
+    color: white;
+    letter-spacing: 0.3px;
+    border: none;
 }
 
-@media(max-width:550px) {
+.floating-wa:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* WhatsApp logo image inside button */
+.floating-wa img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
+}
+
+/* For mobile screens, slightly smaller */
+@media (max-width: 550px) {
     .floating-wa {
-        width: 52px;
-        height: 52px;
-        font-size: 24px;
-        bottom: 80px;
+        padding: 10px 16px;
+        font-size: 14px;
+        bottom: 20px;
+        right: 16px;
     }
-    .order-btn {
-        font-size: 16px;
+    .floating-wa img {
+        width: 24px;
+        height: 24px;
     }
 }
 </style>
@@ -371,25 +291,7 @@ body{
     </a>
 </div>
 
-<!-- WhatsApp contact card (same style as maps) -->
-<div class="wa-contact-wrapper">
-    <a class="wa-card" href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken%2C%20I%27d%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer">
-        <div class="wa-icon">
-            <!-- Official WhatsApp icon (green bubble with white phone) -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-                <path fill="#FFFFFF" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/>
-                <path fill="#FFFFFF" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,1C12.318,1,2.982,10.334,2.98,22.021c-0.001,3.78,1.029,7.461,2.975,10.68L1.755,41.827c-0.366,1.146,0.774,2.286,1.92,1.92l9.181-3.008c3.122,1.856,6.649,2.826,10.238,2.826c0.003,0,0.005,0,0.008,0c11.688,0,21.023-9.334,21.025-21.021C44.994,10.336,35.666,1,24.014,1L24.014,1z"/>
-                <path fill="#FFFFFF" d="M34.047,28.925c-0.485-0.243-2.861-1.412-3.304-1.574c-0.443-0.162-0.765-0.243-1.087,0.243c-0.322,0.486-1.248,1.574-1.53,1.898c-0.282,0.324-0.564,0.365-1.049,0.122c-0.485-0.243-2.048-0.755-3.901-2.408c-1.442-1.285-2.415-2.873-2.698-3.358c-0.283-0.485-0.031-0.748,0.213-0.99c0.218-0.218,0.485-0.567,0.727-0.85c0.242-0.283,0.323-0.485,0.485-0.809c0.162-0.324,0.081-0.607-0.041-0.85c-0.122-0.243-1.087-2.62-1.49-3.587c-0.392-0.941-0.79-0.813-1.087-0.828c-0.282-0.015-0.606-0.018-0.93-0.018c-0.323,0-0.849,0.121-1.293,0.607c-0.444,0.486-1.696,1.657-1.696,4.041c0,2.384,1.735,4.687,1.977,5.011c0.242,0.324,3.414,5.214,8.271,7.312c4.148,1.79,5.097,1.657,6.112,1.536c1.115-0.133,3.577-1.462,4.08-2.873c0.503-1.411,0.503-2.62,0.352-2.873C34.812,29.249,34.532,29.168,34.047,28.925z"/>
-            </svg>
-        </div>
-        <div>
-            <div class="wa-title">📱 WhatsApp Us</div>
-            <div class="wa-number">017-908 1447 — Tap to order or inquire</div>
-        </div>
-    </a>
-</div>
-
-<!-- Address card directly below WhatsApp -->
+<!-- Address Card (directly below maps) -->
 <div class="address-card">
     📍 Goodyear Court 6, USJ 8<br>
     Subang Jaya, Selangor
@@ -550,17 +452,11 @@ body{
 <!-- subtle spacing -->
 <div style="height: 12px;"></div>
 
-<!-- ========== FLOATING WHATSAPP BUTTON ========== -->
+<!-- ========== SINGLE FLOATING WHATSAPP BUTTON WITH YOUR LOGO IMAGE AND TEXT ========== -->
 <a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
-    💬
+    <img src="whatsapp-logo.png" alt="WhatsApp" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
+    <span>WhatsApp 017-908 1447</span>
 </a>
-
-<!-- ========== STICKY ORDER BAR (BOTTOM) ========== -->
-<div class="order-bar">
-    <a class="order-btn" href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" target="_blank" rel="noopener noreferrer">
-        📱 Order Now via WhatsApp
-    </a>
-</div>
 
 </body>
 </html>
