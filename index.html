@@ -1,462 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<!-- Original title restored -->
-<title>Restoran Pak Haji Ali & Muiz Hot Chicken</title>
-
-<!-- Browser Tab Icon (keep original reference) -->
-<link rel="icon" href="logo.jpg">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:'Segoe UI', Roboto, Arial, sans-serif;
-    background:#fefaf5;
-    padding-bottom:30px;
-}
-
-/* Logo Banner */
-.header{
-    background:#fff;
-    box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
-
-.header img{
-    width:100%;
-    height:auto;
-    display:block;
-    object-fit:contain;
-}
-
-/* Google Maps Card */
-.map-section{
-    margin:20px 16px;
-}
-
-.map-card{
-    background:#fff;
-    border-radius:24px;
-    padding:14px 18px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    text-decoration:none;
-    color:#1e2a2f;
-    box-shadow:0 6px 14px rgba(0,0,0,0.06);
-    transition:all 0.2s ease;
-    border:1px solid rgba(0,0,0,0.03);
-}
-
-.map-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 20px rgba(0,0,0,0.1);
-}
-
-.map-card img{
-    width:44px;
-    height:44px;
-    border-radius:12px;
-}
-
-.map-title{
-    font-size:17px;
-    font-weight:700;
-    letter-spacing:-0.2px;
-}
-
-.map-subtitle{
-    font-size:13px;
-    color:#6c757d;
-    margin-top:4px;
-}
-
-/* Category Heading */
-.category{
-    margin:32px 16px 14px;
-    text-align:center;
-    font-size:26px;
-    font-weight:800;
-    color:#222;
-    position:relative;
-    padding-bottom:10px;
-    letter-spacing:-0.3px;
-}
-
-.category::after{
-    content:"";
-    display:block;
-    width:90px;
-    height:4px;
-    background:#d62828;
-    margin:10px auto 0;
-    border-radius:20px;
-}
-
-/* Highlight for Most Ordered - subtle star accent */
-.category.most-ordered::before{
-    content:"⭐ ";
-    font-size:24px;
-    letter-spacing:2px;
-}
-
-/* Product Cards */
-.product{
-    background:#ffffff;
-    margin:14px 16px;
-    padding:14px;
-    border-radius:24px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    box-shadow:0 6px 14px rgba(0,0,0,0.05);
-    transition:all 0.25s ease;
-    border:1px solid #fff3e8;
-}
-
-.product:hover{
-    transform:translateY(-3px);
-    box-shadow:0 16px 24px rgba(0,0,0,0.1);
-    border-color:#ffddd3;
-}
-
-.product img{
-    width:120px;
-    height:120px;
-    border-radius:20px;
-    object-fit:cover;
-    background:#f8f0ea;
-    box-shadow:0 4px 8px rgba(0,0,0,0.05);
-}
-
-.product-info{
-    flex:1;
-}
-
-.name{
-    font-size:20px;
-    font-weight:800;
-    color:#1e2a2f;
-    line-height:1.25;
-}
-
-.desc{
-    margin-top:8px;
-    color:#5a6872;
-    font-size:13px;
-    line-height:1.45;
-}
-
-.price{
-    margin-top:12px;
-    font-size:27px;
-    font-weight:800;
-    color:#c52828;
-    letter-spacing:-0.5px;
-}
-
-/* Mobile refinements */
-@media(max-width:550px){
-    .product{
-        padding:12px;
-        gap:12px;
-    }
-    .product img{
-        width:100px;
-        height:100px;
-        border-radius:18px;
-    }
-    .name{
-        font-size:18px;
-    }
-    .price{
-        font-size:23px;
-    }
-    .category{
-        font-size:22px;
-        margin-top:28px;
-    }
-    .category.most-ordered::before{
-        font-size:20px;
-    }
-}
-
-/* subtle divider between categories */
-.category:not(:first-of-type){
-    margin-top:38px;
-}
-
-/* Address card */
-.address-card {
-    background: #fff;
-    margin: 0 16px 20px 16px;
-    padding: 14px;
-    border-radius: 20px;
-    text-align: center;
-    font-weight: 600;
-    line-height: 1.7;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-}
-
-/* Best value badge */
-.badge {
-    display: inline-block;
-    background: #d62828;
-    color: #fff;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-/* ========== SINGLE FLOATING WHATSAPP BUTTON WITH TEXT (no duplicate) ========== */
-.floating-wa {
-    position: fixed;
-    bottom: 24px;
-    right: 20px;
-    background: #25D366;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 20px;
-    border-radius: 60px;
-    text-decoration: none;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    z-index: 999;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    font-weight: 800;
-    font-size: 16px;
-    color: white;
-    letter-spacing: 0.3px;
-    border: none;
-}
-
-.floating-wa:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* WhatsApp logo image inside button */
-.floating-wa img {
-    width: 28px;
-    height: 28px;
-    display: block;
-    object-fit: contain;
-}
-
-/* For mobile screens, slightly smaller */
-@media (max-width: 550px) {
-    .floating-wa {
-        padding: 10px 16px;
-        font-size: 14px;
-        bottom: 20px;
-        right: 16px;
-    }
-    .floating-wa img {
-        width: 24px;
-        height: 24px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Restoran Pak Haji Ali & Muiz Hot Chicken</title>
+    <link rel="icon" href="logo.jpg">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Logo Banner (original header: logo.jpg) -->
-<div class="header">
-    <img src="logo.jpg" alt="Restoran Pak Haji Ali & Muiz Hot Chicken - Banner">
-</div>
+    <!-- Logo Banner -->
+    <div class="header">
+        <img src="logo.jpg" alt="Restoran Pak Haji Ali & Muiz Hot Chicken - Banner">
+    </div>
 
-<!-- Google Maps Location (original: googlemaps.png) -->
-<div class="map-section">
-    <a class="map-card"
-       href="https://share.google/wY2Fl17aFlKV6AY2h"
-       target="_blank">
-        <img src="googlemaps.jpg" alt="Google Maps icon">
-        <div>
-            <div class="map-title">
-                Restoran Pak Haji Ali & Muiz Hot Chicken (USJ 8)
+    <!-- Google Maps Location -->
+    <div class="map-section">
+        <a class="map-card" href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank">
+            <img src="googlemaps.jpg" alt="Google Maps icon">
+            <div>
+                <div class="map-title">Restoran Pak Haji Ali & Muiz Hot Chicken (USJ 8)</div>
+                <div class="map-subtitle">Tap to open in Google Maps</div>
             </div>
-            <div class="map-subtitle">
-                Tap to open in Google Maps
-            </div>
+        </a>
+    </div>
+
+    <!-- Address Card -->
+    <div class="address-card">
+        📍 Goodyear Court 6, USJ 8<br>
+        Subang Jaya, Selangor
+    </div>
+
+    <!-- Most Ordered Category -->
+    <div class="category most-ordered">
+        🌟 Most Ordered 🌟
+    </div>
+
+    <!-- 1. Nasi Kandar Muiz Hot Chicken -->
+    <div class="product">
+        <img src="nasikandarmuizchicken.png" alt="Nasi Kandar Muiz Hot Chicken">
+        <div class="product-info">
+            <div class="badge">🔥 BEST VALUE RM6.90</div>
+            <div class="name">Nasi Kandar Muiz Hot Chicken</div>
+            <div class="desc">Nasi kandar with signature Muiz hot chicken & rich curry sauce.</div>
+            <div class="price">RM6.90</div>
         </div>
+    </div>
+
+    <!-- 2. Nasi Ayam Muiz Chicken -->
+    <div class="product">
+        <img src="nasiayammuizchicken.png" alt="Nasi Ayam Muiz Chicken">
+        <div class="product-info">
+            <div class="name">Nasi Ayam Muiz Chicken</div>
+            <div class="desc">Aromatic chicken rice with tender Muiz-style fried chicken, sambal.</div>
+            <div class="price">RM8.90</div>
+        </div>
+    </div>
+
+    <!-- 3. Bakso -->
+    <div class="product">
+        <img src="bakso.png" alt="Bakso - Indonesian Meatball Soup">
+        <div class="product-info">
+            <div class="name">Bakso</div>
+            <div class="desc">Authentic Indonesian beef meatball soup with savoury broth.</div>
+            <div class="price">RM5.90</div>
+        </div>
+    </div>
+
+    <!-- 4. Mee Pak Haji Ali -->
+    <div class="product">
+        <img src="meepakhajiali.png" alt="Mee Pak Haji Ali">
+        <div class="product-info">
+            <div class="name">Mee Pak Haji Ali</div>
+            <div class="desc">Traditional recipe.</div>
+            <div class="price">RM6.90</div>
+        </div>
+    </div>
+
+    <!-- Muiz Hot Chicken Regular Box -->
+    <div class="category">Muiz Hot Chicken Regular Box</div>
+
+    <div class="product">
+        <img src="originalregularbox.jpg" alt="Original Regular Box">
+        <div class="product-info">
+            <div class="name">Original Regular Box</div>
+            <div class="desc">2 Pieces of Muiz Hot Chicken 🍗</div>
+            <div class="price">RM9.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="cheeseregularbox.jpg" alt="Cheese Regular Box">
+        <div class="product-info">
+            <div class="name">Cheese Regular Box</div>
+            <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce</div>
+            <div class="price">RM11.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="koreanspicyregularbox.jpg" alt="Korean Spicy Regular Box">
+        <div class="product-info">
+            <div class="name">Korean Spicy Regular Box</div>
+            <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce</div>
+            <div class="price">RM12.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="koreancheeseregularbox.jpg" alt="Korean Cheese Regular Box">
+        <div class="product-info">
+            <div class="name">Korean Cheese Regular Box</div>
+            <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce + 1 Cup of Korean Spicy Sauce</div>
+            <div class="price">RM13.00</div>
+        </div>
+    </div>
+
+    <!-- Muiz Hot Chicken Happy Box -->
+    <div class="category">Muiz Hot Chicken Happy Box</div>
+
+    <div class="product">
+        <img src="originalhappybox.jpg" alt="Original Happy Box">
+        <div class="product-info">
+            <div class="name">Original Happy Box</div>
+            <div class="desc">5 Pieces of Muiz Hot Chicken 🍗</div>
+            <div class="price">RM22.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="cheesehappybox.jpg" alt="Cheese Happy Box">
+        <div class="product-info">
+            <div class="name">Cheese Happy Box</div>
+            <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Cheese Sauce</div>
+            <div class="price">RM26.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="koreanspicyhappybox.jpg" alt="Korean Spicy Happy Box">
+        <div class="product-info">
+            <div class="name">Korean Spicy Happy Box</div>
+            <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce</div>
+            <div class="price">RM28.00</div>
+        </div>
+    </div>
+
+    <div class="product">
+        <img src="koreancheesehappybox.jpg" alt="Korean Cheese Happy Box">
+        <div class="product-info">
+            <div class="name">Korean Cheese Happy Box</div>
+            <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce + 2 Cups of Cheese Sauce</div>
+            <div class="price">RM30.00</div>
+        </div>
+    </div>
+
+    <!-- Chicken Tenders -->
+    <div class="category">Chicken Tenders</div>
+
+    <div class="product">
+        <img src="chickentenders.jpg" alt="Chicken Tenders">
+        <div class="product-info">
+            <div class="name">Chicken Tenders</div>
+            <div class="desc">
+                Choose your flavour:<br>
+                • Mala<br>
+                • Peri-Peri<br>
+                • Thai Lime<br>
+                • Charcoal
+            </div>
+            <div class="price">RM9.90</div>
+        </div>
+    </div>
+
+    <div style="height: 12px;"></div>
+
+    <!-- Floating WhatsApp button (single, with your own logo image) -->
+    <a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
+        <img src="whatsapp-logo.png" alt="WhatsApp" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
+        <span>WhatsApp</span>
     </a>
-</div>
-
-<!-- Address Card (directly below maps) -->
-<div class="address-card">
-    📍 Goodyear Court 6, USJ 8<br>
-    Subang Jaya, Selangor
-</div>
-
-<!-- ========== MOST ORDERED CATEGORY ========== -->
-<div class="category most-ordered">
-    🌟 Most Ordered 🌟
-</div>
-
-<!-- 1. Nasi Kandar Muiz Hot Chicken - RM6.90 (with BEST VALUE badge) -->
-<div class="product">
-    <img src="nasikandarmuizchicken.png" alt="Nasi Kandar Muiz Hot Chicken">
-    <div class="product-info">
-        <div class="badge">🔥 BEST VALUE RM6.90</div>
-        <div class="name">Nasi Kandar Muiz Hot Chicken</div>
-        <div class="desc">Nasi kandar with signature Muiz hot chicken & rich curry sauce.</div>
-        <div class="price">RM6.90</div>
-    </div>
-</div>
-
-<!-- (Excluded: Nasi Kandar Extra Muiz Hot Chicken as requested) -->
-
-<!-- 2. Nasi Ayam Muiz Chicken - RM8.90 -->
-<div class="product">
-    <img src="nasiayammuizchicken.png" alt="Nasi Ayam Muiz Chicken">
-    <div class="product-info">
-        <div class="name">Nasi Ayam Muiz Chicken</div>
-        <div class="desc">Aromatic chicken rice with tender Muiz-style fried chicken, sambal.</div>
-        <div class="price">RM8.90</div>
-    </div>
-</div>
-
-<!-- 3. Bakso - RM5.90 -->
-<div class="product">
-    <img src="bakso.png" alt="Bakso - Indonesian Meatball Soup">
-    <div class="product-info">
-        <div class="name">Bakso</div>
-        <div class="desc">Authentic Indonesian beef meatball soup with savoury broth.</div>
-        <div class="price">RM5.90</div>
-    </div>
-</div>
-
-<!-- 4. Mee Pak Haji Ali - RM6.90 -->
-<div class="product">
-    <img src="meepakhajiali.png" alt="Mee Pak Haji Ali">
-    <div class="product-info">
-        <div class="name">Mee Pak Haji Ali</div>
-        <div class="desc">Traditional recipe.</div>
-        <div class="price">RM6.90</div>
-    </div>
-</div>
-
-<!-- ========== EXISTING MENU SECTIONS (preserved exactly as original) ========== -->
-
-<!-- Category: Muiz Hot Chicken Regular Box -->
-<div class="category">
-    Muiz Hot Chicken Regular Box
-</div>
-
-<div class="product">
-    <img src="originalregularbox.jpg" alt="Original Regular Box">
-    <div class="product-info">
-        <div class="name">Original Regular Box</div>
-        <div class="desc">2 Pieces of Muiz Hot Chicken 🍗</div>
-        <div class="price">RM9.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="cheeseregularbox.jpg" alt="Cheese Regular Box">
-    <div class="product-info">
-        <div class="name">Cheese Regular Box</div>
-        <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce</div>
-        <div class="price">RM11.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="koreanspicyregularbox.jpg" alt="Korean Spicy Regular Box">
-    <div class="product-info">
-        <div class="name">Korean Spicy Regular Box</div>
-        <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce</div>
-        <div class="price">RM12.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="koreancheeseregularbox.jpg" alt="Korean Cheese Regular Box">
-    <div class="product-info">
-        <div class="name">Korean Cheese Regular Box</div>
-        <div class="desc">2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce + 1 Cup of Korean Spicy Sauce</div>
-        <div class="price">RM13.00</div>
-    </div>
-</div>
-
-<!-- Category: Muiz Hot Chicken Happy Box -->
-<div class="category">
-    Muiz Hot Chicken Happy Box
-</div>
-
-<div class="product">
-    <img src="originalhappybox.jpg" alt="Original Happy Box">
-    <div class="product-info">
-        <div class="name">Original Happy Box</div>
-        <div class="desc">5 Pieces of Muiz Hot Chicken 🍗</div>
-        <div class="price">RM22.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="cheesehappybox.jpg" alt="Cheese Happy Box">
-    <div class="product-info">
-        <div class="name">Cheese Happy Box</div>
-        <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Cheese Sauce</div>
-        <div class="price">RM26.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="koreanspicyhappybox.jpg" alt="Korean Spicy Happy Box">
-    <div class="product-info">
-        <div class="name">Korean Spicy Happy Box</div>
-        <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce</div>
-        <div class="price">RM28.00</div>
-    </div>
-</div>
-
-<div class="product">
-    <img src="koreancheesehappybox.jpg" alt="Korean Cheese Happy Box">
-    <div class="product-info">
-        <div class="name">Korean Cheese Happy Box</div>
-        <div class="desc">5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce + 2 Cups of Cheese Sauce</div>
-        <div class="price">RM30.00</div>
-    </div>
-</div>
-
-<!-- Category: Chicken Tenders -->
-<div class="category">
-    Chicken Tenders
-</div>
-
-<div class="product">
-    <img src="chickentenders.jpg" alt="Chicken Tenders">
-    <div class="product-info">
-        <div class="name">Chicken Tenders</div>
-        <div class="desc">
-            Choose your flavour:<br>
-            • Mala<br>
-            • Peri-Peri<br>
-            • Thai Lime<br>
-            • Charcoal
-        </div>
-        <div class="price">RM9.90</div>
-    </div>
-</div>
-
-<!-- subtle spacing -->
-<div style="height: 12px;"></div>
-
-<!-- ========== SINGLE FLOATING WHATSAPP BUTTON WITH YOUR LOGO IMAGE AND TEXT ========== -->
-<a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
-    <img src="whatsapp-logo.png" alt="WhatsApp" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
-    <span>WhatsApp</span>
-</a>
 
 </body>
 </html>
