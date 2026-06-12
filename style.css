@@ -229,6 +229,10 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 .checkout-btn:hover {
     background: #1da15a;
