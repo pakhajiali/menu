@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ---------- MODAL ELEMENTS ----------
+    // ========== DOM ELEMENTS ==========
     const modal = document.getElementById('productModal');
     const modalImg = document.getElementById('modalImg');
     const modalName = document.getElementById('modalName');
@@ -10,19 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartBtn = document.getElementById('addToCartBtn');
     const specialRequestInput = document.getElementById('specialRequest');
 
-    let currentProduct = null;
-    let currentQty = 1;
-    let modalOpenState = false;
-
-    // Quantity input elements
+    // Quantity elements
     const qtyInput = document.getElementById('qtyInput');
     const qtyMinus = document.getElementById('qtyMinus');
     const qtyMinus10 = document.getElementById('qtyMinus10');
     const qtyPlus = document.getElementById('qtyPlus');
     const qtyPlus10 = document.getElementById('qtyPlus10');
 
-    // ---------- CART DRAWER ----------
-    let drawerOpenState = false;
+    // Cart elements
     const cartDrawer = document.getElementById('cartDrawer');
     const cartIcon = document.getElementById('cartIcon');
     const closeCartBtn = document.getElementById('closeCartBtn');
@@ -31,35 +26,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
 
+    // ========== STATE ==========
+    let currentProduct = null;
+    let currentQty = 1;
+    let modalOpenState = false;
+    let drawerOpenState = false;
     let cart = [];
 
-    // Helper: update cart UI
+    // ========== HELPER: UPDATE CART UI ==========
     function updateCartUI() {
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        cartCountSpan.innerText = totalItems;
-        cartItemsDiv.innerHTML = '';
-        let total = 0;
-        cart.forEach((item, index) => {
-            total += item.price * item.qty;
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'cart-item';
-            itemDiv.innerHTML = `
-                <div class="cart-item-info">
-                    <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                    <div class="cart-item-price">RM${item.price.toFixed(2)}</div>
-                    ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
-                </div>
-                <div class="cart-item-controls">
-                    <button class="cart-qty-minus" data-index="${index}">-</button>
-                    <span>${item.qty}</span>
-                    <button class="cart-qty-plus" data-index="${index}">+</button>
-                    <button class="remove-item" data-index="${index}">🗑️</button>
-                </div>
-            `;
-            cartItemsDiv.appendChild(itemDiv);
-        });
-        cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
+        if (cartCountSpan) cartCountSpan.innerText = totalItems;
 
+        if (cartItemsDiv) {
+            cartItemsDiv.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price * item.qty;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${escapeHtml(item.name)}</div>
+                        <div class="cart-item-price">RM${item.price.toFixed(2)}</div>
+                        ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
+                    </div>
+                    <div class="cart-item-controls">
+                        <button class="cart-qty-minus" data-index="${index}">-</button>
+                        <span>${item.qty}</span>
+                        <button class="cart-qty-plus" data-index="${index}">+</button>
+                        <button class="remove-item" data-index="${index}">🗑️</button>
+                    </div>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+            });
+            if (cartTotalSpan) cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
+        }
+
+        // Re-attach cart control events
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -100,13 +104,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function addToCart(product, qty, request) {
         const existingIndex = cart.findIndex(item => item.name === product.name && item.request === request);
-        if (existingIndex !== -1) cart[existingIndex].qty += qty;
-        else cart.push({ name: product.name, price: product.price, qty, img: product.img, request: request || '' });
+        if (existingIndex !== -1) {
+            cart[existingIndex].qty += qty;
+        } else {
+            cart.push({
+                name: product.name,
+                price: product.price,
+                qty: qty,
+                img: product.img,
+                request: request || ''
+            });
+        }
         saveCartAndUpdate();
         openCartDrawer();
     }
 
-    // Cart drawer controls
+    // ========== CART DRAWER CONTROLS ==========
     function openCartDrawer() {
         if (cartDrawer) {
             cartDrawer.classList.add('open');
@@ -127,34 +140,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Modal functions
+    // ========== MODAL CONTROLS (FIXED) ==========
     function openModal(productElement) {
+        // Get product data from data-* attributes
         const name = productElement.getAttribute('data-name');
         let desc = productElement.getAttribute('data-desc');
         const price = parseFloat(productElement.getAttribute('data-price'));
         const imgSrc = productElement.getAttribute('data-img');
 
+        // Special description for Chicken Tenders
         if (name === 'Chicken Tenders') {
             desc = 'Choose your flavour: Mala, Peri-Peri, Thai Lime, or Charcoal. Served crispy and juicy with dipping sauce.';
         }
 
+        // Store current product
         currentProduct = { name, price, img: imgSrc };
         currentQty = 1;
+
+        // Reset UI elements
         if (qtyInput) qtyInput.value = 1;
         if (specialRequestInput) specialRequestInput.value = '';
 
-        modalName.innerText = name;
-        modalDesc.innerText = desc;
-        modalPrice.innerText = `RM${price.toFixed(2)}`;
-        modalImg.src = imgSrc;
-        modalImg.alt = name;
+        // Fill modal content
+        if (modalName) modalName.innerText = name;
+        if (modalDesc) modalDesc.innerText = desc;
+        if (modalPrice) modalPrice.innerText = `RM${price.toFixed(2)}`;
+        if (modalImg) {
+            modalImg.src = imgSrc;
+            modalImg.alt = name;
+        }
 
+        // Update WhatsApp single-order link
         const waMessage = `Hi Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${name} (RM${price.toFixed(2)}). Please confirm.`;
-        modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(waMessage)}`;
+        if (modalWaBtn) modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(waMessage)}`;
 
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        // Show modal
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
 
+        // Push history state for back button
         if (!modalOpenState) {
             modalOpenState = true;
             history.pushState({ modalOpen: true }, '', window.location.href);
@@ -162,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function closeModal() {
-        modal.style.display = 'none';
+        if (modal) modal.style.display = 'none';
         document.body.style.overflow = '';
         if (modalOpenState) {
             modalOpenState = false;
@@ -170,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Quantity update helper
+    // ========== QUANTITY CONTROLS ==========
     function updateQty(value) {
         let newVal = parseInt(value);
         if (isNaN(newVal)) newVal = 1;
@@ -179,13 +205,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (qtyInput) qtyInput.value = currentQty;
     }
 
-    // Quantity event listeners
     if (qtyMinus) qtyMinus.addEventListener('click', () => updateQty(currentQty - 1));
     if (qtyMinus10) qtyMinus10.addEventListener('click', () => updateQty(currentQty - 10));
     if (qtyPlus) qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
     if (qtyPlus10) qtyPlus10.addEventListener('click', () => updateQty(currentQty + 10));
     if (qtyInput) qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
 
+    // Add to Cart button inside modal
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
             if (currentProduct) {
@@ -196,29 +222,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Attach click to all products
-    document.querySelectorAll('.product').forEach(product => {
-        product.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openModal(product);
+    // ========== ATTACH EVENT LISTENERS TO ALL PRODUCT CARDS ==========
+    const products = document.querySelectorAll('.product');
+    if (products.length > 0) {
+        products.forEach(product => {
+            product.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(product);
+            });
         });
+    } else {
+        console.warn('No products found with class "product"');
+    }
+
+    // ========== MODAL CLOSE EVENTS ==========
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') closeModal();
     });
 
-    // Modal close events
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
-
-    // Cart drawer events
-    if (cartIcon) cartIcon.addEventListener('click', (e) => { e.stopPropagation(); openCartDrawer(); });
-    if (closeCartBtn) closeCartBtn.addEventListener('click', () => closeCartDrawer());
+    // ========== CART DRAWER EVENTS ==========
+    if (cartIcon) {
+        cartIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openCartDrawer();
+        });
+    }
+    if (closeCartBtn) {
+        closeCartBtn.addEventListener('click', () => closeCartDrawer());
+    }
     document.addEventListener('click', (e) => {
         if (cartDrawer && cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
             closeCartDrawer();
         }
     });
 
-    // Checkout
+    // ========== CHECKOUT ==========
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
@@ -238,9 +282,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Back button handling
+    // ========== BACK BUTTON HANDLER ==========
     window.addEventListener('popstate', function() {
-        if (modalOpenState && modal.style.display === 'flex') {
+        if (modalOpenState && modal && modal.style.display === 'flex') {
             closeModal();
             history.pushState({ modalOpen: true }, '', window.location.href);
         } else if (drawerOpenState && cartDrawer && cartDrawer.classList.contains('open')) {
@@ -249,10 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ========== HELPER: ESCAPE HTML ==========
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, (m) => (m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')));
     }
 
+    // ========== INITIALISE ==========
     loadCart();
 });
