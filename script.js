@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentProduct = null;
     let currentQty = 1;
+    let modalOpenState = false;
 
     // ---------- CART ----------
     let cart = [];
@@ -54,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
 
-        // Attach cart control events
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const idx = parseInt(btn.dataset.index);
@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartUI();
     }
 
-    // Add item to cart with special request
     function addToCart(product, qty, request) {
         const existingIndex = cart.findIndex(item => item.name === product.name && item.request === request);
         if (existingIndex !== -1) {
@@ -112,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         saveCartAndUpdate();
-        cartDrawer.classList.add('open'); // open drawer after adding
+        cartDrawer.classList.add('open');
     }
 
     // ---------- MODAL LOGIC ----------
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentProduct = { name, price, img: imgSrc };
         currentQty = 1;
         qtyValueSpan.innerText = currentQty;
-        if (specialRequestInput) specialRequestInput.value = ''; // clear previous request
+        if (specialRequestInput) specialRequestInput.value = '';
 
         modalName.innerText = name;
         modalDesc.innerText = desc;
@@ -142,11 +141,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+
+        // Push history state to intercept back button
+        if (!modalOpenState) {
+            modalOpenState = true;
+            history.pushState({ modalOpen: true }, '', window.location.href);
+        }
     }
 
     function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = '';
+        if (modalOpenState) {
+            modalOpenState = false;
+            history.replaceState(null, '', window.location.href);
+        }
     }
 
     // Quantity controls
@@ -184,6 +193,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
+
+    // Back button handling for modal
+    window.addEventListener('popstate', function(event) {
+        if (modalOpenState && modal.style.display === 'flex') {
+            closeModal();
+            // Re-push state so that back button doesn't navigate away
+            history.pushState({ modalOpen: true }, '', window.location.href);
+        }
+    });
 
     // ---------- CART DRAWER EVENTS ----------
     if (cartIcon) {
@@ -225,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Helper to escape HTML (prevents injection)
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -233,11 +250,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    // Load cart from localStorage
     loadCart();
 });
