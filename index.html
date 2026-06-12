@@ -69,8 +69,8 @@
         🌟 Most Ordered 🌟
     </div>
 
-    <!-- Existing products (condensed for brevity – they remain unchanged) -->
-    <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="6.90" data-img="nasikandarmuizchicken.png" data-badge="🔥 BEST VALUE RM6.90">
+    <!-- Existing products -->
+    <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="6.90" data-img="nasikandarmuizchicken.png">
         <img src="nasikandarmuizchicken.png" alt="Nasi Kandar Muiz Hot Chicken">
         <div class="product-info">
             <div class="badge">🔥 BEST VALUE RM6.90</div>
@@ -107,7 +107,6 @@
         </div>
     </div>
 
-    <!-- Muiz Hot Chicken Regular Box -->
     <div class="category">Muiz Hot Chicken Regular Box</div>
 
     <div class="product" data-name="Original Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗" data-price="9.00" data-img="originalregularbox.jpg">
@@ -146,7 +145,6 @@
         </div>
     </div>
 
-    <!-- Muiz Hot Chicken Happy Box -->
     <div class="category">Muiz Hot Chicken Happy Box</div>
 
     <div class="product" data-name="Original Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗" data-price="22.00" data-img="originalhappybox.jpg">
@@ -185,7 +183,6 @@
         </div>
     </div>
 
-    <!-- Chicken Tenders -->
     <div class="category">Chicken Tenders</div>
 
     <div class="product" data-name="Chicken Tenders" data-desc="Choose your flavour: Mala, Peri-Peri, Thai Lime, or Charcoal. Served crispy and juicy." data-price="9.90" data-img="chickentenders.jpg">
@@ -203,7 +200,7 @@
         </div>
     </div>
 
-    <!-- ========== NEW: NASI GORENG KAMPUNG CATEGORY ========== -->
+    <!-- Nasi Goreng Kampung -->
     <div class="category">Nasi Goreng Kampung</div>
 
     <div class="product" data-name="Nasi Goreng Kampung" data-desc="Classic village-style fried rice with anchovies, egg, and spices." data-price="7.50" data-img="nasigorengkampung.jpg">
@@ -242,7 +239,7 @@
         </div>
     </div>
 
-    <!-- ========== NEW: NASI GORENG CINA CATEGORY ========== -->
+    <!-- Nasi Goreng Cina -->
     <div class="category">Nasi Goreng Cina</div>
 
     <div class="product" data-name="Nasi Goreng Cina" data-desc="Chinese-style fried rice with egg, spring onions, and light soy sauce." data-price="6.00" data-img="nasigorengcina.jpg">
@@ -281,7 +278,7 @@
         </div>
     </div>
 
-    <!-- ========== NEW: NASI GORENG TOMYAM CATEGORY ========== -->
+    <!-- Nasi Goreng Tomyam (image name fixed for biasa) -->
     <div class="category">Nasi Goreng Tomyam</div>
 
     <div class="product" data-name="Nasi Goreng Tomyam Biasa" data-desc="Spicy and sour tomyam fried rice with egg and vegetables." data-price="8.50" data-img="nasigorengtomyambiasa.jpg">
@@ -322,13 +319,13 @@
 
     <div style="height: 12px;"></div>
 
-    <!-- Floating WhatsApp button -->
+    <!-- Floating WhatsApp button (no phone number) -->
     <a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
         <img src="whatsapp-logo.png" alt="WhatsApp" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
         <span>WhatsApp</span>
     </a>
 
-    <!-- Modal Dialog -->
+    <!-- Modal -->
     <div id="productModal" class="modal">
         <div class="modal-close" id="modalCloseBtn">&times;</div>
         <div class="modal-content">
@@ -340,7 +337,9 @@
                 <div class="modal-quantity">
                     <label>Quantity:</label>
                     <button id="qtyMinus" class="qty-btn">-</button>
-                    <span id="qtyValue">1</span>
+                    <button id="qtyMinus10" class="qty-btn">-10</button>
+                    <input type="number" id="qtyInput" class="qty-input" value="1" min="1" step="1">
+                    <button id="qtyPlus10" class="qty-btn">+10</button>
                     <button id="qtyPlus" class="qty-btn">+</button>
                 </div>
                 <div class="modal-request">
@@ -359,4 +358,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
