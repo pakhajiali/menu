@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentQty = 1;
     let modalOpenState = false;
 
-    // ---------- CART ----------
-    let cart = [];
+    // ---------- CART DRAWER ----------
+    let drawerOpenState = false;
     const cartDrawer = document.getElementById('cartDrawer');
     const cartIcon = document.getElementById('cartIcon');
     const closeCartBtn = document.getElementById('closeCartBtn');
@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartTotalSpan = document.getElementById('cartTotal');
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
+
+    // ---------- CART LOGIC ----------
+    let cart = [];
 
     // Helper: update cart UI and localStorage
     function updateCartUI() {
@@ -111,7 +114,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         saveCartAndUpdate();
-        cartDrawer.classList.add('open');
+        // Open drawer after adding
+        openCartDrawer();
+    }
+
+    // ---------- CART DRAWER CONTROLS ----------
+    function openCartDrawer() {
+        if (cartDrawer) {
+            cartDrawer.classList.add('open');
+            if (!drawerOpenState) {
+                drawerOpenState = true;
+                history.pushState({ drawerOpen: true }, '', window.location.href);
+            }
+        }
+    }
+
+    function closeCartDrawer() {
+        if (cartDrawer) {
+            cartDrawer.classList.remove('open');
+            if (drawerOpenState) {
+                drawerOpenState = false;
+                history.replaceState(null, '', window.location.href);
+            }
+        }
     }
 
     // ---------- MODAL LOGIC ----------
@@ -142,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        // Push history state to intercept back button
+        // Push history state for modal
         if (!modalOpenState) {
             modalOpenState = true;
             history.pushState({ modalOpen: true }, '', window.location.href);
@@ -194,33 +219,26 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 
-    // Back button handling for modal
-    window.addEventListener('popstate', function(event) {
-        if (modalOpenState && modal.style.display === 'flex') {
-            closeModal();
-            // Re-push state so that back button doesn't navigate away
-            history.pushState({ modalOpen: true }, '', window.location.href);
-        }
-    });
-
-    // ---------- CART DRAWER EVENTS ----------
+    // ---------- CART DRAWER EVENT HANDLERS ----------
     if (cartIcon) {
-        cartIcon.addEventListener('click', () => {
-            cartDrawer.classList.add('open');
+        cartIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openCartDrawer();
         });
     }
     if (closeCartBtn) {
         closeCartBtn.addEventListener('click', () => {
-            cartDrawer.classList.remove('open');
+            closeCartDrawer();
         });
     }
+    // Close drawer when clicking outside the drawer content
     document.addEventListener('click', (e) => {
-        if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
-            cartDrawer.classList.remove('open');
+        if (cartDrawer && cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
+            closeCartDrawer();
         }
     });
 
-    // Checkout: send cart summary with special requests via WhatsApp
+    // ---------- CHECKOUT ----------
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
@@ -243,6 +261,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ---------- BACK BUTTON HANDLER (closes modal OR drawer) ----------
+    window.addEventListener('popstate', function(event) {
+        // Prioritise modal if open
+        if (modalOpenState && modal.style.display === 'flex') {
+            closeModal();
+            history.pushState({ modalOpen: true }, '', window.location.href);
+        } 
+        else if (drawerOpenState && cartDrawer && cartDrawer.classList.contains('open')) {
+            closeCartDrawer();
+            history.pushState({ drawerOpen: true }, '', window.location.href);
+        }
+    });
+
+    // Helper to escape HTML
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -253,5 +285,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Load cart from localStorage on page load
     loadCart();
 });
