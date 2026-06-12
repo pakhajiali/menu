@@ -79,11 +79,12 @@ body {
 }
 
 /* Cart Icon */
+/* Cart Icon - Green */
 .cart-icon {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #d62828;
+    background: #2ecc71;  /* fresh green */
     color: white;
     width: 50px;
     height: 50px;
@@ -95,16 +96,17 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 1001;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background 0.2s;
 }
 .cart-icon:hover {
     transform: scale(1.05);
+    background: #27ae60;  /* darker green on hover */
 }
 .cart-count {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #25D366;
+    background: #d62828;  /* red badge for contrast */
     color: white;
     font-size: 12px;
     font-weight: bold;
@@ -115,7 +117,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 /* Cart Drawer */
 .cart-drawer {
     position: fixed;
