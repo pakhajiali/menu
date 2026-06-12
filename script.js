@@ -7,15 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalPrice = document.getElementById('modalPrice');
     const modalWaBtn = document.getElementById('modalWaBtn');
     const closeBtn = document.getElementById('modalCloseBtn');
-    const qtyMinus = document.getElementById('qtyMinus');
-    const qtyPlus = document.getElementById('qtyPlus');
-    const qtyValueSpan = document.getElementById('qtyValue');
     const addToCartBtn = document.getElementById('addToCartBtn');
     const specialRequestInput = document.getElementById('specialRequest');
 
     let currentProduct = null;
     let currentQty = 1;
     let modalOpenState = false;
+
+    // Quantity input elements
+    const qtyInput = document.getElementById('qtyInput');
+    const qtyMinus = document.getElementById('qtyMinus');
+    const qtyMinus10 = document.getElementById('qtyMinus10');
+    const qtyPlus = document.getElementById('qtyPlus');
+    const qtyPlus10 = document.getElementById('qtyPlus10');
 
     // ---------- CART DRAWER ----------
     let drawerOpenState = false;
@@ -27,14 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
 
-    // ---------- CART LOGIC ----------
     let cart = [];
 
-    // Helper: update cart UI and localStorage
+    // Helper: update cart UI
     function updateCartUI() {
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
         cartCountSpan.innerText = totalItems;
-
         cartItemsDiv.innerHTML = '';
         let total = 0;
         cart.forEach((item, index) => {
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             itemDiv.className = 'cart-item';
             itemDiv.innerHTML = `
                 <div class="cart-item-info">
-                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-name">${escapeHtml(item.name)}</div>
                     <div class="cart-item-price">RM${item.price.toFixed(2)}</div>
                     ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
                 </div>
@@ -58,16 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
 
-        // Attach events with stopPropagation to prevent drawer close
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const idx = parseInt(btn.dataset.index);
-                if (cart[idx].qty > 1) {
-                    cart[idx].qty--;
-                } else {
-                    cart.splice(idx, 1);
-                }
+                if (cart[idx].qty > 1) cart[idx].qty--;
+                else cart.splice(idx, 1);
                 saveCartAndUpdate();
             });
         });
@@ -81,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.stopPropagation();  // KEY FIX: prevents drawer from closing
+                e.stopPropagation();
                 const idx = parseInt(btn.dataset.index);
                 cart.splice(idx, 1);
                 saveCartAndUpdate();
@@ -96,32 +94,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadCart() {
         const saved = localStorage.getItem('restaurantCart');
-        if (saved) {
-            cart = JSON.parse(saved);
-        } else {
-            cart = [];
-        }
+        cart = saved ? JSON.parse(saved) : [];
         updateCartUI();
     }
 
     function addToCart(product, qty, request) {
         const existingIndex = cart.findIndex(item => item.name === product.name && item.request === request);
-        if (existingIndex !== -1) {
-            cart[existingIndex].qty += qty;
-        } else {
-            cart.push({
-                name: product.name,
-                price: product.price,
-                qty: qty,
-                img: product.img,
-                request: request || ''
-            });
-        }
+        if (existingIndex !== -1) cart[existingIndex].qty += qty;
+        else cart.push({ name: product.name, price: product.price, qty, img: product.img, request: request || '' });
         saveCartAndUpdate();
         openCartDrawer();
     }
 
-    // ---------- CART DRAWER CONTROLS ----------
+    // Cart drawer controls
     function openCartDrawer() {
         if (cartDrawer) {
             cartDrawer.classList.add('open');
@@ -142,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ---------- MODAL LOGIC ----------
+    // Modal functions
     function openModal(productElement) {
         const name = productElement.getAttribute('data-name');
         let desc = productElement.getAttribute('data-desc');
@@ -155,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         currentProduct = { name, price, img: imgSrc };
         currentQty = 1;
-        qtyValueSpan.innerText = currentQty;
+        if (qtyInput) qtyInput.value = 1;
         if (specialRequestInput) specialRequestInput.value = '';
 
         modalName.innerText = name;
@@ -185,17 +170,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Quantity controls
-    if (qtyMinus && qtyPlus) {
-        qtyMinus.addEventListener('click', () => {
-            if (currentQty > 1) currentQty--;
-            qtyValueSpan.innerText = currentQty;
-        });
-        qtyPlus.addEventListener('click', () => {
-            currentQty++;
-            qtyValueSpan.innerText = currentQty;
-        });
+    // Quantity update helper
+    function updateQty(value) {
+        let newVal = parseInt(value);
+        if (isNaN(newVal)) newVal = 1;
+        newVal = Math.max(1, newVal);
+        currentQty = newVal;
+        if (qtyInput) qtyInput.value = currentQty;
     }
+
+    // Quantity event listeners
+    if (qtyMinus) qtyMinus.addEventListener('click', () => updateQty(currentQty - 1));
+    if (qtyMinus10) qtyMinus10.addEventListener('click', () => updateQty(currentQty - 10));
+    if (qtyPlus) qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
+    if (qtyPlus10) qtyPlus10.addEventListener('click', () => updateQty(currentQty + 10));
+    if (qtyInput) qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
 
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
@@ -207,9 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Attach click to all product cards
-    const products = document.querySelectorAll('.product');
-    products.forEach(product => {
+    // Attach click to all products
+    document.querySelectorAll('.product').forEach(product => {
         product.addEventListener('click', (e) => {
             e.stopPropagation();
             openModal(product);
@@ -221,26 +209,16 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 
-    // ---------- CART DRAWER EVENT HANDLERS ----------
-    if (cartIcon) {
-        cartIcon.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openCartDrawer();
-        });
-    }
-    if (closeCartBtn) {
-        closeCartBtn.addEventListener('click', () => {
-            closeCartDrawer();
-        });
-    }
-    // Close drawer when clicking outside the drawer content (but NOT when clicking inside)
+    // Cart drawer events
+    if (cartIcon) cartIcon.addEventListener('click', (e) => { e.stopPropagation(); openCartDrawer(); });
+    if (closeCartBtn) closeCartBtn.addEventListener('click', () => closeCartDrawer());
     document.addEventListener('click', (e) => {
         if (cartDrawer && cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
             closeCartDrawer();
         }
     });
 
-    // ---------- CHECKOUT ----------
+    // Checkout
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
@@ -250,40 +228,30 @@ document.addEventListener('DOMContentLoaded', function() {
             let message = 'Hello Pak Haji Ali & Muiz Hot Chicken, I would like to order:\n\n';
             cart.forEach(item => {
                 message += `🍗 ${item.name} x${item.qty} = RM${(item.price * item.qty).toFixed(2)}`;
-                if (item.request) {
-                    message += `\n   📝 Special: ${item.request}`;
-                }
+                if (item.request) message += `\n   📝 Special: ${item.request}`;
                 message += '\n';
             });
             const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
             message += `\nTotal: RM${total.toFixed(2)}`;
             message += `\n\nPlease confirm my order. Thank you!`;
-            const waLink = `https://wa.me/60179081447?text=${encodeURIComponent(message)}`;
-            window.open(waLink, '_blank');
+            window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
         });
     }
 
-    // ---------- BACK BUTTON HANDLER ----------
-    window.addEventListener('popstate', function(event) {
+    // Back button handling
+    window.addEventListener('popstate', function() {
         if (modalOpenState && modal.style.display === 'flex') {
             closeModal();
             history.pushState({ modalOpen: true }, '', window.location.href);
-        } 
-        else if (drawerOpenState && cartDrawer && cartDrawer.classList.contains('open')) {
+        } else if (drawerOpenState && cartDrawer && cartDrawer.classList.contains('open')) {
             closeCartDrawer();
             history.pushState({ drawerOpen: true }, '', window.location.href);
         }
     });
 
-    // Helper to escape HTML
     function escapeHtml(str) {
         if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
+        return str.replace(/[&<>]/g, (m) => (m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')));
     }
 
     loadCart();
