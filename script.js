@@ -58,8 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
 
+        // Attach events with stopPropagation to prevent drawer close
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const idx = parseInt(btn.dataset.index);
                 if (cart[idx].qty > 1) {
                     cart[idx].qty--;
@@ -71,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.querySelectorAll('.cart-qty-plus').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const idx = parseInt(btn.dataset.index);
                 cart[idx].qty++;
                 saveCartAndUpdate();
@@ -78,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         document.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.stopPropagation();  // KEY FIX: prevents drawer from closing
                 const idx = parseInt(btn.dataset.index);
                 cart.splice(idx, 1);
                 saveCartAndUpdate();
@@ -114,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         saveCartAndUpdate();
-        // Open drawer after adding
         openCartDrawer();
     }
 
@@ -167,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
 
-        // Push history state for modal
         if (!modalOpenState) {
             modalOpenState = true;
             history.pushState({ modalOpen: true }, '', window.location.href);
@@ -231,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeCartDrawer();
         });
     }
-    // Close drawer when clicking outside the drawer content
+    // Close drawer when clicking outside the drawer content (but NOT when clicking inside)
     document.addEventListener('click', (e) => {
         if (cartDrawer && cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
             closeCartDrawer();
@@ -261,9 +263,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ---------- BACK BUTTON HANDLER (closes modal OR drawer) ----------
+    // ---------- BACK BUTTON HANDLER ----------
     window.addEventListener('popstate', function(event) {
-        // Prioritise modal if open
         if (modalOpenState && modal.style.display === 'flex') {
             closeModal();
             history.pushState({ modalOpen: true }, '', window.location.href);
@@ -285,6 +286,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Load cart from localStorage on page load
     loadCart();
 });
