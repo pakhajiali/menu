@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pakhajiali.github.io/menu/sitemap.xml
