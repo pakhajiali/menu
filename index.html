@@ -31,13 +31,32 @@
         Subang Jaya, Selangor
     </div>
 
-    <!-- ========== NEW: Google Review Link Card ========== -->
+    <!-- Google Review Card with 5 Stars -->
     <div class="review-card">
         <a href="https://g.page/r/CUrZw9xvAXIPEBE/review" target="_blank" rel="noopener noreferrer" class="review-link">
-            <span class="review-icon">⭐⭐⭐⭐⭐</span>
-            <span class="review-text">Leave us a Google Review</span>
+            <span class="review-icon">★★★★★</span>
+            <span class="review-text">Leave a Google Review</span>
             <span class="review-arrow">→</span>
         </a>
+    </div>
+
+    <!-- Cart Icon (opens drawer) -->
+    <div class="cart-icon" id="cartIcon">
+        <span class="cart-icon-emoji">🛒</span>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Cart Drawer (side panel) -->
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button id="closeCartBtn" class="close-cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total" id="cartTotal">Total: RM0.00</div>
+            <button id="checkoutBtn" class="checkout-btn">📱 WhatsApp Order</button>
+        </div>
     </div>
 
     <!-- Most Ordered Category -->
@@ -45,8 +64,8 @@
         🌟 Most Ordered 🌟
     </div>
 
-    <!-- 1. Nasi Kandar Muiz Hot Chicken -->
-    <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="RM6.90" data-img="nasikandarmuizchicken.png" data-badge="🔥 BEST VALUE RM6.90">
+    <!-- All products (same as before, with data attributes) -->
+    <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="6.90" data-img="nasikandarmuizchicken.png" data-badge="🔥 BEST VALUE RM6.90">
         <img src="nasikandarmuizchicken.png" alt="Nasi Kandar Muiz Hot Chicken">
         <div class="product-info">
             <div class="badge">🔥 BEST VALUE RM6.90</div>
@@ -56,8 +75,7 @@
         </div>
     </div>
 
-    <!-- 2. Nasi Ayam Muiz Chicken -->
-    <div class="product" data-name="Nasi Ayam Muiz Chicken" data-desc="Aromatic chicken rice with tender Muiz-style fried chicken, sambal." data-price="RM8.90" data-img="nasiayammuizchicken.png">
+    <div class="product" data-name="Nasi Ayam Muiz Chicken" data-desc="Aromatic chicken rice with tender Muiz-style fried chicken, sambal." data-price="8.90" data-img="nasiayammuizchicken.png">
         <img src="nasiayammuizchicken.png" alt="Nasi Ayam Muiz Chicken">
         <div class="product-info">
             <div class="name">Nasi Ayam Muiz Chicken</div>
@@ -66,8 +84,7 @@
         </div>
     </div>
 
-    <!-- 3. Bakso -->
-    <div class="product" data-name="Bakso" data-desc="Authentic Indonesian beef meatball soup with savoury broth." data-price="RM5.90" data-img="bakso.png">
+    <div class="product" data-name="Bakso" data-desc="Authentic Indonesian beef meatball soup with savoury broth." data-price="5.90" data-img="bakso.png">
         <img src="bakso.png" alt="Bakso - Indonesian Meatball Soup">
         <div class="product-info">
             <div class="name">Bakso</div>
@@ -76,8 +93,7 @@
         </div>
     </div>
 
-    <!-- 4. Mee Pak Haji Ali -->
-    <div class="product" data-name="Mee Pak Haji Ali" data-desc="Traditional recipe." data-price="RM6.90" data-img="meepakhajiali.png">
+    <div class="product" data-name="Mee Pak Haji Ali" data-desc="Traditional recipe." data-price="6.90" data-img="meepakhajiali.png">
         <img src="meepakhajiali.png" alt="Mee Pak Haji Ali">
         <div class="product-info">
             <div class="name">Mee Pak Haji Ali</div>
@@ -89,7 +105,7 @@
     <!-- Muiz Hot Chicken Regular Box -->
     <div class="category">Muiz Hot Chicken Regular Box</div>
 
-    <div class="product" data-name="Original Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗" data-price="RM9.00" data-img="originalregularbox.jpg">
+    <div class="product" data-name="Original Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗" data-price="9.00" data-img="originalregularbox.jpg">
         <img src="originalregularbox.jpg" alt="Original Regular Box">
         <div class="product-info">
             <div class="name">Original Regular Box</div>
@@ -98,7 +114,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce" data-price="RM11.00" data-img="cheeseregularbox.jpg">
+    <div class="product" data-name="Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce" data-price="11.00" data-img="cheeseregularbox.jpg">
         <img src="cheeseregularbox.jpg" alt="Cheese Regular Box">
         <div class="product-info">
             <div class="name">Cheese Regular Box</div>
@@ -107,7 +123,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Korean Spicy Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce" data-price="RM12.00" data-img="koreanspicyregularbox.jpg">
+    <div class="product" data-name="Korean Spicy Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce" data-price="12.00" data-img="koreanspicyregularbox.jpg">
         <img src="koreanspicyregularbox.jpg" alt="Korean Spicy Regular Box">
         <div class="product-info">
             <div class="name">Korean Spicy Regular Box</div>
@@ -116,7 +132,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Korean Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce + 1 Cup of Korean Spicy Sauce" data-price="RM13.00" data-img="koreancheeseregularbox.jpg">
+    <div class="product" data-name="Korean Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce + 1 Cup of Korean Spicy Sauce" data-price="13.00" data-img="koreancheeseregularbox.jpg">
         <img src="koreancheeseregularbox.jpg" alt="Korean Cheese Regular Box">
         <div class="product-info">
             <div class="name">Korean Cheese Regular Box</div>
@@ -128,7 +144,7 @@
     <!-- Muiz Hot Chicken Happy Box -->
     <div class="category">Muiz Hot Chicken Happy Box</div>
 
-    <div class="product" data-name="Original Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗" data-price="RM22.00" data-img="originalhappybox.jpg">
+    <div class="product" data-name="Original Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗" data-price="22.00" data-img="originalhappybox.jpg">
         <img src="originalhappybox.jpg" alt="Original Happy Box">
         <div class="product-info">
             <div class="name">Original Happy Box</div>
@@ -137,7 +153,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Cheese Sauce" data-price="RM26.00" data-img="cheesehappybox.jpg">
+    <div class="product" data-name="Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Cheese Sauce" data-price="26.00" data-img="cheesehappybox.jpg">
         <img src="cheesehappybox.jpg" alt="Cheese Happy Box">
         <div class="product-info">
             <div class="name">Cheese Happy Box</div>
@@ -146,7 +162,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Korean Spicy Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce" data-price="RM28.00" data-img="koreanspicyhappybox.jpg">
+    <div class="product" data-name="Korean Spicy Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce" data-price="28.00" data-img="koreanspicyhappybox.jpg">
         <img src="koreanspicyhappybox.jpg" alt="Korean Spicy Happy Box">
         <div class="product-info">
             <div class="name">Korean Spicy Happy Box</div>
@@ -155,7 +171,7 @@
         </div>
     </div>
 
-    <div class="product" data-name="Korean Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce + 2 Cups of Cheese Sauce" data-price="RM30.00" data-img="koreancheesehappybox.jpg">
+    <div class="product" data-name="Korean Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce + 2 Cups of Cheese Sauce" data-price="30.00" data-img="koreancheesehappybox.jpg">
         <img src="koreancheesehappybox.jpg" alt="Korean Cheese Happy Box">
         <div class="product-info">
             <div class="name">Korean Cheese Happy Box</div>
@@ -167,7 +183,7 @@
     <!-- Chicken Tenders -->
     <div class="category">Chicken Tenders</div>
 
-    <div class="product" data-name="Chicken Tenders" data-desc="Choose your flavour: Mala, Peri-Peri, Thai Lime, or Charcoal. Served crispy and juicy." data-price="RM9.90" data-img="chickentenders.jpg">
+    <div class="product" data-name="Chicken Tenders" data-desc="Choose your flavour: Mala, Peri-Peri, Thai Lime, or Charcoal. Served crispy and juicy." data-price="9.90" data-img="chickentenders.jpg">
         <img src="chickentenders.jpg" alt="Chicken Tenders">
         <div class="product-info">
             <div class="name">Chicken Tenders</div>
@@ -184,13 +200,13 @@
 
     <div style="height: 12px;"></div>
 
-    <!-- Floating WhatsApp button -->
+    <!-- Floating WhatsApp button (direct chat) -->
     <a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
         <img src="whatsapp-logo.png" alt="WhatsApp" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
         <span>WhatsApp</span>
     </a>
 
-    <!-- Modal Dialog -->
+    <!-- Modal Dialog (with quantity and Add to Cart) -->
     <div id="productModal" class="modal">
         <div class="modal-close" id="modalCloseBtn">&times;</div>
         <div class="modal-content">
@@ -199,10 +215,17 @@
                 <div class="modal-name" id="modalName"></div>
                 <div class="modal-desc" id="modalDesc"></div>
                 <div class="modal-price" id="modalPrice"></div>
-                <a href="#" id="modalWaBtn" class="modal-wa-btn" target="_blank">
+                <div class="modal-quantity">
+                    <label>Quantity:</label>
+                    <button id="qtyMinus" class="qty-btn">-</button>
+                    <span id="qtyValue">1</span>
+                    <button id="qtyPlus" class="qty-btn">+</button>
+                </div>
+                <button id="addToCartBtn" class="add-to-cart-btn">🛒 Add to Cart</button>
+                <a href="#" id="modalWaBtn" class="modal-wa-btn" target="_blank" style="margin-top: 10px;">
                     <img src="whatsapp-logo.png" alt="WhatsApp" style="width: 24px; height: 24px; object-fit: contain; margin-right: 8px;" 
                          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'; this.onerror=null;">
-                    Order via WhatsApp
+                    Order Now
                 </a>
             </div>
         </div>
