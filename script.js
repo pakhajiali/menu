@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ---------- MODAL ----------
+    // ---------- MODAL ELEMENTS ----------
     const modal = document.getElementById('productModal');
     const modalImg = document.getElementById('modalImg');
     const modalName = document.getElementById('modalName');
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const qtyPlus = document.getElementById('qtyPlus');
     const qtyValueSpan = document.getElementById('qtyValue');
     const addToCartBtn = document.getElementById('addToCartBtn');
+    const specialRequestInput = document.getElementById('specialRequest');
 
     let currentProduct = null;
     let currentQty = 1;
@@ -27,11 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Helper: update cart UI and localStorage
     function updateCartUI() {
-        // Update count badge
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
         cartCountSpan.innerText = totalItems;
 
-        // Render cart items
         cartItemsDiv.innerHTML = '';
         let total = 0;
         cart.forEach((item, index) => {
@@ -42,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">RM${item.price.toFixed(2)}</div>
+                    ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
                 </div>
                 <div class="cart-item-controls">
                     <button class="cart-qty-minus" data-index="${index}">-</button>
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartTotalSpan.innerText = `Total: RM${total.toFixed(2)}`;
 
-        // Attach event listeners to cart controls
+        // Attach cart control events
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const idx = parseInt(btn.dataset.index);
@@ -97,28 +97,25 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartUI();
     }
 
-    // Add item to cart
-    function addToCart(product, qty) {
-        const existing = cart.find(item => item.name === product.name);
-        if (existing) {
-            existing.qty += qty;
+    // Add item to cart with special request
+    function addToCart(product, qty, request) {
+        const existingIndex = cart.findIndex(item => item.name === product.name && item.request === request);
+        if (existingIndex !== -1) {
+            cart[existingIndex].qty += qty;
         } else {
             cart.push({
                 name: product.name,
                 price: product.price,
                 qty: qty,
-                img: product.img
+                img: product.img,
+                request: request || ''
             });
         }
         saveCartAndUpdate();
-        // Show cart drawer briefly (optional)
-        cartDrawer.classList.add('open');
-        setTimeout(() => {
-            // keep open, user can close manually
-        }, 100);
+        cartDrawer.classList.add('open'); // open drawer after adding
     }
 
-    // ---------- MODAL HANDLERS ----------
+    // ---------- MODAL LOGIC ----------
     function openModal(productElement) {
         const name = productElement.getAttribute('data-name');
         let desc = productElement.getAttribute('data-desc');
@@ -132,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentProduct = { name, price, img: imgSrc };
         currentQty = 1;
         qtyValueSpan.innerText = currentQty;
+        if (specialRequestInput) specialRequestInput.value = ''; // clear previous request
 
         modalName.innerText = name;
         modalDesc.innerText = desc;
@@ -166,7 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
             if (currentProduct) {
-                addToCart(currentProduct, currentQty);
+                const request = specialRequestInput ? specialRequestInput.value.trim() : '';
+                addToCart(currentProduct, currentQty, request);
                 closeModal();
             }
         });
@@ -197,29 +196,45 @@ document.addEventListener('DOMContentLoaded', function() {
             cartDrawer.classList.remove('open');
         });
     }
-    // Close drawer when clicking outside (optional)
     document.addEventListener('click', (e) => {
         if (cartDrawer.classList.contains('open') && !cartDrawer.contains(e.target) && !cartIcon.contains(e.target)) {
             cartDrawer.classList.remove('open');
         }
     });
 
-    // Checkout: send cart summary via WhatsApp
+    // Checkout: send cart summary with special requests via WhatsApp
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             if (cart.length === 0) {
                 alert('Your cart is empty. Add some items first.');
                 return;
             }
-            let message = 'Hello Pak Haji Ali & Muiz Hot Chicken, I would like to order:\n';
+            let message = 'Hello Pak Haji Ali & Muiz Hot Chicken, I would like to order:\n\n';
             cart.forEach(item => {
-                message += `🍗 ${item.name} x${item.qty} = RM${(item.price * item.qty).toFixed(2)}\n`;
+                message += `🍗 ${item.name} x${item.qty} = RM${(item.price * item.qty).toFixed(2)}`;
+                if (item.request) {
+                    message += `\n   📝 Special: ${item.request}`;
+                }
+                message += '\n';
             });
             const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
             message += `\nTotal: RM${total.toFixed(2)}`;
-            message += `\n\nPlease confirm my order.`;
+            message += `\n\nPlease confirm my order. Thank you!`;
             const waLink = `https://wa.me/60179081447?text=${encodeURIComponent(message)}`;
             window.open(waLink, '_blank');
+        });
+    }
+
+    // Helper to escape HTML (prevents injection)
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
         });
     }
 
