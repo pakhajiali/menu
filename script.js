@@ -34,7 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== HELPER: UPDATE CART UI ==========
     function updateCartUI() {
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        if (cartCountSpan) cartCountSpan.innerText = totalItems;
+        if (cartCountSpan) {
+    let displayCount = totalItems;
+    if (totalItems > 99) displayCount = '99+';
+    cartCountSpan.innerText = displayCount;
+}
 
         if (cartItemsDiv) {
             cartItemsDiv.innerHTML = '';
