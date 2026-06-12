@@ -10,12 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartBtn = document.getElementById('addToCartBtn');
     const specialRequestInput = document.getElementById('specialRequest');
 
-    // Quantity elements
+    // Quantity elements (simplified)
     const qtyInput = document.getElementById('qtyInput');
     const qtyMinus = document.getElementById('qtyMinus');
-    const qtyMinus10 = document.getElementById('qtyMinus10');
     const qtyPlus = document.getElementById('qtyPlus');
-    const qtyPlus10 = document.getElementById('qtyPlus10');
 
     // Cart elements
     const cartDrawer = document.getElementById('cartDrawer');
@@ -140,28 +138,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ========== MODAL CONTROLS (FIXED) ==========
+    // ========== MODAL CONTROLS ==========
     function openModal(productElement) {
-        // Get product data from data-* attributes
         const name = productElement.getAttribute('data-name');
         let desc = productElement.getAttribute('data-desc');
         const price = parseFloat(productElement.getAttribute('data-price'));
         const imgSrc = productElement.getAttribute('data-img');
 
-        // Special description for Chicken Tenders
         if (name === 'Chicken Tenders') {
             desc = 'Choose your flavour: Mala, Peri-Peri, Thai Lime, or Charcoal. Served crispy and juicy with dipping sauce.';
         }
 
-        // Store current product
         currentProduct = { name, price, img: imgSrc };
         currentQty = 1;
-
-        // Reset UI elements
         if (qtyInput) qtyInput.value = 1;
         if (specialRequestInput) specialRequestInput.value = '';
 
-        // Fill modal content
         if (modalName) modalName.innerText = name;
         if (modalDesc) modalDesc.innerText = desc;
         if (modalPrice) modalPrice.innerText = `RM${price.toFixed(2)}`;
@@ -170,17 +162,14 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImg.alt = name;
         }
 
-        // Update WhatsApp single-order link
         const waMessage = `Hi Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${name} (RM${price.toFixed(2)}). Please confirm.`;
         if (modalWaBtn) modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(waMessage)}`;
 
-        // Show modal
         if (modal) {
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        // Push history state for back button
         if (!modalOpenState) {
             modalOpenState = true;
             history.pushState({ modalOpen: true }, '', window.location.href);
@@ -196,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ========== QUANTITY CONTROLS ==========
+    // ========== QUANTITY CONTROLS (simplified) ==========
     function updateQty(value) {
         let newVal = parseInt(value);
         if (isNaN(newVal)) newVal = 1;
@@ -206,9 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (qtyMinus) qtyMinus.addEventListener('click', () => updateQty(currentQty - 1));
-    if (qtyMinus10) qtyMinus10.addEventListener('click', () => updateQty(currentQty - 10));
     if (qtyPlus) qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
-    if (qtyPlus10) qtyPlus10.addEventListener('click', () => updateQty(currentQty + 10));
     if (qtyInput) qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
 
     // Add to Cart button inside modal
@@ -293,12 +280,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ========== HELPER: ESCAPE HTML ==========
+    // ========== HELPER ==========
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, (m) => (m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;')));
     }
 
-    // ========== INITIALISE ==========
+    // ========== INIT ==========
     loadCart();
 });
