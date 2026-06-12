@@ -657,7 +657,38 @@ body {
     background: #d62828;
     transform: scale(1.1);
 }
-
+/* Special Requests Field */
+.modal-request {
+    margin: 16px 0;
+}
+.modal-request label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e2a2f;
+    margin-bottom: 8px;
+}
+.modal-request textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    transition: border 0.2s;
+}
+.modal-request textarea:focus {
+    outline: none;
+    border-color: #2ecc71;
+}
+/* Cart item request text */
+.cart-item-request {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    font-style: italic;
+}
 /* Keyframes */
 @keyframes modalPopIn {
     from {
