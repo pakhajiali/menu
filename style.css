@@ -43,6 +43,7 @@ body {
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     border: 1px solid rgba(0, 0, 0, 0.03);
+    will-change: transform;
 }
 .map-card:hover {
     transform: translateY(-4px) scale(1.01);
@@ -114,6 +115,7 @@ body {
     animation: fadeInUp 0.5s ease-out;
     animation-fill-mode: both;
     cursor: pointer;
+    will-change: transform;
 }
 .product:nth-child(1) { animation-delay: 0.05s; }
 .product:nth-child(2) { animation-delay: 0.1s; }
@@ -237,6 +239,7 @@ body {
     margin-bottom: 8px;
     transition: all 0.2s ease;
     animation: pulse 1.8s infinite;
+    will-change: transform;
 }
 .badge:hover {
     transform: scale(1.05);
@@ -261,7 +264,8 @@ body {
     font-size: 16px;
     color: white;
     letter-spacing: 0.3px;
-    animation: floatIn 0.6s ease-out, softGlow 2s infinite alternate;
+    animation: floatIn 0.6s ease-out;
+    will-change: transform;
 }
 .floating-wa:hover {
     transform: scale(1.08) translateY(-4px);
@@ -322,7 +326,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 6px;
-    white-space: nowrap;      /* prevents wrapping */
+    white-space: nowrap;
     box-sizing: border-box;
 }
 
@@ -603,7 +607,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Review Card */
+/* Review Card 
 .review-card {
     margin: 16px;
     background: #fff;
@@ -644,7 +648,7 @@ body {
 }
 .review-link:hover .review-arrow {
     transform: translateX(5px);
-}
+}*/
 
 /* Keyframes */
 @keyframes modalPopIn {
@@ -675,10 +679,8 @@ body {
     from { opacity: 0; transform: translateX(60px) scale(0.8); }
     to { opacity: 1; transform: translateX(0) scale(1); }
 }
-@keyframes softGlow {
-    0% { box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
-    100% { box-shadow: 0 8px 28px rgba(37,211,102,0.6); }
-}
+/* Removed softGlow animation to improve performance */
+
 html {
     scroll-behavior: smooth;
 }
