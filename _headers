@@ -1,20 +1,26 @@
+# Cache everything for 1 year by default
 /*
   Cache-Control: public, max-age=31536000, immutable
 
+# HTML files - cache for 1 day (since they may update)
 /menu/
   Cache-Control: public, max-age=86400
 
 /menu/index.html
   Cache-Control: public, max-age=86400
 
+# WebP images - cache for 1 year
 *.webp
   Cache-Control: public, max-age=31536000, immutable
 
+# SVG images - cache for 1 year
 *.svg
   Cache-Control: public, max-age=31536000, immutable
 
+# CSS files - cache for 1 year
 *.css
   Cache-Control: public, max-age=31536000, immutable
 
+# JavaScript files - cache for 1 year
 *.js
   Cache-Control: public, max-age=31536000, immutable
