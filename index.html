@@ -39,41 +39,16 @@
 
 <link rel="icon" href="logo.webp">
 
-<!-- Preconnect for faster loading -->
+<!-- Preconnect for faster loading - only keep essential origins -->
 <link rel="preconnect" href="https://pakhajiali.github.io">
-<link rel="preconnect" href="https://wa.me">
 
 <!-- Preload critical image -->
 <link rel="preload" as="image" href="logo.webp" fetchpriority="high">
 
-<!-- Critical CSS inlined -->
+<!-- Critical CSS inlined (minimal version to avoid render-blocking) -->
 <style>
-    /* Critical above-the-fold styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: #fefaf5; padding-bottom: 30px; }
-    .header { background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .header img { width: 100%; height: auto; display: block; border-radius: 32px 32px 0 0; }
-    .map-section { margin: 20px 16px; }
-    .map-card { background: #fff; border-radius: 24px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: #1e2a2f; box-shadow: 0 6px 14px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.03); }
-    .map-card img { width: 44px; height: 44px; border-radius: 12px; }
-    .map-title { font-size: 17px; font-weight: 700; }
-    .map-subtitle { font-size: 13px; color: #6c757d; margin-top: 4px; }
-    .address-card { background: #fff; margin: 0 16px 20px; padding: 14px; border-radius: 20px; text-align: center; font-weight: 600; box-shadow: 0 6px 14px rgba(0,0,0,0.05); }
-    .category { margin: 32px 16px 14px; text-align: center; font-size: 26px; font-weight: 800; color: #222; padding-bottom: 10px; }
-    .category::after { content: ""; display: block; width: 90px; height: 4px; background: #d62828; margin: 10px auto 0; border-radius: 20px; }
-    .product { background: #fff; margin: 14px 16px; padding: 14px; border-radius: 24px; display: flex; align-items: center; gap: 14px; box-shadow: 0 6px 14px rgba(0,0,0,0.05); border: 1px solid #fff3e8; cursor: pointer; will-change: transform; }
-    .product img { width: 120px; height: 120px; border-radius: 20px; object-fit: cover; background: #f8f0ea; }
-    .product-info { flex: 1; }
-    .name { font-size: 20px; font-weight: 800; color: #1e2a2f; line-height: 1.25; }
-    .desc { margin-top: 8px; color: #5a6872; font-size: 13px; line-height: 1.45; }
-    .price { margin-top: 12px; font-size: 27px; font-weight: 800; color: #c52828; }
-    .badge { display: inline-block; background: #d62828; color: #fff; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; margin-bottom: 8px; will-change: transform; }
-    .floating-wa { position: fixed; bottom: 24px; right: 20px; background: #25D366; display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 60px; text-decoration: none; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999; font-weight: 800; font-size: 16px; color: white; will-change: transform; }
-    .floating-wa img { width: 28px; height: 28px; object-fit: contain; }
-    .cart-icon { position: fixed; top: 20px; right: 20px; background: #fff; color: #2ecc71; padding: 8px 18px; border-radius: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.1); z-index: 1001; font-weight: 600; border: 1px solid rgba(0,0,0,0.05); }
-    .cart-count { background: #d62828; color: white; font-size: 13px; font-weight: bold; min-width: 24px; padding: 2px 8px; border-radius: 30px; display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; white-space: nowrap; box-sizing: border-box; }
-    .cart-drawer { position: fixed; top: 0; right: -400px; width: 380px; max-width: 90vw; height: 100%; background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.2); z-index: 1100; transition: right 0.3s ease; display: flex; flex-direction: column; }
-    .cart-drawer.open { right: 0; }
+    /* Critical above-the-fold styles - minimized */
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:#fefaf5;padding-bottom:30px}.header{background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.05)}.header img{width:100%;height:auto;display:block;border-radius:32px 32px 0 0}.map-section{margin:20px 16px}.map-card{background:#fff;border-radius:24px;padding:14px 18px;display:flex;align-items:center;gap:14px;text-decoration:none;color:#1e2a2f;box-shadow:0 6px 14px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.03)}.map-card img{width:44px;height:44px;border-radius:12px}.map-title{font-size:17px;font-weight:700}.map-subtitle{font-size:13px;color:#6c757d;margin-top:4px}.address-card{background:#fff;margin:0 16px 20px;padding:14px;border-radius:20px;text-align:center;font-weight:600;box-shadow:0 6px 14px rgba(0,0,0,0.05)}.category{margin:32px 16px 14px;text-align:center;font-size:26px;font-weight:800;color:#222;padding-bottom:10px}.category::after{content:"";display:block;width:90px;height:4px;background:#d62828;margin:10px auto 0;border-radius:20px}.product{background:#fff;margin:14px 16px;padding:14px;border-radius:24px;display:flex;align-items:center;gap:14px;box-shadow:0 6px 14px rgba(0,0,0,0.05);border:1px solid #fff3e8;cursor:pointer}.product img{width:120px;height:120px;border-radius:20px;object-fit:cover;background:#f8f0ea}.product-info{flex:1}.name{font-size:20px;font-weight:800;color:#1e2a2f;line-height:1.25}.desc{margin-top:8px;color:#5a6872;font-size:13px;line-height:1.45}.price{margin-top:12px;font-size:27px;font-weight:800;color:#c52828}.badge{display:inline-block;background:#d62828;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:8px}.floating-wa{position:fixed;bottom:24px;right:20px;background:#25D366;display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:60px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.25);z-index:999;font-weight:800;font-size:16px;color:#fff}.floating-wa img{width:28px;height:28px;object-fit:contain}.cart-icon{position:fixed;top:20px;right:20px;background:#fff;color:#2ecc71;padding:8px 18px;border-radius:40px;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.1);z-index:1001;font-weight:600;border:1px solid rgba(0,0,0,0.05)}.cart-count{background:#d62828;color:#fff;font-size:13px;font-weight:700;min-width:24px;padding:2px 8px;border-radius:30px;display:inline-flex;align-items:center;justify-content:center;margin-left:6px;white-space:nowrap}.cart-drawer{position:fixed;top:0;right:-400px;width:380px;max-width:90vw;height:100%;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,0.2);z-index:1100;transition:right .3s ease;display:flex;flex-direction:column}.cart-drawer.open{right:0}
 </style>
 
 <!-- Defer full CSS -->
@@ -90,16 +65,9 @@
   "url":"https://pakhajiali.github.io/menu/",
   "telephone":"+60179081447",
   "priceRange":"RM",
-  "servesCuisine":[
-    "Malaysian",
-    "Fried Chicken",
-    "Nasi Kandar",
-    "Nasi Ayam"
-  ],
+  "servesCuisine":["Malaysian","Fried Chicken","Nasi Kandar","Nasi Ayam"],
   "hasMenu":"https://pakhajiali.github.io/menu/",
-  "sameAs":[
-    "https://wa.me/60179081447"
-  ],
+  "sameAs":["https://wa.me/60179081447"],
   "address":{
     "@type":"PostalAddress",
     "streetAddress":"Goodyear Court 6, USJ 8",
@@ -108,22 +76,12 @@
     "postalCode":"47650",
     "addressCountry":"MY"
   },
-  "openingHoursSpecification":[
-    {
-      "@type":"OpeningHoursSpecification",
-      "dayOfWeek":[
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens":"09:00",
-      "closes":"21:00"
-    }
-  ]
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens":"09:00",
+    "closes":"21:00"
+  }]
 }
 </script>
 
@@ -133,30 +91,9 @@
  "@context":"https://schema.org",
  "@type":"FAQPage",
  "mainEntity":[
-  {
-   "@type":"Question",
-   "name":"What time does Restoran Pak Haji Ali & Muiz Hot Chicken open?",
-   "acceptedAnswer":{
-    "@type":"Answer",
-    "text":"The restaurant is open daily from 9:00 AM to 9:00 PM."
-   }
-  },
-  {
-   "@type":"Question",
-   "name":"Where is Restoran Pak Haji Ali & Muiz Hot Chicken located?",
-   "acceptedAnswer":{
-    "@type":"Answer",
-    "text":"Goodyear Court 6, USJ 8, Subang Jaya, Selangor."
-   }
-  },
-  {
-   "@type":"Question",
-   "name":"How can I place an order?",
-   "acceptedAnswer":{
-    "@type":"Answer",
-    "text":"Orders can be placed through WhatsApp at 017-908 1447."
-   }
-  }
+  {"@type":"Question","name":"What time does Restoran Pak Haji Ali & Muiz Hot Chicken open?","acceptedAnswer":{"@type":"Answer","text":"The restaurant is open daily from 9:00 AM to 9:00 PM."}},
+  {"@type":"Question","name":"Where is Restoran Pak Haji Ali & Muiz Hot Chicken located?","acceptedAnswer":{"@type":"Answer","text":"Goodyear Court 6, USJ 8, Subang Jaya, Selangor."}},
+  {"@type":"Question","name":"How can I place an order?","acceptedAnswer":{"@type":"Answer","text":"Orders can be placed through WhatsApp at 017-908 1447."}}
  ]
 }
 </script>
@@ -166,13 +103,13 @@
 
     <!-- Logo Banner -->
     <div class="header">
-        <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken – banner with logo" width="800" height="400" fetchpriority="high" loading="eager">
+        <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken banner with logo" width="800" height="400" fetchpriority="high" loading="eager">
     </div>
 
     <!-- Google Maps -->
     <div class="map-section">
         <a class="map-card" href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank" rel="noopener">
-            <img src="googlemaps.webp" alt="Google Maps icon" width="44" height="44" loading="lazy">
+            <img src="googlemaps.webp" alt="Google Maps icon" width="44" height="44" loading="lazy" decoding="async">
             <div>
                 <div class="map-title">Restoran Pak Haji Ali & Muiz Hot Chicken (USJ 8)</div>
                 <div class="map-subtitle">Tap to open in Google Maps</div>
@@ -202,7 +139,7 @@
         <div class="cart-footer">
             <div class="cart-total" id="cartTotal">Total: RM0.00</div>
             <button id="checkoutBtn" class="checkout-btn">
-                <img src="whatsapp-logo.svg" alt="WhatsApp" width="22" height="22" style="width:22px; height:22px; object-fit:contain; margin-right:8px;" loading="lazy">
+                <img src="whatsapp-logo.svg" alt="WhatsApp" width="22" height="22" style="width:22px;height:22px;object-fit:contain;margin-right:8px;" loading="lazy" decoding="async">
                 WhatsApp Order
             </button>
         </div>
@@ -213,7 +150,7 @@
 
     <!-- PRODUCTS LIST - Complete Menu -->
     <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="6.90" data-img="nasikandarmuizchicken.webp">
-        <img src="nasikandarmuizchicken.webp" alt="Nasi Kandar Muiz Hot Chicken with curry sauce" width="120" height="120" loading="lazy">
+        <img src="nasikandarmuizchicken.webp" alt="Nasi Kandar Muiz Hot Chicken with curry sauce" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info">
             <div class="badge">🔥 BEST VALUE RM6.90</div>
             <div class="name">Nasi Kandar Muiz Hot Chicken</div>
@@ -223,7 +160,7 @@
     </div>
 
     <div class="product" data-name="Nasi Ayam Muiz Chicken" data-desc="Aromatic chicken rice with tender Muiz-style fried chicken, sambal." data-price="8.90" data-img="nasiayammuizchicken.webp">
-        <img src="nasiayammuizchicken.webp" alt="Nasi Ayam Muiz Chicken with sambal" width="120" height="120" loading="lazy">
+        <img src="nasiayammuizchicken.webp" alt="Nasi Ayam Muiz Chicken with sambal" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info">
             <div class="name">Nasi Ayam Muiz Chicken</div>
             <div class="desc">Aromatic chicken rice with tender Muiz-style fried chicken, sambal.</div>
@@ -232,7 +169,7 @@
     </div>
 
     <div class="product" data-name="Bakso" data-desc="Authentic Indonesian beef meatball soup with savoury broth." data-price="5.90" data-img="bakso.webp">
-        <img src="bakso.webp" alt="Bakso – Indonesian beef meatball soup" width="120" height="120" loading="lazy">
+        <img src="bakso.webp" alt="Bakso Indonesian beef meatball soup" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info">
             <div class="name">Bakso</div>
             <div class="desc">Authentic Indonesian beef meatball soup with savoury broth.</div>
@@ -241,7 +178,7 @@
     </div>
 
     <div class="product" data-name="Mee Pak Haji Ali" data-desc="Traditional recipe. Savoury noodles with special house blend." data-price="6.90" data-img="meepakhajiali.webp">
-        <img src="meepakhajiali.webp" alt="Mee Pak Haji Ali traditional noodles" width="120" height="120" loading="lazy">
+        <img src="meepakhajiali.webp" alt="Mee Pak Haji Ali traditional noodles" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info">
             <div class="name">Mee Pak Haji Ali</div>
             <div class="desc">Traditional recipe. Savoury noodles with special house blend.</div>
@@ -252,124 +189,118 @@
     <h2 class="category">Muiz Hot Chicken Regular Box</h2>
 
     <div class="product" data-name="Original Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗" data-price="9.00" data-img="originalregularbox.webp">
-        <img src="originalregularbox.webp" alt="Original Regular Box with 2 pieces Muiz Hot Chicken" width="120" height="120" loading="lazy">
+        <img src="originalregularbox.webp" alt="Original Regular Box with 2 pieces Muiz Hot Chicken" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info"><div class="name">Original Regular Box</div><div class="desc">2 Pieces of Muiz Hot Chicken 🍗</div><div class="price">RM9.00</div></div>
     </div>
     <div class="product" data-name="Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce" data-price="11.00" data-img="cheeseregularbox.webp">
-        <img src="cheeseregularbox.webp" alt="Cheese Regular Box with cheese sauce" width="120" height="120" loading="lazy">
+        <img src="cheeseregularbox.webp" alt="Cheese Regular Box with cheese sauce" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info"><div class="name">Cheese Regular Box</div><div class="desc">2 Pieces + Cheese Sauce</div><div class="price">RM11.00</div></div>
     </div>
     <div class="product" data-name="Korean Spicy Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Korean Spicy Sauce" data-price="12.00" data-img="koreanspicyregularbox.webp">
-        <img src="koreanspicyregularbox.webp" alt="Korean Spicy Regular Box with spicy sauce" width="120" height="120" loading="lazy">
+        <img src="koreanspicyregularbox.webp" alt="Korean Spicy Regular Box with spicy sauce" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info"><div class="name">Korean Spicy Regular Box</div><div class="desc">2 Pieces + Korean Spicy Sauce</div><div class="price">RM12.00</div></div>
     </div>
     <div class="product" data-name="Korean Cheese Regular Box" data-desc="2 Pieces of Muiz Hot Chicken 🍗 + 1 Cup of Cheese Sauce + 1 Cup of Korean Spicy Sauce" data-price="13.00" data-img="koreancheeseregularbox.webp">
-        <img src="koreancheeseregularbox.webp" alt="Korean Cheese Regular Box with cheese and spicy sauce" width="120" height="120" loading="lazy">
+        <img src="koreancheeseregularbox.webp" alt="Korean Cheese Regular Box with cheese and spicy sauce" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info"><div class="name">Korean Cheese Regular Box</div><div class="desc">2 Pieces + Cheese + Korean Spicy</div><div class="price">RM13.00</div></div>
     </div>
 
     <h2 class="category">Muiz Hot Chicken Happy Box</h2>
 
     <div class="product" data-name="Original Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗" data-price="22.00" data-img="originalhappybox.webp">
-        <img src="originalhappybox.webp" alt="Original Happy Box with 5 pieces Muiz Hot Chicken" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Original Happy Box</div><div class="desc">5 Pieces</div><div class="price">RM22.00</div></div>
+        <img src="originalhappybox.webp" alt="Original Happy Box with 5 pieces Muiz Hot Chicken" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Original Happy Box</div><div class="desc">5 Pieces</div><div class="price">RM22.00</div></div>
     </div>
     <div class="product" data-name="Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Cheese Sauce" data-price="26.00" data-img="cheesehappybox.webp">
-        <img src="cheesehappybox.webp" alt="Cheese Happy Box with cheese sauce" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Cheese Happy Box</div><div class="desc">5 Pieces + 2 Cheese Sauce</div><div class="price">RM26.00</div></div>
+        <img src="cheesehappybox.webp" alt="Cheese Happy Box with cheese sauce" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Cheese Happy Box</div><div class="desc">5 Pieces + 2 Cheese Sauce</div><div class="price">RM26.00</div></div>
     </div>
     <div class="product" data-name="Korean Spicy Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce" data-price="28.00" data-img="koreanspicyhappybox.webp">
-        <img src="koreanspicyhappybox.webp" alt="Korean Spicy Happy Box" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Korean Spicy Happy Box</div><div class="desc">5 Pieces + 2 Korean Spicy</div><div class="price">RM28.00</div></div>
+        <img src="koreanspicyhappybox.webp" alt="Korean Spicy Happy Box" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Korean Spicy Happy Box</div><div class="desc">5 Pieces + 2 Korean Spicy</div><div class="price">RM28.00</div></div>
     </div>
     <div class="product" data-name="Korean Cheese Happy Box" data-desc="5 Pieces of Muiz Hot Chicken 🍗 + 2 Cups of Korean Spicy Sauce + 2 Cups of Cheese Sauce" data-price="30.00" data-img="koreancheesehappybox.webp">
-        <img src="koreancheesehappybox.webp" alt="Korean Cheese Happy Box" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Korean Cheese Happy Box</div><div class="desc">5 Pieces + Cheese + Korean Spicy</div><div class="price">RM30.00</div></div>
+        <img src="koreancheesehappybox.webp" alt="Korean Cheese Happy Box" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Korean Cheese Happy Box</div><div class="desc">5 Pieces + Cheese + Korean Spicy</div><div class="price">RM30.00</div></div>
     </div>
 
     <h2 class="category">Chicken Tenders</h2>
 
     <div class="product" data-name="Chicken Tenders" data-desc="Choose flavour: Mala, Peri-Peri, Thai Lime, Charcoal. Crispy & juicy." data-price="9.90" data-img="chickentenders.webp">
-        <img src="chickentenders.webp" alt="Crispy Chicken Tenders with choice of flavours" width="120" height="120" loading="lazy">
+        <img src="chickentenders.webp" alt="Crispy Chicken Tenders with choice of flavours" width="120" height="120" loading="lazy" decoding="async">
         <div class="product-info"><div class="name">Chicken Tenders</div><div class="desc">Choose flavour: Mala • Peri-Peri • Thai Lime • Charcoal</div><div class="price">RM9.90</div></div>
     </div>
 
     <h2 class="category">Nasi Goreng Kampung</h2>
 
     <div class="product" data-name="Nasi Goreng Kampung" data-desc="Classic village-style fried rice with anchovies, egg, and spices." data-price="7.50" data-img="nasigorengkampung.webp">
-        <img src="nasigorengkampung.webp" alt="Nasi Goreng Kampung with anchovies and egg" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Kampung</div><div class="desc">Classic village-style fried rice</div><div class="price">RM7.50</div></div>
+        <img src="nasigorengkampung.webp" alt="Nasi Goreng Kampung with anchovies and egg" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Kampung</div><div class="desc">Classic village-style fried rice</div><div class="price">RM7.50</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Kampung Ayam" data-desc="Village fried rice with chicken, anchovies, and egg." data-price="11.90" data-img="nasigorengkampungayam.webp">
-        <img src="nasigorengkampungayam.webp" alt="Nasi Goreng Kampung with chicken" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Kampung Ayam</div><div class="desc">With chicken</div><div class="price">RM11.90</div></div>
+        <img src="nasigorengkampungayam.webp" alt="Nasi Goreng Kampung with chicken" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Kampung Ayam</div><div class="desc">With chicken</div><div class="price">RM11.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Kampung Daging" data-desc="Village fried rice with beef." data-price="11.90" data-img="nasigorengkampungdaging.webp">
-        <img src="nasigorengkampungdaging.webp" alt="Nasi Goreng Kampung with beef" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Kampung Daging</div><div class="desc">With beef</div><div class="price">RM11.90</div></div>
+        <img src="nasigorengkampungdaging.webp" alt="Nasi Goreng Kampung with beef" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Kampung Daging</div><div class="desc">With beef</div><div class="price">RM11.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Kampung Seafood" data-desc="Village fried rice with prawns & squid." data-price="13.90" data-img="nasigorengkampungseafood.webp">
-        <img src="nasigorengkampungseafood.webp" alt="Nasi Goreng Kampung Seafood" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Kampung Seafood</div><div class="desc">With seafood</div><div class="price">RM13.90</div></div>
+        <img src="nasigorengkampungseafood.webp" alt="Nasi Goreng Kampung Seafood" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Kampung Seafood</div><div class="desc">With seafood</div><div class="price">RM13.90</div></div>
     </div>
 
-    <h2 class="category">Nasi Goreng Cina</h2>
+      <h2 class="category">Nasi Goreng Cina</h2>
 
     <div class="product" data-name="Nasi Goreng Cina" data-desc="Chinese-style fried rice with egg & spring onions." data-price="6.00" data-img="nasigorengcina.webp">
-        <img src="nasigorengcina.webp" alt="Nasi Goreng Cina" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Cina</div><div class="desc">Classic Chinese fried rice</div><div class="price">RM6.00</div></div>
+        <img src="nasigorengcina.webp" alt="Nasi Goreng Cina" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Cina</div><div class="desc">Classic Chinese fried rice</div><div class="price">RM6.00</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Cina Ayam" data-desc="With chicken." data-price="10.90" data-img="nasigorengcinaayam.webp">
-        <img src="nasigorengcinaayam.webp" alt="Nasi Goreng Cina with chicken" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Cina Ayam</div><div class="desc">With chicken</div><div class="price">RM10.90</div></div>
+        <img src="nasigorengcinaayam.webp" alt="Nasi Goreng Cina with chicken" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Cina Ayam</div><div class="desc">With chicken</div><div class="price">RM10.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Cina Daging" data-desc="With beef." data-price="10.90" data-img="nasigorengcinadaging.webp">
-        <img src="nasigorengcinadaging.webp" alt="Nasi Goreng Cina with beef" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Cina Daging</div><div class="desc">With beef</div><div class="price">RM10.90</div></div>
+        <img src="nasigorengcinadaging.webp" alt="Nasi Goreng Cina with beef" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Cina Daging</div><div class="desc">With beef</div><div class="price">RM10.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Cina Seafood" data-desc="With prawns & squid." data-price="12.90" data-img="nasigorengcinaseafood.webp">
-        <img src="nasigorengcinaseafood.webp" alt="Nasi Goreng Cina Seafood" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Cina Seafood</div><div class="desc">With seafood</div><div class="price">RM12.90</div></div>
+        <img src="nasigorengcinaseafood.webp" alt="Nasi Goreng Cina Seafood" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Cina Seafood</div><div class="desc">With seafood</div><div class="price">RM12.90</div></div>
     </div>
 
     <h2 class="category">Nasi Goreng Tomyam</h2>
 
     <div class="product" data-name="Nasi Goreng Tomyam Biasa" data-desc="Spicy and sour tomyam fried rice." data-price="8.50" data-img="nasigorengtomyambiasa.webp">
-        <img src="nasigorengtomyambiasa.webp" alt="Nasi Goreng Tomyam Biasa" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Tomyam Biasa</div><div class="desc">Tomyam fried rice</div><div class="price">RM8.50</div></div>
+        <img src="nasigorengtomyambiasa.webp" alt="Nasi Goreng Tomyam Biasa" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Tomyam Biasa</div><div class="desc">Tomyam fried rice</div><div class="price">RM8.50</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Tomyam Ayam" data-desc="With chicken." data-price="12.90" data-img="nasigorengtomyamayam.webp">
-        <img src="nasigorengtomyamayam.webp" alt="Nasi Goreng Tomyam with chicken" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Tomyam Ayam</div><div class="desc">With chicken</div><div class="price">RM12.90</div></div>
+        <img src="nasigorengtomyamayam.webp" alt="Nasi Goreng Tomyam with chicken" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Tomyam Ayam</div><div class="desc">With chicken</div><div class="price">RM12.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Tomyam Daging" data-desc="With beef." data-price="12.90" data-img="nasigorengtomyamdaging.webp">
-        <img src="nasigorengtomyamdaging.webp" alt="Nasi Goreng Tomyam with beef" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Tomyam Daging</div><div class="desc">With beef</div><div class="price">RM12.90</div></div>
+        <img src="nasigorengtomyamdaging.webp" alt="Nasi Goreng Tomyam with beef" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Tomyam Daging</div><div class="desc">With beef</div><div class="price">RM12.90</div></div>
     </div>
     <div class="product" data-name="Nasi Goreng Tomyam Seafood" data-desc="With prawns & squid." data-price="14.90" data-img="nasigorengtomyamseafood.webp">
-        <img src="nasigorengtomyamseafood.webp" alt="Nasi Goreng Tomyam Seafood" width="120" height="120" loading="lazy"><div class="product-info"><div class="name">Nasi Goreng Tomyam Seafood</div><div class="desc">With seafood</div><div class="price">RM14.90</div></div>
+        <img src="nasigorengtomyamseafood.webp" alt="Nasi Goreng Tomyam Seafood" width="120" height="120" loading="lazy" decoding="async"><div class="product-info"><div class="name">Nasi Goreng Tomyam Seafood</div><div class="desc">With seafood</div><div class="price">RM14.90</div></div>
     </div>
 
-    <div style="height: 12px;"></div>
+    <div style="height:12px;"></div>
 
     <!-- Floating WhatsApp button -->
     <a href="https://wa.me/60179081447?text=Hi%20Pak%20Haji%20Ali%20%26%20Muiz%20Hot%20Chicken" class="floating-wa" target="_blank" rel="noopener noreferrer">
-        <img src="whatsapp-logo.svg" alt="WhatsApp" width="24" height="24" style="width:24px;" loading="lazy">
+        <img src="whatsapp-logo.svg" alt="WhatsApp" width="24" height="24" style="width:24px;" loading="lazy" decoding="async">
         <span>WhatsApp</span>
     </a>
 
-    <!-- Modal (complete with quantity and request) -->
+    <!-- Modal -->
     <div id="productModal" class="modal">
         <div class="modal-close" id="modalCloseBtn">&times;</div>
         <div class="modal-content">
-            <img id="modalImg" class="modal-img" src="" alt="Product" width="500" height="280" loading="lazy">
+            <img id="modalImg" class="modal-img" src="" alt="Product" width="500" height="280" loading="lazy" decoding="async">
             <div class="modal-info">
                 <div class="modal-name" id="modalName"></div>
                 <div class="modal-desc" id="modalDesc"></div>
                 <div class="modal-price" id="modalPrice"></div>
-                
-                <!-- Quantity Selector -->
                 <div class="modal-quantity">
                     <button type="button" id="qtyMinus" class="qty-btn">−</button>
                     <input type="number" id="qtyInput" class="qty-input" value="1" min="1">
                     <button type="button" id="qtyPlus" class="qty-btn">+</button>
                 </div>
-
-                <!-- Special Request -->
                 <div class="modal-request">
                     <label>📝 Special request (optional)</label>
                     <textarea id="specialRequest" rows="2" placeholder="E.g., less spicy, extra sauce, no onion..."></textarea>
                 </div>
-
-                <!-- Action Buttons -->
                 <button id="addToCartBtn" class="add-to-cart-btn">🛒 Add to Cart</button>
                 <a id="modalWaBtn" href="#" target="_blank" class="modal-wa-btn">
-                    <img src="whatsapp-logo.svg" alt="WhatsApp" width="20" height="20" style="width:20px; height:20px; object-fit:contain; margin-right:8px;" loading="lazy">
+                    <img src="whatsapp-logo.svg" alt="WhatsApp" width="20" height="20" style="width:20px;height:20px;object-fit:contain;margin-right:8px;" loading="lazy" decoding="async">
                     <span>Order via WhatsApp</span>
                 </a>
             </div>
@@ -377,6 +308,6 @@
     </div>
 
     <!-- External JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
