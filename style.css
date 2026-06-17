@@ -104,7 +104,16 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
+/* ============================================
+   FALLBACK ICONS (if Font Awesome fails)
+   ============================================ */
+.info-card .icon-fallback {
+    font-size: 22px;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+    font-weight: 700;
+}
 /* ============================================
    INFO SECTION
    ============================================ */
