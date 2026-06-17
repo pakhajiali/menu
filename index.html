@@ -41,9 +41,6 @@
     <!-- Preload critical image -->
     <link rel="preload" as="image" href="logo.webp" fetchpriority="high">
 
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-    
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
@@ -108,7 +105,7 @@
 </head>
 <body>
 
-    <!-- Header / Logo Section -->
+    <!-- ========== HEADER ========== -->
     <header class="header">
         <div class="header-container">
             <img src="logo.webp" alt="Muiz Hot Chicken & Restoran Pak Haji Ali" class="logo-img" width="800" height="400" fetchpriority="high" loading="eager">
@@ -120,32 +117,32 @@
         </div>
     </header>
 
-    <!-- Location & Hours -->
+    <!-- ========== INFO SECTION ========== -->
     <section class="info-section">
         <div class="info-grid">
             <div class="info-card">
-                <i class="fas fa-location-dot"></i>
+                <span class="info-icon">📍</span>
                 <div>
                     <strong>Location</strong>
                     <span>Goodyear Court 6, USJ 8, Subang Jaya</span>
                 </div>
             </div>
             <div class="info-card">
-                <i class="fas fa-clock"></i>
+                <span class="info-icon">🕐</span>
                 <div>
                     <strong>Open Daily</strong>
                     <span>9:00 AM – 9:00 PM</span>
                 </div>
             </div>
             <div class="info-card">
-                <i class="fas fa-phone"></i>
+                <span class="info-icon">📞</span>
                 <div>
                     <strong>Call / WhatsApp</strong>
                     <span><a href="tel:+60179081447">017-908 1447</a></span>
                 </div>
             </div>
             <div class="info-card">
-                <i class="fas fa-utensils"></i>
+                <span class="info-icon">🍽️</span>
                 <div>
                     <strong>Cuisine</strong>
                     <span>Malaysian • Nasi Kandar • Fried Chicken</span>
@@ -154,31 +151,31 @@
         </div>
     </section>
 
-    <!-- Google Maps Button -->
+    <!-- ========== MAP BUTTON ========== -->
     <section class="map-section">
         <a href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank" rel="noopener" class="map-button">
-            <i class="fas fa-map-pin"></i>
+            <span>📍</span>
             <span>Find Us on Google Maps</span>
-            <i class="fas fa-arrow-right"></i>
+            <span>→</span>
         </a>
     </section>
 
-    <!-- Cart Icon -->
+    <!-- ========== CART ICON ========== -->
     <div class="cart-icon" id="cartIcon" aria-label="Open cart">
-        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-emoji">🛒</span>
         <span class="cart-text">Cart</span>
         <span class="cart-count" id="cartCount">0</span>
     </div>
 
-    <!-- Cart Drawer -->
+    <!-- ========== CART DRAWER ========== -->
     <div id="cartDrawer" class="cart-drawer">
         <div class="cart-header">
-            <h2><i class="fas fa-shopping-cart"></i> Your Order</h2>
-            <button id="closeCartBtn" class="close-cart" aria-label="Close cart">&times;</button>
+            <h2><span>🛒</span> Your Order</h2>
+            <button id="closeCartBtn" class="close-cart" aria-label="Close cart">✕</button>
         </div>
         <div id="cartItems" class="cart-items">
             <div class="empty-cart">
-                <i class="fas fa-shopping-bag"></i>
+                <span class="empty-icon">🛍️</span>
                 <p>Your cart is empty</p>
                 <span>Add some delicious items!</span>
             </div>
@@ -186,13 +183,13 @@
         <div class="cart-footer">
             <div class="cart-total" id="cartTotal">Total: RM0.00</div>
             <button id="checkoutBtn" class="checkout-btn">
-                <i class="fab fa-whatsapp"></i>
+                <span>💬</span>
                 WhatsApp Order
             </button>
         </div>
     </div>
 
-    <!-- Menu Categories -->
+    <!-- ========== MENU ========== -->
     <main class="menu-main">
 
         <!-- Most Ordered -->
@@ -210,7 +207,7 @@
             <div class="product" data-name="Nasi Kandar Muiz Hot Chicken" data-desc="Nasi kandar with signature Muiz hot chicken & rich curry sauce." data-price="6.90" data-img="nasikandarmuizchicken.webp">
                 <div class="product-image-wrapper">
                     <img src="nasikandarmuizchicken.webp" alt="Nasi Kandar Muiz Hot Chicken" width="120" height="120" loading="lazy" decoding="async">
-                    <span class="product-badge">BEST SELLER</span>
+                    <span class="product-badge">🔥 BEST SELLER</span>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Nasi Kandar Muiz Hot Chicken</h3>
@@ -256,7 +253,7 @@
             <div class="product" data-name="Mee Pak Haji Ali" data-desc="Traditional recipe. Savoury noodles with special house blend." data-price="6.90" data-img="meepakhajiali.webp">
                 <div class="product-image-wrapper">
                     <img src="meepakhajiali.webp" alt="Mee Pak Haji Ali" width="120" height="120" loading="lazy" decoding="async">
-                    <span class="product-badge">SIGNATURE</span>
+                    <span class="product-badge">⭐ SIGNATURE</span>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Mee Pak Haji Ali</h3>
@@ -404,7 +401,7 @@
             </div>
         </div>
 
-        <!-- Chicken Tenders -->
+         <!-- Chicken Tenders -->
         <div class="category-wrapper">
             <div class="category-header">
                 <span class="category-icon">🔥</span>
@@ -632,7 +629,7 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
@@ -640,12 +637,12 @@
                 <p>&amp; Restoran Pak Haji Ali</p>
             </div>
             <div class="footer-contact">
-                <a href="tel:+60179081447"><i class="fas fa-phone"></i> 017-908 1447</a>
-                <a href="https://wa.me/60179081447" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank" rel="noopener"><i class="fas fa-map-pin"></i> Google Maps</a>
+                <a href="tel:+60179081447"><span>📞</span> 017-908 1447</a>
+                <a href="https://wa.me/60179081447" target="_blank" rel="noopener"><span>💬</span> WhatsApp</a>
+                <a href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank" rel="noopener"><span>📍</span> Google Maps</a>
             </div>
             <div class="footer-hours">
-                <p><i class="fas fa-clock"></i> Open Daily: 9:00 AM – 9:00 PM</p>
+                <p><span>🕐</span> Open Daily: 9:00 AM – 9:00 PM</p>
                 <p class="footer-address">📍 Goodyear Court 6, USJ 8, Subang Jaya</p>
             </div>
             <div class="footer-copy">
@@ -654,15 +651,15 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- ========== FLOATING WHATSAPP ========== -->
     <a href="https://wa.me/60179081447?text=Hi%20Muiz%20Hot%20Chicken%20%26%20Restoran%20Pak%20Haji%20Ali" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+        <span>💬</span>
         <span>Order Now</span>
     </a>
 
-    <!-- Modal -->
+    <!-- ========== MODAL ========== -->
     <div id="productModal" class="modal">
-        <div class="modal-close" id="modalCloseBtn">&times;</div>
+        <div class="modal-close" id="modalCloseBtn">✕</div>
         <div class="modal-content">
             <img id="modalImg" class="modal-img" src="" alt="Product" width="500" height="280" loading="lazy" decoding="async">
             <div class="modal-info">
@@ -671,9 +668,9 @@
                 <div class="modal-price" id="modalPrice"></div>
 
                 <div class="modal-quantity">
-                    <button type="button" id="qtyMinus" class="qty-btn" aria-label="Decrease quantity">−</button>
+                    <button type="button" id="qtyMinus" class="qty-btn">−</button>
                     <input type="number" id="qtyInput" class="qty-input" value="1" min="1" aria-label="Quantity">
-                    <button type="button" id="qtyPlus" class="qty-btn" aria-label="Increase quantity">+</button>
+                    <button type="button" id="qtyPlus" class="qty-btn">+</button>
                 </div>
 
                 <div class="modal-request">
@@ -681,16 +678,16 @@
                     <textarea id="specialRequest" rows="2" placeholder="E.g., less spicy, extra sauce, no onion..."></textarea>
                 </div>
 
-                <button id="addToCartBtn" class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button id="addToCartBtn" class="add-to-cart-btn"><span>🛒</span> Add to Cart</button>
                 <a id="modalWaBtn" href="#" target="_blank" class="modal-wa-btn">
-                    <i class="fab fa-whatsapp"></i>
+                    <span>💬</span>
                     <span>Order via WhatsApp</span>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- ========== SCRIPTS ========== -->
     <script src="script.js"></script>
 </body>
 </html>
