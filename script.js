@@ -1,7 +1,174 @@
+// ============================================
+// PRODUCT DATA
+// ============================================
+const productData = {
+    "Most Ordered": [
+        { name: "Nasi Kandar Muiz Hot Chicken", desc: "Nasi kandar with signature Muiz hot chicken & rich curry sauce.", price: 6.90, img: "nasikandarmuizchicken.webp" },
+        { name: "Nasi Ayam Muiz Chicken", desc: "Aromatic chicken rice with tender Muiz-style fried chicken, sambal.", price: 8.90, img: "nasiayammuizchicken.webp" },
+        { name: "Nasi Bujang", desc: "White Rice + Omelette + Soup + Sambal", price: 3.90, img: "nasibujang.webp" },
+        { name: "Bakso", desc: "Authentic Indonesian beef meatball soup with savoury broth.", price: 5.90, img: "bakso.webp" },
+        { name: "Mee Pak Haji Ali", desc: "Traditional recipe. Savoury noodles with special house blend.", price: 6.90, img: "meepakhajiali.webp" }
+    ],
+    "Muiz Hot Chicken Regular Box": [
+        { name: "Original Regular Box", desc: "2 Pieces of Muiz Hot Chicken 🍗", price: 10.00, img: "originalregularbox.webp" },
+        { name: "Cheese Regular Box", desc: "2 Pieces + Cheese Sauce", price: 12.00, img: "cheeseregularbox.webp" },
+        { name: "Korean Spicy Regular Box", desc: "2 Pieces + Korean Spicy Sauce", price: 13.00, img: "koreanspicyregularbox.webp" },
+        { name: "Korean Cheese Regular Box", desc: "2 Pieces + Cheese + Korean Spicy", price: 14.00, img: "koreancheeseregularbox.webp" }
+    ],
+    "Muiz Hot Chicken Happy Box": [
+        { name: "Original Happy Box", desc: "5 Pieces of Muiz Hot Chicken 🍗", price: 25.00, img: "originalhappybox.webp" },
+        { name: "Cheese Happy Box", desc: "5 Pieces + 2 Cheese Sauce", price: 29.00, img: "cheesehappybox.webp" },
+        { name: "Korean Spicy Happy Box", desc: "5 Pieces + 2 Korean Spicy", price: 31.00, img: "koreanspicyhappybox.webp" },
+        { name: "Korean Cheese Happy Box", desc: "5 Pieces + Cheese + Korean Spicy", price: 33.00, img: "koreancheesehappybox.webp" }
+    ],
+    "Chicken Tenders": [
+        { name: "Chicken Tenders", desc: "Choose flavour: Mala • Peri-Peri • Thai Lime • Charcoal", price: 9.90, img: "chickentenders.webp" }
+    ],
+    "Nasi Penyet": [
+        { name: "Nasi Ayam Muiz Penyet", desc: "Smashed chicken with sambal, served with rice.", price: 8.90, img: "nasiayammuizpenyet.webp" },
+        { name: "Nasi Daging Penyet", desc: "Smashed beef with sambal, served with rice.", price: 8.90, img: "nasidagingpenyet.webp" },
+        { name: "Nasi Ikan Keli Penyet", desc: "Smashed catfish with sambal, served with rice.", price: 8.90, img: "nasiikankelipenyet.webp" },
+        { name: "Nasi Ikan Kembung Penyet", desc: "Smashed mackerel with sambal, served with rice.", price: 8.90, img: "nasiikankembungpenyet.webp" }
+    ],
+    "Nasi Goreng Kampung": [
+        { name: "Nasi Goreng Kampung", desc: "Classic village-style fried rice", price: 7.50, img: "nasigorengkampung.webp" },
+        { name: "Nasi Goreng Kampung Ayam", desc: "With chicken", price: 11.90, img: "nasigorengkampungayam.webp" },
+        { name: "Nasi Goreng Kampung Daging", desc: "With beef", price: 11.90, img: "nasigorengkampungdaging.webp" },
+        { name: "Nasi Goreng Kampung Seafood", desc: "With seafood", price: 13.90, img: "nasigorengkampungseafood.webp" }
+    ],
+    "Nasi Goreng Cina": [
+        { name: "Nasi Goreng Cina", desc: "Classic Chinese fried rice", price: 6.00, img: "nasigorengcina.webp" },
+        { name: "Nasi Goreng Cina Ayam", desc: "With chicken", price: 10.90, img: "nasigorengcinaayam.webp" },
+        { name: "Nasi Goreng Cina Daging", desc: "With beef", price: 10.90, img: "nasigorengcinadaging.webp" },
+        { name: "Nasi Goreng Cina Seafood", desc: "With seafood", price: 12.90, img: "nasigorengcinaseafood.webp" }
+    ],
+    "Nasi Goreng Tomyam": [
+        { name: "Nasi Goreng Tomyam Biasa", desc: "Tomyam fried rice", price: 8.50, img: "nasigorengtomyambiasa.webp" },
+        { name: "Nasi Goreng Tomyam Ayam", desc: "With chicken", price: 12.90, img: "nasigorengtomyamayam.webp" },
+        { name: "Nasi Goreng Tomyam Daging", desc: "With beef", price: 12.90, img: "nasigorengtomyamdaging.webp" },
+        { name: "Nasi Goreng Tomyam Seafood", desc: "With seafood", price: 14.90, img: "nasigorengtomyamseafood.webp" }
+    ],
+    "Nasi Goreng": [
+        { name: "Nasi Goreng Vegetarian", desc: "Vegetarian fried rice with fresh vegetables.", price: 6.00, img: "nasigorengvegetarian.webp" },
+        { name: "Nasi Goreng Biasa", desc: "Classic plain fried rice.", price: 6.50, img: "nasigorengbiasa.webp" },
+        { name: "Nasi Goreng Cili Api", desc: "Spicy fried rice with bird's eye chili.", price: 6.50, img: "nasigorengciliapi.webp" },
+        { name: "Nasi Goreng Kicap", desc: "Fried rice with sweet soy sauce.", price: 6.80, img: "nasigorengkicap.webp" },
+        { name: "Nasi Goreng Mamak", desc: "Mamak-style fried rice with aromatic spices.", price: 7.00, img: "nasigorengmamak.webp" },
+        { name: "Nasi Goreng Belacan", desc: "Fried rice with shrimp paste for a savoury kick.", price: 7.00, img: "nasigorengbelacan.webp" },
+        { name: "Nasi Goreng Ikan Bilis", desc: "Fried rice with crispy anchovies.", price: 7.50, img: "nasigorengikanbilis.webp" },
+        { name: "Nasi Goreng Sardin", desc: "Fried rice with sardines in spicy sauce.", price: 8.50, img: "nasigorengsardin.webp" },
+        { name: "Nasi Goreng Pattaya", desc: "Fried rice wrapped in a thin egg omelette.", price: 8.50, img: "nasigorengpattaya.webp" },
+        { name: "Nasi Goreng Ikan Masin", desc: "Fried rice with salted fish for a savoury flavour.", price: 9.00, img: "nasigorengikanmasin.webp" },
+        { name: "Nasi Goreng Ayam", desc: "Fried rice with chicken pieces.", price: 9.50, img: "nasigorengayam.webp" },
+        { name: "Nasi Goreng Daging", desc: "Fried rice with beef pieces.", price: 9.80, img: "nasigorengdaging.webp" },
+        { name: "Nasi Goreng Paprik", desc: "Fried rice with spicy paprik sauce.", price: 10.50, img: "nasigorengpaprik.webp" },
+        { name: "Nasi Goreng Masak Kunyit", desc: "Fried rice with turmeric for a fragrant flavour.", price: 10.50, img: "nasigorengmasakkunyit.webp" },
+        { name: "Nasi Goreng Seafood", desc: "Fried rice with prawns and squid.", price: 12.00, img: "nasigorengseafood.webp" },
+        { name: "Nasi Goreng USA", desc: "Chicken or Beef", price: 12.50, img: "nasigorengusa.webp" }
+    ],
+    "Ala Carte": [
+        { name: "Nasi Putih", desc: "White rice.", price: 2.00, img: "nasiputih.webp" },
+        { name: "Telur Mata", desc: "Sunny side up egg.", price: 1.50, img: "telurmata.webp" },
+        { name: "Telur Dadar", desc: "Omelette egg.", price: 2.50, img: "telurdadar.webp" },
+        { name: "Telur Separuh Masak", desc: "Half-boiled egg.", price: 3.00, img: "telurseparuhmasak.webp" },
+        { name: "Telur Dadar Cheese", desc: "Omelette egg with cheese.", price: 4.50, img: "telurdadarcheese.webp" },
+        { name: "Muiz Hot Chicken", desc: "Signature crispy fried chicken.", price: 5.00, img: "muizhotchicken.webp" },
+        { name: "Ikan Kembung Goreng", desc: "Fried mackerel fish.", price: 5.50, img: "ikankembunggoreng.webp" },
+        { name: "Ikan Keli Goreng", desc: "Fried catfish.", price: 5.90, img: "ikankeligoreng.webp" },
+        { name: "Ayam Masak Kunyit", desc: "Chicken cooked with turmeric.", price: 6.90, img: "ayammasakkunyit.webp" },
+        { name: "Daging Masak Kunyit", desc: "Beef cooked with turmeric.", price: 6.90, img: "dagingmasakkunyit.webp" },
+        { name: "Ayam Masak Merah", desc: "Chicken cooked in spicy red sauce.", price: 6.90, img: "ayammasakmerah.webp" },
+        { name: "Daging Masak Merah", desc: "Beef cooked in spicy red sauce.", price: 6.90, img: "dagingmasakmerah.webp" },
+        { name: "Sup Sayur", desc: "Vegetable soup.", price: 5.00, img: "supsayur.webp" },
+        { name: "Sup Ayam", desc: "Chicken soup.", price: 8.00, img: "supayam.webp" },
+        { name: "Sup Daging", desc: "Beef soup.", price: 8.00, img: "supdaging.webp" },
+        { name: "Tomyam Ayam", desc: "Spicy and sour tomyam soup with chicken.", price: 8.90, img: "tomyamayam.webp" },
+        { name: "Tomyam Daging", desc: "Spicy and sour tomyam soup with beef.", price: 8.90, img: "tomyamdaging.webp" },
+        { name: "Tomyam Seafood", desc: "Spicy and sour tomyam soup with prawns and squid.", price: 11.90, img: "tomyamseafood.webp" }
+    ]
+};
+
+// ============================================
+// RENDER MENU
+// ============================================
+function renderMenu() {
+    const container = document.getElementById('menuContainer');
+    container.innerHTML = '';
+
+    const categoryIconMap = {
+        "Most Ordered": "🌟",
+        "Muiz Hot Chicken Regular Box": "🍗",
+        "Muiz Hot Chicken Happy Box": "🎉",
+        "Chicken Tenders": "🔥",
+        "Nasi Penyet": "🌶️",
+        "Nasi Goreng Kampung": "🍚",
+        "Nasi Goreng Cina": "🥢",
+        "Nasi Goreng Tomyam": "🌶️",
+        "Nasi Goreng": "🍛",
+        "Ala Carte": "🍽️"
+    };
+
+    for (const [category, products] of Object.entries(productData)) {
+        // Category header
+        const wrapper = document.createElement('div');
+        wrapper.className = 'category-wrapper';
+
+        const header = document.createElement('div');
+        header.className = 'category-header';
+        header.innerHTML = `
+            <span class="category-icon">${categoryIconMap[category] || '📋'}</span>
+            <h2 class="category-title">${category}</h2>
+        `;
+        wrapper.appendChild(header);
+
+        const line = document.createElement('div');
+        line.className = 'category-line';
+        wrapper.appendChild(line);
+
+        // Product grid
+        const grid = document.createElement('div');
+        grid.className = 'product-grid';
+
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.dataset.name = product.name;
+            productDiv.dataset.desc = product.desc;
+            productDiv.dataset.price = product.price;
+            productDiv.dataset.img = product.img;
+
+            productDiv.innerHTML = `
+                <div class="product-image-wrapper">
+                    <img src="${product.img}" alt="${product.name}" width="120" height="120" loading="lazy" decoding="async">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-desc">${product.desc}</p>
+                    <div class="product-footer">
+                        <span class="product-price">RM${product.price.toFixed(2)}</span>
+                        <button class="product-add" aria-label="Add to cart">+ Add</button>
+                    </div>
+                </div>
+            `;
+
+            grid.appendChild(productDiv);
+        });
+
+        wrapper.appendChild(grid);
+        container.appendChild(wrapper);
+    }
+
+    // Re-bind event listeners for product clicks (handled globally via delegation)
+}
+
+// ============================================
+// CART, MODAL, DRAWER LOGIC (same as before)
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // ============================================
-    // DOM ELEMENTS
-    // ============================================
+    // Render the menu first
+    renderMenu();
+
+    // --- DOM refs ---
     const modal = document.getElementById('productModal');
     const modalImg = document.getElementById('modalImg');
     const modalName = document.getElementById('modalName');
@@ -23,18 +190,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCountSpan = document.getElementById('cartCount');
     const checkoutBtn = document.getElementById('checkoutBtn');
 
-    // ============================================
-    // STATE
-    // ============================================
+    // --- State ---
     let currentProduct = null;
     let currentQty = 1;
     let cart = [];
     let modalOpen = false;
     let drawerOpen = false;
 
-    // ============================================
-    // HELPERS
-    // ============================================
+    // --- Helpers ---
     function escapeHtml(str) {
         if (!str) return '';
         const div = document.createElement('div');
@@ -46,9 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'RM' + price.toFixed(2);
     }
 
-    // ============================================
-    // CART FUNCTIONS
-    // ============================================
+    // --- Cart functions ---
     function updateCartUI() {
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
         cartCountSpan.innerText = totalItems;
@@ -56,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cart.length === 0) {
             cartItemsDiv.innerHTML = `
                 <div class="empty-cart">
-                    <i class="fas fa-shopping-bag"></i>
+                    <span class="empty-icon">🛍️</span>
                     <p>Your cart is empty</p>
                     <span>Add some delicious items!</span>
                 </div>
@@ -150,9 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
         openCartDrawer();
     }
 
-    // ============================================
-    // CART DRAWER
-    // ============================================
+    // --- Drawer ---
     function openCartDrawer() {
         cartDrawer.classList.add('open');
         drawerOpen = true;
@@ -167,9 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         history.replaceState(null, '', window.location.href);
     }
 
-    // ============================================
-    // MODAL
-    // ============================================
+    // --- Modal ---
     function openModal(productElement) {
         const name = productElement.dataset.name;
         const desc = productElement.dataset.desc;
@@ -187,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImg.src = imgSrc;
         modalImg.alt = name;
 
-        const waMessage = `Hi Muiz Hot Chicken & Restoran Pak Haji Ali, I'd like to order: ${name} (${formatPrice(price)}). Please confirm.`;
+        const waMessage = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${name} (${formatPrice(price)}). Please confirm.`;
         modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(waMessage)}`;
 
         modal.style.display = 'flex';
@@ -203,9 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
         history.replaceState(null, '', window.location.href);
     }
 
-    // ============================================
-    // QUANTITY CONTROLS
-    // ============================================
+    // --- Quantity controls ---
     function updateQty(value) {
         let newVal = parseInt(value);
         if (isNaN(newVal) || newVal < 1) newVal = 1;
@@ -217,29 +372,23 @@ document.addEventListener('DOMContentLoaded', function() {
     qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
     qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
 
-    // ============================================
-    // EVENT: PRODUCT CLICK
-    // ============================================
-    document.querySelectorAll('.product').forEach(product => {
-        product.addEventListener('click', function(e) {
-            // Don't open modal if clicking the add button
-            if (e.target.classList.contains('product-add')) return;
-            openModal(this);
-        });
+    // --- Event: Product click (delegated) ---
+    document.getElementById('menuContainer').addEventListener('click', function(e) {
+        const productDiv = e.target.closest('.product');
+        if (!productDiv) return;
 
-        // Add button click
-        const addBtn = product.querySelector('.product-add');
-        if (addBtn) {
-            addBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                openModal(product);
-            });
+        // If the click is on the add button, open modal (same as clicking the card)
+        if (e.target.classList.contains('product-add') || e.target.closest('.product-add')) {
+            openModal(productDiv);
+            return;
+        }
+        // Otherwise, also open modal on card click (but avoid double trigger)
+        if (!e.target.closest('.product-add')) {
+            openModal(productDiv);
         }
     });
 
-    // ============================================
-    // EVENT: ADD TO CART
-    // ============================================
+    // --- Add to cart ---
     addToCartBtn.addEventListener('click', () => {
         if (currentProduct) {
             const request = specialRequestInput.value.trim();
@@ -248,9 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============================================
-    // EVENT: MODAL CLOSE
-    // ============================================
+    // --- Modal close ---
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
@@ -259,9 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape' && modalOpen) closeModal();
     });
 
-    // ============================================
-    // EVENT: CART DRAWER
-    // ============================================
+    // --- Cart drawer toggle ---
     cartIcon.addEventListener('click', (e) => {
         e.stopPropagation();
         if (drawerOpen) {
@@ -279,16 +424,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============================================
-    // EVENT: CHECKOUT
-    // ============================================
+    // --- Checkout ---
     checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
             alert('Your cart is empty. Add some delicious items first! 🍗');
             return;
         }
 
-        let message = 'Hi Muiz Hot Chicken & Restoran Pak Haji Ali! I would like to order:\n\n';
+        let message = 'Hi Restoran Pak Haji Ali & Muiz Hot Chicken! I would like to order:\n\n';
         cart.forEach(item => {
             message += `🍗 ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}`;
             if (item.request) message += `\n   📝 Special: ${item.request}`;
@@ -301,9 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // ============================================
-    // EVENT: BACK BUTTON
-    // ============================================
+    // --- Back button ---
     window.addEventListener('popstate', function() {
         if (modalOpen) {
             closeModal();
@@ -314,8 +455,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============================================
-    // INIT
-    // ============================================
+    // --- Init ---
     loadCart();
 });
