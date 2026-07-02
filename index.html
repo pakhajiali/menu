@@ -19,8 +19,8 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- Font Awesome (professional icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome (professional icons) 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)">
@@ -53,7 +53,14 @@
     <link rel="preload" as="image" href="logo.webp" fetchpriority="high">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <!-- ====== NON-BLOCKING STYLESHEETS ====== -->
+<link rel="preload" as="style" href="style.css" fetchpriority="high">
+<link rel="stylesheet" href="style.css" media="print" onload="this.media='all'" fetchpriority="low">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" fetchpriority="low">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" fetchpriority="low">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <!-- ========== ALL STRUCTURED DATA ========== -->
 
