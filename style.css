@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
@@ -64,8 +64,9 @@ img {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
-    max-height: 320px;
+    object-fit: contain;
+    max-height: 380px;
+    background: #f8f0ea;
 }
 
 .header-overlay {
@@ -207,7 +208,6 @@ img {
     color: var(--primary-dark);
 }
 
-/* Updated review button – dark navy with gold accent */
 .review-button {
     background: #1a1a2e;
     color: #ffffff;
@@ -226,16 +226,6 @@ img {
     font-size: 18px;
 }
 
-/* Responsive: side-by-side on wider screens */
-@media (min-width: 600px) {
-    .map-section {
-        flex-direction: row;
-    }
-    .map-section a {
-        flex: 1;
-    }
-}
-/* Responsive: side-by-side on wider screens */
 @media (min-width: 600px) {
     .map-section {
         flex-direction: row;
@@ -570,6 +560,27 @@ img {
     object-fit: cover;
     background: #f8f0ea;
     transition: var(--transition);
+}
+
+/* Fallback for broken images */
+.product-image-wrapper img[src=""],
+.product-image-wrapper img:not([src]) {
+    opacity: 0;
+    min-height: 120px;
+    background: #f0e6df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-image-wrapper img[src=""]::after,
+.product-image-wrapper img:not([src])::after {
+    content: "🍗";
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #b07f6e;
 }
 
 .product:hover .product-image-wrapper img {
@@ -1079,4 +1090,4 @@ img {
     .product-price {
         font-size: 18px;
     }
-}
+   }
