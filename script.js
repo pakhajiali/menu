@@ -108,6 +108,8 @@ function renderMenu() {
         "Ala Carte": "🍽️"
     };
 
+    const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23f0e6df'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='50' font-weight='bold' fill='%23b07f6e' text-anchor='middle' dominant-baseline='central'%3E🍗%3C/text%3E%3C/svg%3E`;
+
     for (const [category, products] of Object.entries(productData)) {
         const wrapper = document.createElement('div');
         wrapper.className = 'category-wrapper';
@@ -135,12 +137,9 @@ function renderMenu() {
             productDiv.dataset.price = product.price;
             productDiv.dataset.img = product.img;
 
-            // Fallback image: if image fails, show a generic chicken emoji SVG
-            const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23f0e6df'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='50' font-weight='bold' fill='%23b07f6e' text-anchor='middle' dominant-baseline='central'%3E🍗%3C/text%3E%3C/svg%3E`;
-
             productDiv.innerHTML = `
                 <div class="product-image-wrapper">
-                    <img src="${product.img}" alt="${product.name}" width="120" height="120" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${fallbackSvg}';">
+                    <img src="${product.img}" alt="${product.name} - Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)" width="120" height="120" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${fallbackSvg}';">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>
@@ -240,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!currentProduct) return;
         const qty = parseInt(qtyInput.value) || 1;
         const request = specialRequestInput.value.trim();
-        const baseMsg = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${currentProduct.name} x${qty} (${formatPrice(currentProduct.price * qty)})`;
+        const baseMsg = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8), I'd like to order: ${currentProduct.name} x${qty} (${formatPrice(currentProduct.price * qty)})`;
         const fullMsg = request ? `${baseMsg}\n📝 Special: ${request}` : baseMsg;
         modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(fullMsg)}`;
     }
@@ -375,9 +374,8 @@ document.addEventListener('DOMContentLoaded', function() {
         modalDesc.innerText = desc;
         modalPrice.innerText = formatPrice(price);
         modalImg.src = imgSrc;
-        modalImg.alt = name;
+        modalImg.alt = name + ' - Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)';
 
-        // Set initial WA link
         updateModalWaLink();
 
         modal.style.display = 'flex';
@@ -397,15 +395,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isNaN(newVal) || newVal < 1) newVal = 1;
         currentQty = newVal;
         qtyInput.value = currentQty;
-        updateModalWaLink(); // Update WA link on quantity change
+        updateModalWaLink();
     }
 
     qtyMinus.addEventListener('click', () => updateQty(currentQty - 1));
     qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
     qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
-    qtyInput.addEventListener('input', (e) => updateQty(e.target.value)); // Clamp while typing
+    qtyInput.addEventListener('input', (e) => updateQty(e.target.value));
 
-    // --- Update WA link when special request changes ---
     specialRequestInput.addEventListener('input', updateModalWaLink);
 
     // --- Event: Product click (delegated) ---
@@ -464,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        let message = 'Hi Restoran Pak Haji Ali & Muiz Hot Chicken! I would like to order:\n\n';
+        let message = 'Hi Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)! I would like to order:\n\n';
         cart.forEach(item => {
             message += `🍗 ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}`;
             if (item.request) message += `\n   📝 Special: ${item.request}`;
@@ -477,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- Clean back-button (no history pollution) ---
+    // --- Clean back-button ---
     window.addEventListener('popstate', function() {
         if (modalOpen) {
             closeModal();
