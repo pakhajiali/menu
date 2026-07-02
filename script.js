@@ -160,40 +160,10 @@ function renderMenu() {
 }
 
 // ============================================
-// INJECT DYNAMIC RATING FROM reviews.json (with delay fix)
-// ============================================
-async function injectDynamicRating() {
-    try {
-        // Small delay to let page render first (fixes network dependency)
-        await new Promise(r => setTimeout(r, 100));
-        const res = await fetch('reviews.json');
-        if (!res.ok) throw new Error('reviews.json not found');
-        const data = await res.json();
-
-        const script = document.getElementById('restaurantSchema');
-        if (!script) return;
-
-        const schema = JSON.parse(script.textContent);
-        schema.aggregateRating = {
-            "@type": "AggregateRating",
-            "ratingValue": data.ratingValue || 5.0,
-            "reviewCount": data.reviewCount || 0,
-            "bestRating": data.bestRating || 5,
-            "worstRating": data.worstRating || 1
-        };
-        script.textContent = JSON.stringify(schema);
-        console.log('✅ Dynamic rating injected:', schema.aggregateRating);
-    } catch (error) {
-        console.log('ℹ️ reviews.json not loaded. Using no rating (Google will still show Maps rating).');
-    }
-}
-
-// ============================================
-// CART, MODAL, DRAWER LOGIC
+// CART, MODAL, DRAWER LOGIC (with back button)
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     renderMenu();
-    injectDynamicRating();
 
     // --- DOM refs ---
     const modal = document.getElementById('productModal');
@@ -246,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(fullMsg)}`;
     }
 
-    // --- Cart functions (with forced reflow fix) ---
+    // --- Cart functions ---
     function updateCartUI() {
         requestAnimationFrame(() => {
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -415,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     specialRequestInput.addEventListener('input', updateModalWaLink);
 
-    // --- Event: Product click (delegated) ---
+    // --- Event: Product click ---
     document.getElementById('menuContainer').addEventListener('click', function(e) {
         const productDiv = e.target.closest('.product');
         if (!productDiv) return;
@@ -484,38 +454,21 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- Back button handling: closes modal/drawer first, then navigates away ---
+    // --- BACK BUTTON LOGIC: closes modal/drawer first, then navigates away ---
     window.addEventListener('popstate', function(e) {
         if (modalOpen) {
             closeModal();
+            e.preventDefault();
             return;
         }
         if (drawerOpen) {
             closeCartDrawer();
+            e.preventDefault();
             return;
         }
+        // If nothing is open, let the browser navigate back naturally.
     });
 
     // --- Init ---
     loadCart();
 });
-
-// ============================================
-// SCROLL REVEAL ANIMATIONS
-// ============================================
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        const revealPoint = 120;
-        if (elementTop < windowHeight - revealPoint) {
-            el.classList.add('visible');
-        }
-    });
-}
-
-window.addEventListener('load', revealOnScroll);
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('resize', revealOnScroll);
- 
