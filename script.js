@@ -347,6 +347,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Drawer ---
     function openCartDrawer() {
+        if (!drawerOpen) {
+            history.pushState({ drawer: true }, '', window.location.href);
+        }
         cartDrawer.classList.add('open');
         drawerOpen = true;
         document.body.style.overflow = 'hidden';
@@ -378,6 +381,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateModalWaLink();
 
+        if (!modalOpen) {
+            history.pushState({ modal: true }, '', window.location.href);
+        }
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         modalOpen = true;
@@ -474,13 +480,18 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- Clean back-button ---
-    window.addEventListener('popstate', function() {
+    // --- Back button handling: closes modal/drawer first, then navigates away ---
+    window.addEventListener('popstate', function(e) {
         if (modalOpen) {
             closeModal();
-        } else if (drawerOpen) {
-            closeCartDrawer();
+            // Stay on the page – the history state just popped, so we're back to the original page state.
+            return;
         }
+        if (drawerOpen) {
+            closeCartDrawer();
+            return;
+        }
+        // If neither overlay is open, let the browser navigate back naturally.
     });
 
     // --- Init ---
