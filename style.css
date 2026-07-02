@@ -33,6 +33,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     padding-bottom: 30px;
+    overflow-x: hidden;
 }
 
 a {
@@ -43,6 +44,24 @@ a {
 img {
     display: block;
     max-width: 100%;
+}
+
+/* ============================================
+   FADE-IN ANIMATION ON PAGE LOAD
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 /* ============================================
@@ -174,7 +193,7 @@ img {
 }
 
 /* ============================================
-   CART DRAWER
+   CART DRAWER (Slide-in from right)
    ============================================ */
 .cart-drawer {
     position: fixed;
@@ -186,7 +205,7 @@ img {
     background: var(--white);
     box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
     z-index: 1100;
-    transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+    transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
     display: flex;
     flex-direction: column;
 }
@@ -421,7 +440,7 @@ img {
 }
 
 .product:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-light);
 }
@@ -437,11 +456,11 @@ img {
     border-radius: var(--radius-sm);
     object-fit: cover;
     background: #f8f0ea;
-    transition: var(--transition);
+    transition: transform 0.4s ease;
 }
 
 .product:hover .product-image-wrapper img {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .product-badge {
@@ -468,7 +487,7 @@ img {
     font-weight: 800;
     color: var(--dark);
     line-height: 1.3;
-    transition: var(--transition);
+    transition: color 0.3s ease;
 }
 .product:hover .product-name {
     color: var(--primary);
@@ -760,7 +779,7 @@ img {
     font-weight: 700;
     font-size: 16px;
     color: var(--white);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .floating-wa:hover {
@@ -897,7 +916,7 @@ img {
 }
 
 /* ============================================
-   MODAL
+   MODAL (Appear with scale + fade)
    ============================================ */
 .modal {
     display: none;
@@ -921,6 +940,18 @@ img {
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 32px 64px rgba(0, 0, 0, 0.3);
+    animation: modalIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .modal-img {
@@ -1282,4 +1313,4 @@ img {
     .cert-info p {
         font-size: 14px;
     }
-}
+       }
