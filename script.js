@@ -109,7 +109,6 @@ function renderMenu() {
     };
 
     for (const [category, products] of Object.entries(productData)) {
-        // Category header
         const wrapper = document.createElement('div');
         wrapper.className = 'category-wrapper';
 
@@ -125,7 +124,6 @@ function renderMenu() {
         line.className = 'category-line';
         wrapper.appendChild(line);
 
-        // Product grid
         const grid = document.createElement('div');
         grid.className = 'product-grid';
 
@@ -137,9 +135,12 @@ function renderMenu() {
             productDiv.dataset.price = product.price;
             productDiv.dataset.img = product.img;
 
+            // Fallback image: if image fails, show a generic chicken emoji SVG
+            const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23f0e6df'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='50' font-weight='bold' fill='%23b07f6e' text-anchor='middle' dominant-baseline='central'%3E🍗%3C/text%3E%3C/svg%3E`;
+
             productDiv.innerHTML = `
                 <div class="product-image-wrapper">
-                    <img src="${product.img}" alt="${product.name}" width="120" height="120" loading="lazy" decoding="async">
+                    <img src="${product.img}" alt="${product.name}" width="120" height="120" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${fallbackSvg}';">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>
@@ -157,16 +158,41 @@ function renderMenu() {
         wrapper.appendChild(grid);
         container.appendChild(wrapper);
     }
-
-    // Re-bind event listeners for product clicks (handled globally via delegation)
 }
 
 // ============================================
-// CART, MODAL, DRAWER LOGIC (same as before)
+// INJECT DYNAMIC RATING FROM reviews.json
+// ============================================
+async function injectDynamicRating() {
+    try {
+        const res = await fetch('reviews.json');
+        if (!res.ok) throw new Error('reviews.json not found');
+        const data = await res.json();
+
+        const script = document.getElementById('restaurantSchema');
+        if (!script) return;
+
+        const schema = JSON.parse(script.textContent);
+        schema.aggregateRating = {
+            "@type": "AggregateRating",
+            "ratingValue": data.ratingValue || 5.0,
+            "reviewCount": data.reviewCount || 0,
+            "bestRating": data.bestRating || 5,
+            "worstRating": data.worstRating || 1
+        };
+        script.textContent = JSON.stringify(schema);
+        console.log('✅ Dynamic rating injected:', schema.aggregateRating);
+    } catch (error) {
+        console.log('ℹ️ reviews.json not loaded. Using no rating (Google will still show Maps rating).');
+    }
+}
+
+// ============================================
+// CART, MODAL, DRAWER LOGIC
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Render the menu first
     renderMenu();
+    injectDynamicRating();
 
     // --- DOM refs ---
     const modal = document.getElementById('productModal');
@@ -207,6 +233,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function formatPrice(price) {
         return 'RM' + price.toFixed(2);
+    }
+
+    // --- Live WhatsApp link updater ---
+    function updateModalWaLink() {
+        if (!currentProduct) return;
+        const qty = parseInt(qtyInput.value) || 1;
+        const request = specialRequestInput.value.trim();
+        const baseMsg = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${currentProduct.name} x${qty} (${formatPrice(currentProduct.price * qty)})`;
+        const fullMsg = request ? `${baseMsg}\n📝 Special: ${request}` : baseMsg;
+        modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(fullMsg)}`;
     }
 
     // --- Cart functions ---
@@ -250,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItemsDiv.innerHTML = html;
         cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
 
-        // Attach cart control events
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -316,14 +351,12 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawer.classList.add('open');
         drawerOpen = true;
         document.body.style.overflow = 'hidden';
-        history.pushState({ drawerOpen: true }, '', window.location.href);
     }
 
     function closeCartDrawer() {
         cartDrawer.classList.remove('open');
         drawerOpen = false;
         document.body.style.overflow = '';
-        history.replaceState(null, '', window.location.href);
     }
 
     // --- Modal ---
@@ -344,20 +377,18 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImg.src = imgSrc;
         modalImg.alt = name;
 
-        const waMessage = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken, I'd like to order: ${name} (${formatPrice(price)}). Please confirm.`;
-        modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(waMessage)}`;
+        // Set initial WA link
+        updateModalWaLink();
 
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         modalOpen = true;
-        history.pushState({ modalOpen: true }, '', window.location.href);
     }
 
     function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = '';
         modalOpen = false;
-        history.replaceState(null, '', window.location.href);
     }
 
     // --- Quantity controls ---
@@ -366,23 +397,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isNaN(newVal) || newVal < 1) newVal = 1;
         currentQty = newVal;
         qtyInput.value = currentQty;
+        updateModalWaLink(); // Update WA link on quantity change
     }
 
     qtyMinus.addEventListener('click', () => updateQty(currentQty - 1));
     qtyPlus.addEventListener('click', () => updateQty(currentQty + 1));
     qtyInput.addEventListener('change', (e) => updateQty(e.target.value));
+    qtyInput.addEventListener('input', (e) => updateQty(e.target.value)); // Clamp while typing
+
+    // --- Update WA link when special request changes ---
+    specialRequestInput.addEventListener('input', updateModalWaLink);
 
     // --- Event: Product click (delegated) ---
     document.getElementById('menuContainer').addEventListener('click', function(e) {
         const productDiv = e.target.closest('.product');
         if (!productDiv) return;
-
-        // If the click is on the add button, open modal (same as clicking the card)
         if (e.target.classList.contains('product-add') || e.target.closest('.product-add')) {
             openModal(productDiv);
             return;
         }
-        // Otherwise, also open modal on card click (but avoid double trigger)
         if (!e.target.closest('.product-add')) {
             openModal(productDiv);
         }
@@ -444,14 +477,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- Back button ---
+    // --- Clean back-button (no history pollution) ---
     window.addEventListener('popstate', function() {
         if (modalOpen) {
             closeModal();
-            history.pushState({ modalOpen: true }, '', window.location.href);
         } else if (drawerOpen) {
             closeCartDrawer();
-            history.pushState({ drawerOpen: true }, '', window.location.href);
         }
     });
 
