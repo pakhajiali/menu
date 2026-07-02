@@ -24,8 +24,18 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- ====== HIGH PRIORITY STYLESHEETS ====== -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preload" as="style" href="style.css" fetchpriority="high">
+<link rel="stylesheet" href="style.css" fetchpriority="high">
+
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" fetchpriority="high">
+<link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      fetchpriority="high"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSEZGaUahi9pPzWLU3rXgWbG7LzKJj8FzUQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
 
     <!-- Manifest -->
     <link rel="manifest" href="manifest.json">
