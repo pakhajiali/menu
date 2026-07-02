@@ -160,10 +160,12 @@ function renderMenu() {
 }
 
 // ============================================
-// INJECT DYNAMIC RATING FROM reviews.json
+// INJECT DYNAMIC RATING FROM reviews.json (with delay fix)
 // ============================================
 async function injectDynamicRating() {
     try {
+        // Small delay to let page render first (fixes network dependency)
+        await new Promise(r => setTimeout(r, 100));
         const res = await fetch('reviews.json');
         if (!res.ok) throw new Error('reviews.json not found');
         const data = await res.json();
@@ -239,80 +241,82 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!currentProduct) return;
         const qty = parseInt(qtyInput.value) || 1;
         const request = specialRequestInput.value.trim();
-        const baseMsg = `Hi Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8), I'd like to order: ${currentProduct.name} x${qty} (${formatPrice(currentProduct.price * qty)})`;
+        const baseMsg = `Hi, I'd like to order: ${currentProduct.name} x${qty} (${formatPrice(currentProduct.price * qty)}) from your USJ 8 menu.`;
         const fullMsg = request ? `${baseMsg}\n📝 Special: ${request}` : baseMsg;
         modalWaBtn.href = `https://wa.me/60179081447?text=${encodeURIComponent(fullMsg)}`;
     }
 
-    // --- Cart functions ---
+    // --- Cart functions (with forced reflow fix) ---
     function updateCartUI() {
-        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        cartCountSpan.innerText = totalItems;
+        requestAnimationFrame(() => {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartCountSpan.innerText = totalItems;
 
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = `
-                <div class="empty-cart">
-                    <span class="empty-icon">🛍️</span>
-                    <p>Your cart is empty</p>
-                    <span>Add some delicious items!</span>
-                </div>
-            `;
-            cartTotalSpan.innerText = 'Total: RM0.00';
-            return;
-        }
-
-        let html = '';
-        let total = 0;
-        cart.forEach((item, index) => {
-            const itemTotal = item.price * item.qty;
-            total += itemTotal;
-            html += `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                        <div class="cart-item-price">${formatPrice(item.price)}</div>
-                        ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-bag empty-icon"></i>
+                        <p>Your cart is empty</p>
+                        <span>Add some delicious items!</span>
                     </div>
-                    <div class="cart-item-controls">
-                        <button class="cart-qty-minus" data-index="${index}">−</button>
-                        <span>${item.qty}</span>
-                        <button class="cart-qty-plus" data-index="${index}">+</button>
-                        <button class="remove-item" data-index="${index}">✕</button>
-                    </div>
-                </div>
-            `;
-        });
-        cartItemsDiv.innerHTML = html;
-        cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
+                `;
+                cartTotalSpan.innerText = 'Total: RM0.00';
+                return;
+            }
 
-        document.querySelectorAll('.cart-qty-minus').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const idx = parseInt(this.dataset.index);
-                if (cart[idx].qty > 1) {
-                    cart[idx].qty--;
-                } else {
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${escapeHtml(item.name)}</div>
+                            <div class="cart-item-price">${formatPrice(item.price)}</div>
+                            ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="cart-qty-minus" data-index="${index}">−</button>
+                            <span>${item.qty}</span>
+                            <button class="cart-qty-plus" data-index="${index}">+</button>
+                            <button class="remove-item" data-index="${index}">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+            cartItemsDiv.innerHTML = html;
+            cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
+
+            document.querySelectorAll('.cart-qty-minus').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const idx = parseInt(this.dataset.index);
+                    if (cart[idx].qty > 1) {
+                        cart[idx].qty--;
+                    } else {
+                        cart.splice(idx, 1);
+                    }
+                    saveCartAndUpdate();
+                });
+            });
+
+            document.querySelectorAll('.cart-qty-plus').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const idx = parseInt(this.dataset.index);
+                    cart[idx].qty++;
+                    saveCartAndUpdate();
+                });
+            });
+
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const idx = parseInt(this.dataset.index);
                     cart.splice(idx, 1);
-                }
-                saveCartAndUpdate();
-            });
-        });
-
-        document.querySelectorAll('.cart-qty-plus').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const idx = parseInt(this.dataset.index);
-                cart[idx].qty++;
-                saveCartAndUpdate();
-            });
-        });
-
-        document.querySelectorAll('.remove-item').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const idx = parseInt(this.dataset.index);
-                cart.splice(idx, 1);
-                saveCartAndUpdate();
+                    saveCartAndUpdate();
+                });
             });
         });
     }
@@ -467,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        let message = 'Hi Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)! I would like to order:\n\n';
+        let message = 'Hi, I want to place an order from your USJ 8 menu:\n\n';
         cart.forEach(item => {
             message += `🍗 ${item.name} x${item.qty} = ${formatPrice(item.price * item.qty)}`;
             if (item.request) message += `\n   📝 Special: ${item.request}`;
@@ -484,16 +488,34 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('popstate', function(e) {
         if (modalOpen) {
             closeModal();
-            // Stay on the page – the history state just popped, so we're back to the original page state.
             return;
         }
         if (drawerOpen) {
             closeCartDrawer();
             return;
         }
-        // If neither overlay is open, let the browser navigate back naturally.
     });
 
     // --- Init ---
     loadCart();
 });
+
+// ============================================
+// SCROLL REVEAL ANIMATIONS
+// ============================================
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 120;
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('load', revealOnScroll);
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('resize', revealOnScroll);
+ 
