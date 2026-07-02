@@ -160,7 +160,7 @@ function renderMenu() {
 }
 
 // ============================================
-// SCROLL REVEAL ANIMATIONS
+// SCROLL REVEAL
 // ============================================
 function revealOnScroll() {
     const reveals = document.querySelectorAll('.reveal');
@@ -176,7 +176,7 @@ function revealOnScroll() {
 }
 
 // ============================================
-// CART, MODAL, DRAWER LOGIC
+// CART, MODAL, DRAWER
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     renderMenu();
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- Back button logic ---
+    // --- Back button: close modal or drawer first ---
     window.addEventListener('popstate', function(e) {
         if (modalOpen) {
             closeModal();
