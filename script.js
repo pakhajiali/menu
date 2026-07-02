@@ -160,10 +160,27 @@ function renderMenu() {
 }
 
 // ============================================
+// SCROLL REVEAL ANIMATIONS
+// ============================================
+function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    const windowHeight = window.innerHeight;
+    const revealPoint = 120;
+
+    reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - revealPoint) {
+            el.classList.add('visible');
+        }
+    });
+}
+
+// ============================================
 // CART, MODAL, DRAWER LOGIC
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     renderMenu();
+    revealOnScroll();
 
     // --- DOM refs ---
     const modal = document.getElementById('productModal');
@@ -218,7 +235,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Cart functions ---
     function updateCartUI() {
-        // Removed requestAnimationFrame – fixes forced reflow
         const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
         cartCountSpan.innerText = totalItems;
 
@@ -466,6 +482,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     });
+
+    // --- Scroll reveal on scroll ---
+    window.addEventListener('scroll', revealOnScroll);
 
     // --- Init ---
     loadCart();
