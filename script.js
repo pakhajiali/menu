@@ -160,7 +160,7 @@ function renderMenu() {
 }
 
 // ============================================
-// CART, MODAL, DRAWER LOGIC (with back button)
+// CART, MODAL, DRAWER LOGIC
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     renderMenu();
@@ -218,75 +218,74 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Cart functions ---
     function updateCartUI() {
-        requestAnimationFrame(() => {
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            cartCountSpan.innerText = totalItems;
+        // Removed requestAnimationFrame – fixes forced reflow
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        cartCountSpan.innerText = totalItems;
 
-            if (cart.length === 0) {
-                cartItemsDiv.innerHTML = `
-                    <div class="empty-cart">
-                        <i class="fas fa-shopping-bag empty-icon"></i>
-                        <p>Your cart is empty</p>
-                        <span>Add some delicious items!</span>
+        if (cart.length === 0) {
+            cartItemsDiv.innerHTML = `
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-bag empty-icon"></i>
+                    <p>Your cart is empty</p>
+                    <span>Add some delicious items!</span>
+                </div>
+            `;
+            cartTotalSpan.innerText = 'Total: RM0.00';
+            return;
+        }
+
+        let html = '';
+        let total = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            html += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${escapeHtml(item.name)}</div>
+                        <div class="cart-item-price">${formatPrice(item.price)}</div>
+                        ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
                     </div>
-                `;
-                cartTotalSpan.innerText = 'Total: RM0.00';
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                            <div class="cart-item-price">${formatPrice(item.price)}</div>
-                            ${item.request ? `<div class="cart-item-request">📝 ${escapeHtml(item.request)}</div>` : ''}
-                        </div>
-                        <div class="cart-item-controls">
-                            <button class="cart-qty-minus" data-index="${index}">−</button>
-                            <span>${item.qty}</span>
-                            <button class="cart-qty-plus" data-index="${index}">+</button>
-                            <button class="remove-item" data-index="${index}">✕</button>
-                        </div>
+                    <div class="cart-item-controls">
+                        <button class="cart-qty-minus" data-index="${index}">−</button>
+                        <span>${item.qty}</span>
+                        <button class="cart-qty-plus" data-index="${index}">+</button>
+                        <button class="remove-item" data-index="${index}">✕</button>
                     </div>
-                `;
-            });
-            cartItemsDiv.innerHTML = html;
-            cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
+                </div>
+            `;
+        });
+        cartItemsDiv.innerHTML = html;
+        cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
 
-            document.querySelectorAll('.cart-qty-minus').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const idx = parseInt(this.dataset.index);
-                    if (cart[idx].qty > 1) {
-                        cart[idx].qty--;
-                    } else {
-                        cart.splice(idx, 1);
-                    }
-                    saveCartAndUpdate();
-                });
-            });
-
-            document.querySelectorAll('.cart-qty-plus').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const idx = parseInt(this.dataset.index);
-                    cart[idx].qty++;
-                    saveCartAndUpdate();
-                });
-            });
-
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const idx = parseInt(this.dataset.index);
+        document.querySelectorAll('.cart-qty-minus').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.dataset.index);
+                if (cart[idx].qty > 1) {
+                    cart[idx].qty--;
+                } else {
                     cart.splice(idx, 1);
-                    saveCartAndUpdate();
-                });
+                }
+                saveCartAndUpdate();
+            });
+        });
+
+        document.querySelectorAll('.cart-qty-plus').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.dataset.index);
+                cart[idx].qty++;
+                saveCartAndUpdate();
+            });
+        });
+
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.dataset.index);
+                cart.splice(idx, 1);
+                saveCartAndUpdate();
             });
         });
     }
@@ -454,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://wa.me/60179081447?text=${encodeURIComponent(message)}`, '_blank');
     });
 
-    // --- BACK BUTTON LOGIC: closes modal/drawer first, then navigates away ---
+    // --- Back button logic ---
     window.addEventListener('popstate', function(e) {
         if (modalOpen) {
             closeModal();
@@ -466,7 +465,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             return;
         }
-        // If nothing is open, let the browser navigate back naturally.
     });
 
     // --- Init ---
