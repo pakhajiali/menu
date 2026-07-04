@@ -65,7 +65,7 @@ function renderTags() {
 }
 
 // ============================================
-// RENDER POSTS (Grid View)
+// RENDER POSTS (Grid View – No Images)
 // ============================================
 function renderPosts() {
     const filtered = currentTag === 'all'
@@ -85,7 +85,6 @@ function renderPosts() {
 
     postsGrid.innerHTML = filtered.map(post => `
         <article class="post-card" data-slug="${post.slug}">
-            ${post.featuredImage ? `<img src="${post.featuredImage}" alt="${post.title}" class="post-card-image" loading="lazy">` : ''}
             <div class="post-card-content">
                 ${post.tags && post.tags.length > 0 ? `<span class="post-card-tag">${post.tags[0]}</span>` : ''}
                 <div class="post-card-meta">
@@ -99,7 +98,6 @@ function renderPosts() {
         </article>
     `).join('');
 
-    // Click handlers
     postsGrid.querySelectorAll('.post-card').forEach(card => {
         card.addEventListener('click', function() {
             const slug = this.dataset.slug;
@@ -109,7 +107,7 @@ function renderPosts() {
 }
 
 // ============================================
-// SHOW INDIVIDUAL POST
+// SHOW INDIVIDUAL POST (No Images)
 // ============================================
 function showPost(slug) {
     const post = posts.find(p => p.slug === slug);
@@ -118,14 +116,13 @@ function showPost(slug) {
     currentPostSlug = slug;
     window.history.pushState({ post: slug }, '', `?post=${slug}`);
 
-    // Hide grid, show post view
     postsGrid.style.display = 'none';
     tagsFilter.style.display = 'none';
     postView.style.display = 'block';
 
-    // Build post content
     const readingTime = getReadingTime(post.body);
 
+    // Related posts
     let relatedHtml = '';
     const related = posts
         .filter(p => p.slug !== slug && p.tags && p.tags.some(t => post.tags && post.tags.includes(t)))
@@ -147,7 +144,7 @@ function showPost(slug) {
         `;
     }
 
-    // Inject post schema
+    // Inject BlogPosting schema (no image – still valid for SEO)
     const schemaScript = document.createElement('script');
     schemaScript.type = 'application/ld+json';
     schemaScript.textContent = JSON.stringify({
@@ -175,7 +172,6 @@ function showPost(slug) {
         }
     });
 
-    // Remove old schema
     document.querySelectorAll('script[data-post-schema]').forEach(el => el.remove());
     schemaScript.setAttribute('data-post-schema', 'true');
     document.head.appendChild(schemaScript);
@@ -189,12 +185,10 @@ function showPost(slug) {
                 <span><i class="far fa-clock"></i> ${readingTime} min read</span>
             </div>
         </div>
-        ${post.featuredImage ? `<img src="${post.featuredImage}" alt="${post.title}" class="post-featured-image" loading="lazy">` : ''}
         <div class="post-body">${post.body}</div>
         ${relatedHtml}
     `;
 
-    // Related card click handlers
     postContent.querySelectorAll('.related-card').forEach(card => {
         card.addEventListener('click', function() {
             showPost(this.dataset.slug);
@@ -202,24 +196,16 @@ function showPost(slug) {
         });
     });
 
-    // Update title
     document.title = `${post.title} - Restoran Pak Haji Ali & Muiz Hot Chicken Blog`;
-
-    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.content = post.excerpt || stripHtml(post.body).slice(0, 160);
     }
-
-    // Update OG tags
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDesc = document.querySelector('meta[property="og:description"]');
-    const ogImage = document.querySelector('meta[property="og:image"]');
     if (ogTitle) ogTitle.content = post.title;
     if (ogDesc) ogDesc.content = post.excerpt || stripHtml(post.body).slice(0, 160);
-    if (ogImage && post.featuredImage) ogImage.content = post.featuredImage;
 
-    // Scroll to top
     blogMain.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -260,7 +246,6 @@ function showPostsGrid() {
     tagsFilter.style.display = 'flex';
     postView.style.display = 'none';
 
-    // Reset title & meta
     document.title = 'Restoran Pak Haji Ali & Muiz Hot Chicken - Blog';
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -268,14 +253,10 @@ function showPostsGrid() {
     }
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDesc = document.querySelector('meta[property="og:description"]');
-    const ogImage = document.querySelector('meta[property="og:image"]');
     if (ogTitle) ogTitle.content = 'Restoran Pak Haji Ali & Muiz Hot Chicken - Blog';
     if (ogDesc) ogDesc.content = 'Read the latest stories, recipes, and updates from your favourite halal restaurant in Subang Jaya USJ 8.';
-    if (ogImage) ogImage.content = 'https://pakhajiali.github.io/menu/logo.webp';
 
-    // Remove post schema
     document.querySelectorAll('script[data-post-schema]').forEach(el => el.remove());
-
     window.history.pushState({}, '', window.location.pathname);
 }
 
@@ -331,8 +312,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     renderTags();
     renderPosts();
     handleUrl();
-
-    // Initial reveal
     setTimeout(revealOnScroll, 300);
     window.addEventListener('scroll', revealOnScroll);
 });
