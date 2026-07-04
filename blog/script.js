@@ -65,7 +65,7 @@ function renderTags() {
 }
 
 // ============================================
-// RENDER POSTS (Grid View – No Images)
+// RENDER POSTS (Grid View)
 // ============================================
 function renderPosts() {
     const filtered = currentTag === 'all'
@@ -107,7 +107,7 @@ function renderPosts() {
 }
 
 // ============================================
-// SHOW INDIVIDUAL POST (No Images)
+// SHOW INDIVIDUAL POST (with FAQ Schema)
 // ============================================
 function showPost(slug) {
     const post = posts.find(p => p.slug === slug);
@@ -144,7 +144,9 @@ function showPost(slug) {
         `;
     }
 
-    // Inject BlogPosting schema (no image – still valid for SEO)
+    // ============================================
+    // INJECT BLOG POSTING SCHEMA
+    // ============================================
     const schemaScript = document.createElement('script');
     schemaScript.type = 'application/ld+json';
     schemaScript.textContent = JSON.stringify({
@@ -171,11 +173,34 @@ function showPost(slug) {
             "@id": `https://pakhajiali.github.io/menu/blog/?post=${slug}`
         }
     });
-
-    document.querySelectorAll('script[data-post-schema]').forEach(el => el.remove());
     schemaScript.setAttribute('data-post-schema', 'true');
     document.head.appendChild(schemaScript);
 
+    // ============================================
+    // INJECT FAQ SCHEMA (if FAQs exist)
+    // ============================================
+    if (post.faqs && post.faqs.length > 0) {
+        const faqScript = document.createElement('script');
+        faqScript.type = 'application/ld+json';
+        faqScript.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": post.faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                }
+            }))
+        });
+        faqScript.setAttribute('data-faq-schema', 'true');
+        document.head.appendChild(faqScript);
+    }
+
+    // ============================================
+    // RENDER POST CONTENT
+    // ============================================
     postContent.innerHTML = `
         <div class="post-header">
             ${post.tags && post.tags.length > 0 ? `<span class="post-tag">${post.tags[0]}</span>` : ''}
@@ -256,7 +281,10 @@ function showPostsGrid() {
     if (ogTitle) ogTitle.content = 'Restoran Pak Haji Ali & Muiz Hot Chicken - Blog';
     if (ogDesc) ogDesc.content = 'Read the latest stories, recipes, and updates from your favourite halal restaurant in Subang Jaya USJ 8.';
 
+    // Remove all schemas
     document.querySelectorAll('script[data-post-schema]').forEach(el => el.remove());
+    document.querySelectorAll('script[data-faq-schema]').forEach(el => el.remove());
+
     window.history.pushState({}, '', window.location.pathname);
 }
 
