@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pakhajiali.github.io/menu/</loc>
-    <lastmod>2026-07-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+    <!-- Main page -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/</loc>
+        <lastmod>2026-07-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Blog homepage -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/</loc>
+        <lastmod>2026-07-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- (Optional) Add individual blog posts if you want them indexed individually -->
+    <!--
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=what-makes-muiz-hot-chicken-special</loc>
+        <lastmod>2026-07-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
 </urlset>
