@@ -4,7 +4,7 @@
     <!-- ========== MAIN SITE ========== -->
     <url>
         <loc>https://pakhajiali.github.io/menu/</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -12,15 +12,53 @@
     <!-- ========== CATERING ========== -->
     <url>
         <loc>https://pakhajiali.github.io/menu/catering/</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- ========== BLOG ========== -->
+    <!-- ========== LOCATION PAGES ========== -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/subang-jaya/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/usj/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/taipan/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/ss15/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/sunway/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/klang-valley/</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========== BLOG HOMEPAGE ========== -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -30,37 +68,37 @@
     <!-- Foundation Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=what-makes-muiz-hot-chicken-special-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=the-story-behind-restoran-pak-haji-ali-usj-8</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=best-nasi-kandar-in-subang-jaya-usj</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=what-is-mesti-certification-and-why-it-matters</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=the-art-of-mixing-curries-kuah-banjir</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=why-halal-hygiene-standards-matter-usj</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -68,19 +106,19 @@
     <!-- Student Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=cheap-student-meals-taylors-sunway-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=best-place-to-lepak-subang-jaya-students</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=best-tomyam-subang-jaya-university-comfort-food</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -88,13 +126,13 @@
     <!-- Corporate Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=corporate-lunch-taipan-subang-jaya-15-minutes</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=best-corporate-lunch-spots-subang-jaya-taipan</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -102,13 +140,13 @@
     <!-- Food Culture Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=what-is-nasi-kandar-history-malaysia</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=malaysian-thai-cuisine-usj-8-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -116,25 +154,25 @@
     <!-- Delivery Platform Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=foodpanda-delivery-usj-8-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=grabfood-delivery-usj-8-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=shopeefood-delivery-usj-8-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=misirakyat-delivery-usj-8-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -142,71 +180,21 @@
     <!-- Catering Posts -->
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=corporate-catering-subang-jaya-guide</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://pakhajiali.github.io/menu/blog/?post=wedding-catering-subang-jaya-halal</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/blog/?post=catering-pricing-guide-subang-jaya</loc>
-        <lastmod>2026-07-05</lastmod>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=halal-catering-services-subang-jaya</loc>
+        <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-
-    <!-- ========== CATERING SERVICE PAGES (Create these files) ========== -->
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/corporate-catering-subang-jaya/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/wedding-catering-subang-jaya/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/birthday-catering-subang-jaya/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/hari-raya-catering-subang-jaya/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/seminar-catering-subang-jaya/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/buffet-catering-usj/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/halal-catering-puchong/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://pakhajiali.github.io/menu/catering/halal-catering-shah-alam/</loc>
-        <lastmod>2026-07-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
     </url>
 
 </urlset>
