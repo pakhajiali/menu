@@ -29,12 +29,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Brand Schema -->
+    <!-- Brand Schema (FULLY OPTIMIZED) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Muiz Hot Chicken",
+        "image": "https://pakhajiali.github.io/menu/muiz-hot-chicken.webp",
         "brand": {
             "@type": "Brand",
             "name": "Muiz Hot Chicken",
@@ -47,6 +48,38 @@
             "priceCurrency": "MYR",
             "price": "5.00",
             "availability": "https://schema.org/InStock",
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0.00",
+                    "currency": "MYR"
+                },
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "MY"
+                },
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 1,
+                        "unitCode": "HUR"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 20,
+                        "maxValue": 45,
+                        "unitCode": "MIN"
+                    }
+                }
+            },
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "MY",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
             "seller": {
                 "@type": "Restaurant",
                 "name": "Restoran Pak Haji Ali & Muiz Hot Chicken",
@@ -99,6 +132,14 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Our 12-hour marinade and double-coating method create a crunchy, juicy chicken that stays crispy even during delivery."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Muiz Hot Chicken deliver?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we deliver via GrabFood, Foodpanda, ShopeeFood, and Misirakyat. Delivery typically takes 20-45 minutes within USJ 8 and surrounding areas."
                 }
             }
         ]
@@ -183,9 +224,13 @@
                 <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">How is Muiz Hot Chicken different from others?</h4>
                 <p style="font-size:14px;color:#555;margin:0;">Our 12-hour marinade and double-coating method create a crunchier, juicier chicken that stays crispy even during delivery.</p>
             </div>
-            <div style="padding:12px 16px;background:#fff;border-radius:8px;">
+            <div style="margin-bottom:12px;padding:12px 16px;background:#fff;border-radius:8px;">
                 <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">Where can I buy Muiz Hot Chicken?</h4>
                 <p style="font-size:14px;color:#555;margin:0;">At Restoran Pak Haji Ali & Muiz Hot Chicken in USJ 8, or via GrabFood, Foodpanda, ShopeeFood, and Misirakyat.</p>
+            </div>
+            <div style="padding:12px 16px;background:#fff;border-radius:8px;">
+                <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">Does Muiz Hot Chicken deliver?</h4>
+                <p style="font-size:14px;color:#555;margin:0;">Yes, we deliver via GrabFood, Foodpanda, ShopeeFood, and Misirakyat.</p>
             </div>
         </div>
 
