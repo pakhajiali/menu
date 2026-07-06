@@ -9,6 +9,20 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- ========== BRAND PAGES ========== -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/muiz-hot-chicken.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/ayam-muiz.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- ========== CATERING ========== -->
     <url>
         <loc>https://pakhajiali.github.io/menu/catering/</loc>
@@ -19,37 +33,87 @@
 
     <!-- ========== LOCATION PAGES ========== -->
     <url>
-        <loc>https://pakhajiali.github.io/menu/subang-jaya/</loc>
+        <loc>https://pakhajiali.github.io/menu/subang-jaya.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/usj/</loc>
+        <loc>https://pakhajiali.github.io/menu/usj.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/taipan/</loc>
+        <loc>https://pakhajiali.github.io/menu/taipan.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/ss15/</loc>
+        <loc>https://pakhajiali.github.io/menu/ss15.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/sunway/</loc>
+        <loc>https://pakhajiali.github.io/menu/sunway.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://pakhajiali.github.io/menu/klang-valley/</loc>
+        <loc>https://pakhajiali.github.io/menu/puchong.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/shah-alam.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/subang-permai.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/klang-valley.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========== UNIVERSITY PAGES ========== -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/taylors-university-food.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/sunway-university-food.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/monash-university-food.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/inti-college-food.html</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/segi-university-food.html</loc>
         <lastmod>2026-07-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -196,36 +260,57 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    <!-- University Pages -->
-<url>
-    <loc>https://pakhajiali.github.io/menu/taylors-university-food.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-<url>
-    <loc>https://pakhajiali.github.io/menu/sunway-university-food.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-<url>
-    <loc>https://pakhajiali.github.io/menu/monash-university-food.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-<url>
-    <loc>https://pakhajiali.github.io/menu/inti-college-food.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-<url>
-    <loc>https://pakhajiali.github.io/menu/segi-university-food.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
+
+    <!-- Brand Domination Posts -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=what-is-muiz-hot-chicken</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=apa-itu-ayam-muiz</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=why-muiz-hot-chicken-is-the-best</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- University Blog Posts -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=taylors-university-food-guide</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=sunway-university-food-guide</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=monash-university-food-guide</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=inti-college-food-guide</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pakhajiali.github.io/menu/blog/?post=segi-university-food-guide</loc>
+        <lastmod>2026-07-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
 </urlset>
