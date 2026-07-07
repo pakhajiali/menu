@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile – Restoran Pak Haji Ali & Muiz Hot Chicken</title>
     <style>
-        /* ============================================
-           COMPANY PROFILE STYLES
-           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -44,30 +41,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 600px;
-            height: 600px;
-            background: rgba(214, 40, 40, 0.08);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .cover-page::after {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            left: -20%;
-            width: 500px;
-            height: 500px;
-            background: rgba(214, 40, 40, 0.05);
-            border-radius: 50%;
-            pointer-events: none;
         }
 
         .cover-page .cover-content {
@@ -157,6 +130,27 @@
 
         .cover-page .cover-stamp .icon-circle i {
             color: #ffb703;
+        }
+
+        .cover-page .cert-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 4px;
+        }
+
+        .cover-page .cert-badge.halal {
+            background: rgba(46, 204, 113, 0.9);
+        }
+
+        .cover-page .cert-badge.mesti {
+            background: #6C2E9A;
+        }
+
+        .cover-page .cert-badge.star {
+            background: #0d7b37;
         }
 
         /* --- HEADER --- */
@@ -617,31 +611,21 @@
                         PERFECTLY MADE
                     </span>
                     <span class="cover-stamp">
-                        <span class="icon-circle"><i class="fas fa-drumstick-bite"></i></span>
-                        FRESH CHICKEN
-                    </span>
-                    <span class="cover-stamp">
                         <span class="icon-circle"><i class="fas fa-leaf"></i></span>
                         SEASONED WITH CARE
                     </span>
                 </div>
 
                 <div style="margin-top:30px;">
-                    <span class="cert-badge halal" style="display:inline-block;background:rgba(46,204,113,0.9);padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
-                        <i class="fas fa-shield-halved"></i> JAKIM Halal
-                    </span>
-                    <span class="cert-badge mesti" style="display:inline-block;background:#6C2E9A;padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
-                        <i class="fas fa-certificate"></i> MeSTI Certified
-                    </span>
-                    <span class="cert-badge star" style="display:inline-block;background:#0d7b37;padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
-                        <i class="fas fa-star"></i> 5★ Rated
-                    </span>
+                    <span class="cert-badge halal"><i class="fas fa-shield-halved"></i> JAKIM Halal</span>
+                    <span class="cert-badge mesti"><i class="fas fa-certificate"></i> MeSTI Certified</span>
+                    <span class="cert-badge star"><i class="fas fa-star"></i> 5★ Rated</span>
                 </div>
 
             </div>
         </section>
 
-        <!-- ====== PAGE BREAK (for print) ====== -->
+        <!-- ====== PAGE BREAK ====== -->
         <div class="page-break"></div>
 
         <!-- ====== HEADER ====== -->
@@ -688,7 +672,6 @@
         <!-- ====== CONTENT ====== -->
         <div class="content">
 
-        <!-- About -->
             <h2 class="section-title">About Us <span class="sub">– Our Story</span></h2>
             <div class="two-col">
                 <div class="about-text">
@@ -699,7 +682,7 @@
                 <div class="about-text">
                     <p><strong>📍 Location:</strong> J2-00-04, Subang Perdana, Persiaran Mulia, Goodyear Court 6, USJ 8, Subang Jaya</p>
                     <br>
-                    <p><strong>🕐 Operating Hours:</strong> Daily 9:00 AM – 9:00 PM</p>
+                    <p><strong>🕐 Hours:</strong> Daily 9:00 AM – 9:00 PM</p>
                     <br>
                     <p><strong>📞 Contact:</strong> +6017-908 1447</p>
                     <br>
@@ -707,7 +690,6 @@
                 </div>
             </div>
 
-            <!-- Signature Dishes -->
             <h2 class="section-title">Signature Dishes</h2>
             <div class="dish-grid">
                 <div class="dish-card">
@@ -742,7 +724,6 @@
                 </div>
             </div>
 
-            <!-- Services -->
             <h2 class="section-title">Our Services</h2>
             <div class="service-grid">
                 <div class="service-item">
@@ -777,8 +758,7 @@
                 </div>
             </div>
 
-            <!-- Certifications -->
-            <h2 class="section-title">Certifications &amp; Quality Assurance</h2>
+            <h2 class="section-title">Certifications &amp; Quality</h2>
             <div class="cert-grid">
                 <div class="cert-card">
                     <h4>🛡️ JAKIM Halal Certified</h4>
@@ -797,7 +777,6 @@
                 </div>
             </div>
 
-            <!-- Areas Served -->
             <h2 class="section-title">Areas We Serve</h2>
             <div class="areas">
                 <span>Subang Jaya</span>
@@ -860,10 +839,7 @@
     </div>
 
     <script>
-        // Ensure Font Awesome loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Font Awesome is loaded via CDN in the head
-        });
+        document.addEventListener('DOMContentLoaded', function() {});
     </script>
 
 </body>
