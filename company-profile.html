@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile – Restoran Pak Haji Ali & Muiz Hot Chicken</title>
+    <style>
+        /* ============================================
+           COMPANY PROFILE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: #e8e8e8;
+            color: #2d3436;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .profile-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* --- Header --- */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #242446);
+            color: #ffffff;
+            padding: 50px 60px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .header-left h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header-left h1 span {
+            color: #d62828;
+        }
+
+        .header-left .tagline {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .cert-badge {
+            display: inline-block;
+            background: rgba(46,204,113,0.9);
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            margin: 4px 0;
+        }
+
+        .header-right .cert-badge.mesti {
+            background: #6C2E9A;
+        }
+
+        .header-right .cert-badge.halal {
+            background: rgba(46,204,113,0.9);
+        }
+
+        /* --- Status Bar --- */
+        .status-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background: #f8f8f8;
+            padding: 16px 30px;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-item .number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d62828;
+        }
+
+        .status-item .label {
+            font-size: 13px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Content --- */
+        .content {
+            padding: 40px 60px 50px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a2e;
+            border-bottom: 3px solid #d62828;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .section-title .sub {
+            font-weight: 400;
+            color: #888;
+            font-size: 16px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: #1a1a2e;
+        }
+
+        /* --- Signature Dishes --- */
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0 30px;
+        }
+
+        .dish-card {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border-left: 4px solid #d62828;
+        }
+
+        .dish-card .icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .dish-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .dish-card p {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        /* --- Services --- */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 16px 0 30px;
+        }
+
+        .service-item {
+            background: #f8f8f8;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .service-item i {
+            font-size: 28px;
+            color: #d62828;
+            margin-bottom: 6px;
+        }
+
+        .service-item h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* --- Certifications --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 16px 0 30px;
+        }
+
+        .cert-card {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #0d7b37;
+        }
+
+        .cert-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .cert-card p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .cert-card .badge {
+            display: inline-block;
+            background: #0d7b37;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 30px;
+            margin-top: 6px;
+        }
+
+        /* --- Areas Served --- */
+        .areas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 30px;
+        }
+
+        .areas span {
+            background: #f0f0f0;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        /* --- Footer --- */
+        .profile-footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.8);
+            padding: 30px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .profile-footer h4 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-footer p,
+        .profile-footer a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+        }
+
+        .profile-footer a:hover {
+            color: #fff;
+        }
+
+        .profile-footer .social {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .profile-footer .social a {
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .profile-footer .social a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            background: #121624;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            padding: 16px 20px;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .profile-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .header {
+                padding: 30px 40px 25px;
+            }
+            .content {
+                padding: 30px 40px 40px;
+            }
+            .profile-footer {
+                padding: 20px 40px;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 24px;
+            }
+            .header-right {
+                text-align: center;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .content {
+                padding: 24px 20px 30px;
+            }
+            .profile-footer {
+                padding: 20px 24px;
+                text-align: center;
+            }
+            .profile-footer .social {
+                justify-content: center;
+            }
+            .status-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left h1 {
+                font-size: 26px;
+            }
+            .dish-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+
+        <!-- ====== HEADER ====== -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Restoran Pak Haji Ali<br><span>&amp; Muiz Hot Chicken</span></h1>
+                <p class="tagline">JAKIM Halal Certified • Subang Jaya (USJ 8)</p>
+            </div>
+            <div class="header-right">
+                <div style="margin-bottom:8px;">
+                    <span class="cert-badge halal"><i class="fas fa-shield-halved"></i> JAKIM Halal</span>
+                    <span class="cert-badge mesti"><i class="fas fa-certificate"></i> MeSTI Certified</span>
+                </div>
+                <div style="font-size:14px; color:rgba(255,255,255,0.6);">
+                    <i class="fas fa-phone"></i> +6017-908 1447
+                </div>
+            </div>
+        </header>
+
+        <!-- ====== STATUS BAR ====== -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="number">200+</div>
+                <div class="label">Muiz Hot Chicken Branches</div>
+            </div>
+            <div class="status-item">
+                <div class="number">5★</div>
+                <div class="label">Google Rating</div>
+            </div>
+            <div class="status-item">
+                <div class="number">43</div>
+                <div class="label">Customer Reviews</div>
+            </div>
+            <div class="status-item">
+                <div class="number">9</div>
+                <div class="label">Locations Served</div>
+            </div>
+        </div>
+
+        <!-- ====== CONTENT ====== -->
+        <div class="content">
+
+            <!-- About -->
+            <h2 class="section-title">About Us <span class="sub">– Our Story</span></h2>
+            <div class="two-col">
+                <div class="about-text">
+                    <p><strong>Restoran Pak Haji Ali &amp; Muiz Hot Chicken</strong> opened its doors on <strong>1 May 2026</strong> in <strong>Goodyear Court 6, USJ 8, Subang Jaya</strong>. We are proud to be part of the <strong>Muiz Hot Chicken</strong> family – a trusted halal brand with over 200 branches across Malaysia.</p>
+                    <br>
+                    <p>Our mission is to serve authentic, affordable, and 100% halal food in a clean, family-friendly environment. From our signature <strong>Muiz Hot Chicken</strong> to our rich <strong>Nasi Kandar Kuah Banjir</strong>, every dish is crafted with passion and the freshest ingredients.</p>
+                </div>
+                <div class="about-text">
+                    <p><strong>📍 Location:</strong> J2-00-04, Subang Perdana, Persiaran Mulia, Goodyear Court 6, USJ 8, Subang Jaya</p>
+                    <br>
+                    <p><strong>🕐 Operating Hours:</strong> Daily 9:00 AM – 9:00 PM</p>
+                    <br>
+                    <p><strong>📞 Contact:</strong> +6017-908 1447</p>
+                    <br>
+                    <p><strong>📧 Email:</strong> <a href="mailto:info@pakhajiali.com">info@pakhajiali.com</a></p>
+                </div>
+            </div>
+
+            <!-- Signature Dishes -->
+            <h2 class="section-title">Signature Dishes</h2>
+            <div class="dish-grid">
+                <div class="dish-card">
+                    <span class="icon">🍗</span>
+                    <h4>Muiz Hot Chicken</h4>
+                    <p>12-spice marinade, double-coated, crispy fried chicken</p>
+                </div>
+                <div class="dish-card">
+                    <span class="icon">🍚</span>
+                    <h4>Nasi Kandar Kuah Banjir</h4>
+                    <p>Flooded rice with mixed curries</p>
+                </div>
+                <div class="dish-card">
+                    <span class="icon">🍜</span>
+                    <h4>Tomyam Seafood</h4>
+                    <p>Spicy, sour Thai-style soup</p>
+                </div>
+                <div class="dish-card">
+                    <span class="icon">🍳</span>
+                    <h4>Nasi Goreng Kampung</h4>
+                    <p>Smoky wok-fried rice with anchovies</p>
+                </div>
+                <div class="dish-card">
+                    <span class="icon">📦</span>
+                    <h4>Muiz Happy Box</h4>
+                    <p>5 pieces – perfect for sharing</p>
+                </div>
+                <div class="dish-card">
+                    <span class="icon">🌶️</span>
+                    <h4>Nasi Penyet</h4>
+                    <p>Smashed chicken with sambal</p>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <h2 class="section-title">Our Services</h2>
+            <div class="service-grid">
+                <div class="service-item">
+                    <i class="fas fa-utensils"></i>
+                    <h5>Dine-In</h5>
+                    <p>Family-friendly atmosphere</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-bag-shopping"></i>
+                    <h5>Takeaway</h5>
+                    <p>Quick pickup service</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-truck"></i>
+                    <h5>Delivery</h5>
+                    <p>GrabFood, Foodpanda, ShopeeFood, Misirakyat</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h5>Corporate Catering</h5>
+                    <p>Office lunches &amp; events</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-ring"></i>
+                    <h5>Wedding Catering</h5>
+                    <p>Beautiful buffet spreads</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h5>Private Events</h5>
+                    <p>Birthdays, Raya, parties</p>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <h2 class="section-title">Certifications &amp; Quality Assurance</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h4>🛡️ JAKIM Halal Certified</h4>
+                    <p>Fully certified by the Department of Islamic Development Malaysia. Our entire menu – from ingredients to preparation – meets strict halal standards.</p>
+                    <span class="badge">✓ Verified</span>
+                </div>
+                <div class="cert-card">
+                    <h4>🏥 MeSTI Certified</h4>
+                    <p>Certified by the Ministry of Health Malaysia (KKM). Our kitchen meets strict food safety, hygiene, and quality standards.</p>
+                    <span class="badge">✓ Verified</span>
+                </div>
+                <div class="cert-card">
+                    <h4>⭐ 5★ Google Rating</h4>
+                    <p>Rated 5 stars by our customers. We are committed to exceptional service, quality food, and a welcoming environment.</p>
+                    <span class="badge">✓ Trusted</span>
+                </div>
+            </div>
+
+            <!-- Areas Served -->
+            <h2 class="section-title">Areas We Serve</h2>
+            <div class="areas">
+                <span>Subang Jaya</span>
+                <span>USJ</span>
+                <span>Taipan</span>
+                <span>SS15</span>
+                <span>Sunway</span>
+                <span>Puchong</span>
+                <span>Shah Alam</span>
+                <span>Subang Permai</span>
+                <span>Klang Valley</span>
+            </div>
+
+        </div>
+
+        <!-- ====== FOOTER ====== -->
+        <div class="profile-footer">
+            <div>
+                <h4>📍 Visit Us</h4>
+                <p>J2-00-04, Subang Perdana,<br>Persiaran Mulia, Goodyear Court 6,<br>USJ 8, Subang Jaya, Selangor</p>
+            </div>
+            <div>
+                <h4>📞 Contact</h4>
+                <p><a href="tel:+60179081447">+6017-908 1447</a></p>
+                <p><a href="https://wa.me/60179081447" target="_blank">WhatsApp</a></p>
+                <p><a href="mailto:info@pakhajiali.com">info@pakhajiali.com</a></p>
+            </div>
+            <div>
+                <h4>🕐 Hours</h4>
+                <p>Monday – Sunday<br>9:00 AM – 9:00 PM</p>
+            </div>
+            <div>
+                <h4>🌐 Follow Us</h4>
+                <div class="social">
+                    <a href="https://www.tiktok.com/@muiz.fried.chicken" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@MHCRestoranPakHajiAli" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/61591075012810/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://g.page/r/CUrZw9xvAXIPEBE" target="_blank"><i class="fab fa-google"></i></a>
+                </div>
+                <p style="margin-top:6px; font-size:13px; color:rgba(255,255,255,0.5);">@muiz.fried.chicken</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Restoran Pak Haji Ali &amp; Muiz Hot Chicken. All rights reserved.</p>
+            <p style="margin-top:4px; font-size:12px;">JAKIM Halal Certified • MeSTI Certified • 5★ Google Rated</p>
+        </div>
+
+    </div>
+
+    <!-- ====== FONT AWESOME ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ====== PRINT BUTTON ====== -->
+    <div style="text-align:center; margin-top:30px;">
+        <button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;padding:14px 40px;border-radius:40px;font-size:18px;font-weight:700;cursor:pointer;transition:0.3s;">
+            <i class="fas fa-file-pdf"></i> Download as PDF
+        </button>
+        <p style="font-size:14px;color:#888;margin-top:10px;">Click the button above to save as PDF or print.</p>
+    </div>
+
+    <script>
+        // Ensure Font Awesome loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Font Awesome is loaded via CDN in the head
+        });
+    </script>
+
+</body>
+</html>
