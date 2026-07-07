@@ -31,33 +31,172 @@
             overflow: hidden;
         }
 
-        /* --- Header --- */
+        /* --- COVER PAGE --- */
+        .cover-page {
+            background: linear-gradient(135deg, #1a1a2e 0%, #242446 50%, #1a1a2e 100%);
+            color: #ffffff;
+            padding: 80px 60px 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 600px;
+            height: 600px;
+            background: rgba(214, 40, 40, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(214, 40, 40, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cover-page .cover-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .cover-page .cover-logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .cover-page .cover-tagline {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .cover-page h1 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .cover-page h1 span {
+            color: #d62828;
+        }
+
+        .cover-page .cover-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-page .cover-location {
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .cover-page .cover-divider {
+            width: 60px;
+            height: 3px;
+            background: #d62828;
+            margin: 12px auto 20px;
+            border-radius: 10px;
+        }
+
+        .cover-page .cover-stamps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 40px;
+            margin-top: 20px;
+        }
+
+        .cover-page .cover-stamp {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .cover-page .cover-stamp .icon-circle {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .cover-page .cover-stamp .icon-circle i {
+            color: #ffb703;
+        }
+
+        /* --- HEADER --- */
         .header {
             background: linear-gradient(135deg, #1a1a2e, #242446);
             color: #ffffff;
-            padding: 50px 60px 40px;
+            padding: 30px 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
         }
 
-        .header-left h1 {
-            font-size: 36px;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-left .header-logo {
+            width: 70px;
+            height: auto;
+        }
+
+        .header-left .header-text h2 {
+            font-size: 24px;
             font-weight: 800;
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
 
-        .header-left h1 span {
+        .header-left .header-text h2 span {
             color: #d62828;
         }
 
-        .header-left .tagline {
-            font-size: 16px;
+        .header-left .header-text .tagline {
+            font-size: 14px;
             color: rgba(255,255,255,0.7);
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .header-right {
@@ -66,20 +205,29 @@
 
         .header-right .cert-badge {
             display: inline-block;
-            background: rgba(46,204,113,0.9);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 999px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            margin: 4px 0;
+            margin: 3px 0;
+        }
+
+        .header-right .cert-badge.halal {
+            background: rgba(46, 204, 113, 0.9);
         }
 
         .header-right .cert-badge.mesti {
             background: #6C2E9A;
         }
 
-        .header-right .cert-badge.halal {
-            background: rgba(46,204,113,0.9);
+        .header-right .cert-badge.star {
+            background: #0d7b37;
+        }
+
+        .header-right .contact-info {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 6px;
         }
 
         /* --- Status Bar --- */
@@ -320,6 +468,14 @@
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* --- Page Break for Print --- */
+        .page-break {
+            page-break-after: always;
+            border: none;
+            height: 0;
+            margin: 0;
+        }
+
         /* --- Print Styles --- */
         @media print {
             body {
@@ -330,8 +486,13 @@
                 box-shadow: none;
                 border-radius: 0;
             }
+            .cover-page {
+                min-height: 100vh;
+                padding: 60px 40px;
+                border-radius: 0;
+            }
             .header {
-                padding: 30px 40px 25px;
+                padding: 20px 40px;
             }
             .content {
                 padding: 30px 40px 40px;
@@ -345,10 +506,24 @@
         }
 
         @media (max-width: 768px) {
+            .cover-page {
+                padding: 40px 24px 50px;
+                min-height: 400px;
+            }
+            .cover-page h1 {
+                font-size: 32px;
+            }
+            .cover-page .cover-subtitle {
+                font-size: 16px;
+            }
             .header {
                 flex-direction: column;
                 text-align: center;
-                padding: 30px 24px;
+                padding: 20px 24px;
+            }
+            .header-left {
+                flex-direction: column;
+                text-align: center;
             }
             .header-right {
                 text-align: center;
@@ -371,11 +546,20 @@
                 flex-direction: column;
                 align-items: center;
             }
+            .cover-page .cover-stamps {
+                gap: 10px 20px;
+            }
+            .cover-page .cover-logo {
+                width: 140px;
+            }
         }
 
         @media (max-width: 480px) {
-            .header-left h1 {
+            .cover-page h1 {
                 font-size: 26px;
+            }
+            .cover-page .cover-subtitle {
+                font-size: 14px;
             }
             .dish-grid {
                 grid-template-columns: 1fr 1fr;
@@ -386,6 +570,20 @@
             .cert-grid {
                 grid-template-columns: 1fr;
             }
+            .cover-page .cover-stamps {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            .cover-page .cover-logo {
+                width: 110px;
+            }
+            .header-left .header-logo {
+                width: 50px;
+            }
+            .header-left .header-text h2 {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -393,18 +591,75 @@
 
     <div class="profile-container">
 
+        <!-- ====== COVER PAGE ====== -->
+        <section class="cover-page">
+            <div class="cover-content">
+
+                <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken" class="cover-logo" loading="lazy" decoding="async">
+
+                <div class="cover-tagline">FAMOUS &amp; CRISPY</div>
+
+                <h1>PAK HAJI ALI <br><span>&amp; MUIZ</span> HOT CHICKEN</h1>
+
+                <p class="cover-subtitle">USJ 8 • SUBANG JAYA</p>
+
+                <div class="cover-divider"></div>
+
+                <p class="cover-location">LEGENDARY FRIED CHICKEN • MADE FRESH DAILY!</p>
+
+                <div class="cover-stamps">
+                    <span class="cover-stamp">
+                        <span class="icon-circle"><i class="fas fa-check"></i></span>
+                        100% QUALITY
+                    </span>
+                    <span class="cover-stamp">
+                        <span class="icon-circle"><i class="fas fa-star"></i></span>
+                        PERFECTLY MADE
+                    </span>
+                    <span class="cover-stamp">
+                        <span class="icon-circle"><i class="fas fa-drumstick-bite"></i></span>
+                        FRESH CHICKEN
+                    </span>
+                    <span class="cover-stamp">
+                        <span class="icon-circle"><i class="fas fa-leaf"></i></span>
+                        SEASONED WITH CARE
+                    </span>
+                </div>
+
+                <div style="margin-top:30px;">
+                    <span class="cert-badge halal" style="display:inline-block;background:rgba(46,204,113,0.9);padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
+                        <i class="fas fa-shield-halved"></i> JAKIM Halal
+                    </span>
+                    <span class="cert-badge mesti" style="display:inline-block;background:#6C2E9A;padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
+                        <i class="fas fa-certificate"></i> MeSTI Certified
+                    </span>
+                    <span class="cert-badge star" style="display:inline-block;background:#0d7b37;padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;margin:4px 4px;">
+                        <i class="fas fa-star"></i> 5★ Rated
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ====== PAGE BREAK (for print) ====== -->
+        <div class="page-break"></div>
+
         <!-- ====== HEADER ====== -->
         <header class="header">
             <div class="header-left">
-                <h1>Restoran Pak Haji Ali<br><span>&amp; Muiz Hot Chicken</span></h1>
-                <p class="tagline">JAKIM Halal Certified • Subang Jaya (USJ 8)</p>
+                <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken" class="header-logo" loading="lazy" decoding="async">
+                <div class="header-text">
+                    <h2>Restoran Pak Haji Ali<br><span>&amp; Muiz Hot Chicken</span></h2>
+                    <p class="tagline">JAKIM Halal Certified • Subang Jaya (USJ 8)</p>
+                </div>
             </div>
             <div class="header-right">
-                <div style="margin-bottom:8px;">
+                <div style="margin-bottom:4px;">
                     <span class="cert-badge halal"><i class="fas fa-shield-halved"></i> JAKIM Halal</span>
                     <span class="cert-badge mesti"><i class="fas fa-certificate"></i> MeSTI Certified</span>
+                    <span class="cert-badge star"><i class="fas fa-star"></i> 5★</span>
                 </div>
-                <div style="font-size:14px; color:rgba(255,255,255,0.6);">
+                <div class="contact-info">
                     <i class="fas fa-phone"></i> +6017-908 1447
                 </div>
             </div>
@@ -433,7 +688,7 @@
         <!-- ====== CONTENT ====== -->
         <div class="content">
 
-            <!-- About -->
+        <!-- About -->
             <h2 class="section-title">About Us <span class="sub">– Our Story</span></h2>
             <div class="two-col">
                 <div class="about-text">
