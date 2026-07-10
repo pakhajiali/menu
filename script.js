@@ -1,5 +1,5 @@
 // ============================================
-// PRODUCT DATA
+// PRODUCT DATA (unchanged)
 // ============================================
 const productData = {
     "Most Ordered": [
@@ -89,7 +89,27 @@ const productData = {
 };
 
 // ============================================
-// RENDER MENU
+// TRANSLATION HELPERS
+// ============================================
+let currentLang = 'en';
+
+function getTranslation(key) {
+    const t = translations[currentLang];
+    if (!t) return key;
+    const keys = key.split('.');
+    let val = t;
+    for (let k of keys) {
+        if (val && typeof val === 'object' && val[k] !== undefined) {
+            val = val[k];
+        } else {
+            return key;
+        }
+    }
+    return val;
+}
+
+// ============================================
+// RENDER MENU (with translations)
 // ============================================
 function renderMenu() {
     const container = document.getElementById('menuContainer');
@@ -114,11 +134,12 @@ function renderMenu() {
         const wrapper = document.createElement('div');
         wrapper.className = 'category-wrapper';
 
+        const translatedCategory = getTranslation(`menuCategories.${category}`);
         const header = document.createElement('div');
         header.className = 'category-header';
         header.innerHTML = `
             <span class="category-icon">${categoryIconMap[category] || '📋'}</span>
-            <h2 class="category-title">${category}</h2>
+            <h2 class="category-title">${translatedCategory}</h2>
         `;
         wrapper.appendChild(header);
 
@@ -137,16 +158,19 @@ function renderMenu() {
             productDiv.dataset.price = product.price;
             productDiv.dataset.img = product.img;
 
+            // Get translated description
+            const translatedDesc = getTranslation(`productDesc.${product.name}`) || product.desc;
+
             productDiv.innerHTML = `
                 <div class="product-image-wrapper">
                     <img src="${product.img}" alt="${product.name} - Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)" width="120" height="120" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${fallbackSvg}';">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>
-                    <p class="product-desc">${product.desc}</p>
+                    <p class="product-desc">${translatedDesc}</p>
                     <div class="product-footer">
                         <span class="product-price">RM${product.price.toFixed(2)}</span>
-                        <button class="product-add" aria-label="Add to cart">+ Add</button>
+                        <button class="product-add" aria-label="${getTranslation('modalAddToCart')}">+ Add</button>
                     </div>
                 </div>
             `;
@@ -157,6 +181,51 @@ function renderMenu() {
         wrapper.appendChild(grid);
         container.appendChild(wrapper);
     }
+}
+
+// ============================================
+// UPDATE STATIC CONTENT (data-i18n)
+// ============================================
+function updateStaticContent() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const translation = getTranslation(key);
+        if (translation) {
+            el.innerHTML = translation;
+        }
+    });
+    // Also update placeholder for textarea if it has data-i18n-placeholder
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        const translation = getTranslation(key);
+        if (translation) {
+            el.placeholder = translation;
+        }
+    });
+    // Update meta tags
+    document.title = getTranslation('pageTitle') || document.title;
+    document.querySelector('meta[name="description"]').content = getTranslation('metaDesc') || '';
+    document.querySelector('meta[property="og:title"]').content = getTranslation('ogTitle') || '';
+    document.querySelector('meta[property="og:description"]').content = getTranslation('ogDesc') || '';
+    document.querySelector('meta[name="twitter:title"]').content = getTranslation('twitterTitle') || '';
+    document.querySelector('meta[name="twitter:description"]').content = getTranslation('twitterDesc') || '';
+    // Update hreflang links (optional – keep as is)
+}
+
+// ============================================
+// LANGUAGE SWITCHER
+// ============================================
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('preferredLang', lang);
+    document.documentElement.lang = lang;
+    updateStaticContent();
+    renderMenu();
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    // Optionally update hreflang and canonical (not required for simple switcher)
 }
 
 // ============================================
@@ -176,12 +245,14 @@ function revealOnScroll() {
 }
 
 // ============================================
-// CART, MODAL, DRAWER
+// CART, MODAL, DRAWER (unchanged except translations)
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    renderMenu();
-    revealOnScroll();
+    // Restore language preference
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    setLanguage(savedLang);
 
+    // Cart and modal logic (same as before, but use getTranslation for UI strings)
     // --- DOM refs ---
     const modal = document.getElementById('productModal');
     const modalImg = document.getElementById('modalImg');
@@ -242,8 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItemsDiv.innerHTML = `
                 <div class="empty-cart">
                     <i class="fas fa-shopping-bag empty-icon"></i>
-                    <p>Your cart is empty</p>
-                    <span>Add some delicious items!</span>
+                    <p>${getTranslation('emptyCart')}</p>
+                    <span>${getTranslation('emptyCartSub')}</span>
                 </div>
             `;
             cartTotalSpan.innerText = 'Total: RM0.00';
@@ -273,6 +344,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         cartItemsDiv.innerHTML = html;
         cartTotalSpan.innerText = 'Total: ' + formatPrice(total);
+
+        document.querySelectorAll('.cart-qty-minus').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.dataset.index);
+                if (cart[idx].qty > 1) {
+                    cart[idx].qty--;
+                } else {
+                    cart.splice(idx, 1);
+                }
+                saveCartAndUpdate();
+            });
+        });
+
+        document.querySelectorAll('.cart-qty-plus').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const idx = parseInt(this.dataset.index);
+                cart[idx].qty++;
+                saveCartAndUpdate();
+            });
+        });
 
         document.querySelectorAll('.cart-qty-minus').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -486,6 +579,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Scroll reveal on scroll ---
     window.addEventListener('scroll', revealOnScroll);
 
+    // --- Language switcher events ---
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            setLanguage(lang);
+        });
+    });
+
     // --- Init ---
     loadCart();
+    // Ensure static content is updated after initial render
+    setTimeout(updateStaticContent, 100);
 });
