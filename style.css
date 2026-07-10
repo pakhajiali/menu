@@ -1190,6 +1190,43 @@ img {
 }
 
 /* ============================================
+   LANGUAGE SWITCHER (NEW)
+   ============================================ */
+.language-switcher {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    backdrop-filter: blur(4px);
+    font-family: inherit;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: #d62828;
+    border-color: #d62828;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(214, 40, 40, 0.4);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
@@ -1371,4 +1408,4 @@ img {
     .price-note p {
         font-size: 11px;
     }
-       }
+}
