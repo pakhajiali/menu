@@ -1,5 +1,7 @@
 // ============================================
-// CART, MODAL, DRAWER – Full Interactive Logic
+// FULL SCRIPT.JS – Cart, Modal, Drawer, Checkout
+// Works with static HTML (EN, BM, ZH)
+// No menu rendering, no language logic
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'RM' + parseFloat(price).toFixed(2);
     }
 
-    // ---------- Live WhatsApp link updater ----------
+    // ---------- WhatsApp link updater ----------
     function updateModalWaLink() {
         if (!currentProduct) return;
         const qty = parseInt(qtyInput.value) || 1;
@@ -323,9 +325,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     window.addEventListener('scroll', revealOnScroll);
-    // Initial check
+    // Initial check on load
     revealOnScroll();
 
     // ---------- Init ----------
     loadCart();
+
 });
