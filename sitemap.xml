@@ -2,17 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-    <!-- ========== MAIN PAGE with LANGUAGE ALTERNATES ========== -->
+    <!-- ========== MAIN PAGE (ENGLISH) with LANGUAGE ALTERNATES ========== -->
     <url>
         <loc>https://pakhajiali.github.io/menu/</loc>
         <lastmod>2026-07-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-        <!-- Language variants -->
-        <xhtml:link rel="alternate" hreflang="en" href="https://pakhajiali.github.io/menu/?lang=en" />
-        <xhtml:link rel="alternate" hreflang="ms" href="https://pakhajiali.github.io/menu/?lang=ms" />
-        <xhtml:link rel="alternate" hreflang="zh" href="https://pakhajiali.github.io/menu/?lang=zh" />
+        <!-- Language variants pointing to static subfolders -->
+        <xhtml:link rel="alternate" hreflang="en" href="https://pakhajiali.github.io/menu/" />
+        <xhtml:link rel="alternate" hreflang="ms" href="https://pakhajiali.github.io/menu/ms/" />
+        <xhtml:link rel="alternate" hreflang="zh" href="https://pakhajiali.github.io/menu/zh/" />
         <xhtml:link rel="alternate" hreflang="x-default" href="https://pakhajiali.github.io/menu/" />
+    </url>
+
+    <!-- ========== BAHASA MALAYSIA VERSION ========== -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/ms/</loc>
+        <lastmod>2026-07-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ========== CHINESE VERSION ========== -->
+    <url>
+        <loc>https://pakhajiali.github.io/menu/zh/</loc>
+        <lastmod>2026-07-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <!-- ========== BRAND PAGES ========== -->
