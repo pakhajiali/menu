@@ -31,22 +31,27 @@
     <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
     
 <!-- ===== FAVICONS ===== -->
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
 
-<!-- ===== PRELOAD LCP IMAGE (Hero/Logo) – Fixes NO_LCP ===== -->
+<!-- ===== PRELOAD LCP IMAGE ===== -->
+<!-- Change logo.webp to your actual largest visible image if different -->
 <link rel="preload" as="image" href="logo.webp" fetchpriority="high">
 
-<!-- ===== DNS & CONNECTION HINTS (Speeds up CDN – no visual change) ===== -->
-<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<!-- ===== CDN CONNECTION OPTIMIZATION ===== -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
 <!-- ===== WEB APP MANIFEST ===== -->
 <link rel="manifest" href="manifest.json">
 
-<!-- ===== STYLESHEETS (Stable, no async tricks) ===== -->
+<!-- ===== VIEWPORT (IMPORTANT FOR MOBILE SPEED) ===== -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== MAIN STYLESHEET ===== -->
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ===== FONT AWESOME (KEEP ONLY IF YOU USE IT) ===== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
     
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
