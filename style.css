@@ -1225,43 +1225,188 @@ img {
     color: #fff;
     box-shadow: 0 4px 12px rgba(214, 40, 40, 0.4);
 }
-/* ============================================
-   HORIZONTAL SCROLLABLE REVIEWS (Carousel-style)
+
+
+ /* ============================================
+   PREMIUM REVIEWS – Horizontal Carousel
    ============================================ */
 
-/* The grid becomes a horizontal flex container */
-.reviews-grid {
-    display: flex;
-    flex-wrap: nowrap;           /* Prevents wrapping to next line */
-    gap: 24px;
-    overflow-x: auto;            /* Enables horizontal scrolling */
-    padding: 10px 4px 20px 4px;  /* Space for scrollbar and shadows */
-    scroll-snap-type: x mandatory; /* Snaps cards into view */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    scroll-behavior: smooth;
+.reviews-section {
+    padding: 60px 0 70px;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
 }
 
-/* Each card has a fixed width and snaps into place */
-.review-card {
-    flex: 0 0 320px;            /* Fixed width – cards don't shrink */
-    scroll-snap-align: start;   /* Snaps to the left edge */
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 24px 26px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+.reviews-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-tag {
+    display: inline-block;
+    background: #fef0ef;
+    color: var(--primary);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(214, 40, 40, 0.15);
+}
+
+.reviews-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+
+.reviews-header p {
+    font-size: 18px;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+/* ===== SCROLLABLE WRAPPER WITH EDGE FADE ===== */
+.reviews-grid-wrapper {
+    position: relative;
+    margin: 0 -16px;
+    padding: 0 16px;
+}
+
+/* Edge fade – masks the left and right edges for a premium "infinite scroll" feel */
+.reviews-grid {
     display: flex;
-    flex-direction: column;
-    /* Keep all your existing card styles */
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 16px 4px 24px 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Edge fade mask */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+/* ===== INDIVIDUAL REVIEW CARD ===== */
+.review-card {
+    flex: 0 0 380px;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+    position: relative;
+}
+
+/* Decorative quote mark in background */
+.review-card::before {
+    content: "\201C";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 80px;
+    color: var(--primary);
+    opacity: 0.06;
+    font-family: Georgia, serif;
+    pointer-events: none;
+    line-height: 1;
 }
 
 .review-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 48px rgba(214, 40, 40, 0.12);
+    border-color: var(--primary-light);
+    background: #ffffff;
 }
 
-/* ---- Optional: Beautiful custom scrollbar ---- */
+/* ===== AVATAR ===== */
+.review-avatar {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(214, 40, 40, 0.25);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+/* ===== CONTENT ===== */
+.review-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.reviewer-name {
+    display: block;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+}
+
+.review-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0;
+    font-style: italic;
+}
+
+/* ===== CTA BUTTON ===== */
+.reviews-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--primary);
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(214, 40, 40, 0.2);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-review:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.btn-review i {
+    font-size: 18px;
+}
+
+/* ===== CUSTOM SCROLLBAR (Beautiful) ===== */
 .reviews-grid::-webkit-scrollbar {
     height: 6px;
 }
@@ -1274,33 +1419,64 @@ img {
 .reviews-grid::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .reviews-grid::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
 
-/* Firefox scrollbar styling */
 .reviews-grid {
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #f1f1f1;
 }
 
-.review-text strong {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-/* ---- Responsive: On mobile, cards can be slightly smaller ---- */
-@media (max-width: 480px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
     .review-card {
-        flex: 0 0 280px;        /* Slightly smaller cards on phones */
-        padding: 18px 20px;
+        flex: 0 0 300px;
+        padding: 20px 22px;
+        gap: 14px;
+    }
+    .review-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+        flex: 0 0 40px;
+    }
+    .review-text {
+        font-size: 14px;
+    }
+    .reviews-header h2 {
+        font-size: 28px;
     }
 }
 
-/* ---- Hide scrollbar completely (optional, for ultra-clean look) ---- */
-/* Uncomment this if you want to hide the scrollbar but still allow scrolling */
+@media (max-width: 480px) {
+    .review-card {
+        flex: 0 0 280px;
+        padding: 16px 18px;
+        gap: 12px;
+    }
+    .review-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+        flex: 0 0 36px;
+    }
+    .reviewer-name {
+        font-size: 14px;
+    }
+    .review-text {
+        font-size: 13px;
+    }
+    .btn-review {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+}
+
+/* Optional: Hide scrollbar for ultra-clean look (uncomment if you prefer) */
 /*
 .reviews-grid::-webkit-scrollbar {
     display: none;
