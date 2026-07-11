@@ -31,15 +31,24 @@
     <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Preconnect to CDN for faster Font Awesome -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="manifest.json">
+<!-- Web App Manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- ===== STYLESHEETS (non‑blocking) ===== -->
+<!-- 1. Preload critical CSS (your main style) -->
+<link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+
+<!-- 2. Font Awesome – loads after page paint (non‑blocking) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+      media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
