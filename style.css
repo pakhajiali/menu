@@ -1543,13 +1543,212 @@ img {
 
 .btn-explore:hover {
     border-color: var(--primary);
+/* ============================================
+   COMPACT REVIEWS – Horizontal Carousel
+   ============================================ */
+
+.reviews-section {
+    padding: 12px 0 20px;
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.section-tag {
+    display: inline-block;
+    background: #fef0ef;
+    color: var(--primary);
+    padding: 3px 14px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    border: 1px solid rgba(214, 40, 40, 0.15);
+}
+
+.reviews-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 2px;
+}
+
+.reviews-header p {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* ===== SCROLLABLE WRAPPER ===== */
+.reviews-grid-wrapper {
+    position: relative;
+    margin: 0 -16px;
+    padding: 0 16px;
+}
+
+.reviews-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 8px 4px 14px 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Edge fade mask */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+/* ===== COMPACT REVIEW CARD ===== */
+.review-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+    position: relative;
+}
+
+/* Decorative quote mark – smaller and more subtle */
+.review-card::before {
+    content: "\201C";
+    position: absolute;
+    top: -6px;
+    right: 14px;
+    font-size: 50px;
+    color: var(--primary);
+    opacity: 0.05;
+    font-family: Georgia, serif;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.review-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(214, 40, 40, 0.10);
+    border-color: var(--primary-light);
+    background: #ffffff;
+}
+
+/* ===== COMPACT AVATAR ===== */
+.review-avatar {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 8px rgba(214, 40, 40, 0.20);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+/* ===== COMPACT CONTENT ===== */
+.review-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.reviewer-name {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 2px;
+    letter-spacing: -0.2px;
+}
+
+.review-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0;
+    font-style: italic;
+}
+
+/* ===== COMPACT CTA BUTTONS ===== */
+.reviews-cta {
+    text-align: center;
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--primary);
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(214, 40, 40, 0.2);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-review:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.btn-review i {
+    font-size: 16px;
+}
+
+.btn-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-light);
+    padding: 10px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid #d0d7de;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-explore:hover {
+    border-color: var(--primary);
     color: var(--primary);
     background: rgba(214, 40, 40, 0.05);
     transform: translateY(-2px);
 }
 
 .btn-explore i {
-    font-size: 14px;
+    font-size: 13px;
     transition: 0.2s;
 }
 
@@ -1557,20 +1756,101 @@ img {
     transform: translateX(4px);
 }
 
-/* Responsive */
+/* ===== CUSTOM SCROLLBAR ===== */
+.reviews-grid::-webkit-scrollbar {
+    height: 4px;
+}
+
+.reviews-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.reviews-grid::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.reviews-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+.reviews-grid {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #f1f1f1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 260px;
+        padding: 14px 16px;
+        gap: 10px;
+    }
+    .review-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+        flex: 0 0 32px;
+    }
+    .reviewer-name {
+        font-size: 13px;
+    }
+    .review-text {
+        font-size: 13px;
+    }
+    .reviews-header h2 {
+        font-size: 20px;
+    }
+}
+
 @media (max-width: 480px) {
+    .reviews-section {
+        padding: 8px 0 16px;
+    }
+    .review-card {
+        flex: 0 0 240px;
+        padding: 12px 14px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+    .review-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+        flex: 0 0 28px;
+    }
+    .reviewer-name {
+        font-size: 12px;
+    }
+    .review-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
     .btn-review,
     .btn-explore {
-        font-size: 14px;
-        padding: 12px 24px;
+        font-size: 13px;
+        padding: 8px 18px;
         width: 100%;
         justify-content: center;
     }
     .reviews-cta {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+    }
+    .reviews-header h2 {
+        font-size: 18px;
+    }
+    .reviews-header p {
+        font-size: 13px;
+    }
+    .section-tag {
+        font-size: 10px;
+        padding: 2px 12px;
     }
 }
+   
 /* ============================================
    RESPONSIVE
    ============================================ */
