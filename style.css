@@ -1286,6 +1286,11 @@ img {
     scrollbar-color: var(--primary) #f1f1f1;
 }
 
+.review-text strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
 /* ---- Responsive: On mobile, cards can be slightly smaller ---- */
 @media (max-width: 480px) {
     .review-card {
