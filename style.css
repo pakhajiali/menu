@@ -1486,7 +1486,91 @@ img {
     scrollbar-width: none;
 }
 */
+/* ===== CTA BUTTONS (Two buttons side by side) ===== */
+.reviews-cta {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
 
+/* Primary button (solid red) – leave a review */
+.btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--primary);
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow);
+    border: 2px solid rgba(214, 40, 40, 0.2);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-review:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
+}
+
+.btn-review i {
+    font-size: 18px;
+}
+
+/* Secondary button (outline) – explore more reviews */
+.btn-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--text-light);
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid #d0d7de;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-explore:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(214, 40, 40, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn-explore i {
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-explore:hover i {
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .btn-review,
+    .btn-explore {
+        font-size: 14px;
+        padding: 12px 24px;
+        width: 100%;
+        justify-content: center;
+    }
+    .reviews-cta {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
 /* ============================================
    RESPONSIVE
    ============================================ */
