@@ -29,27 +29,39 @@
     <meta name="twitter:title" content="Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)">
     <meta name="twitter:description" content="Established on 1 May 2026, our JAKIM Halal-certified restaurant in Subang Jaya USJ 8 specializing in crispy Muiz Hot Chicken, authentic local Nasi Kandar, and flavorful Malaysian-Thai cuisine.">
     <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
-
-    <!-- Favicon -->
+<!-- ===== FAVICONS ===== -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.ico">
 
-<!-- Preconnect to CDN for faster Font Awesome -->
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<!-- ===== PRELOAD LCP IMAGE (Hero/Logo) – Fixes NO_LCP ===== -->
+<link rel="preload" as="image" href="logo.webp" fetchpriority="high">
 
-<!-- Web App Manifest -->
+<!-- ===== DNS & CONNECTION HINTS (Speeds up CDN resources) ===== -->
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<!-- ===== WEB APP MANIFEST ===== -->
 <link rel="manifest" href="manifest.json">
 
-<!-- ===== STYLESHEETS (non‑blocking) ===== -->
-<!-- 1. Preload critical CSS (your main style) -->
+<!-- ===== BROWSER THEME COLOUR (Matches your brand) ===== -->
+<meta name="theme-color" content="#d62828">
+
+<!-- ===== STYLESHEETS – NON‑BLOCKING ===== -->
+
+<!-- 1. Critical CSS (your main styles) – preloaded, applied after paint -->
 <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="style.css"></noscript>
 
-<!-- 2. Font Awesome – loads after page paint (non‑blocking) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-      media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
-
+<!-- 2. Font Awesome – loads asynchronously, doesn't block rendering -->
+<link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+      media="print" 
+      onload="this.media='all'; this.onload=null;" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer">
+<noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</noscript>
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
         {
