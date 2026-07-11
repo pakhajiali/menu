@@ -11,10 +11,10 @@
     <link rel="canonical" href="https://pakhajiali.github.io/menu/catering/">
 
     <!-- HREFLANG (Static subfolders) -->
-    <link rel="alternate" hreflang="en" href="https://pakhajiali.github.io/menu/catering/" />
-    <link rel="alternate" hreflang="ms" href="https://pakhajiali.github.io/menu/catering/ms/" />
-    <link rel="alternate" hreflang="zh" href="https://pakhajiali.github.io/menu/catering/zh/" />
-    <link rel="alternate" hreflang="x-default" href="https://pakhajiali.github.io/menu/catering/" />
+    <link rel="alternate" hreflang="en" href="https://pakhajiali.github.io/menu/catering/">
+    <link rel="alternate" hreflang="ms" href="https://pakhajiali.github.io/menu/catering/ms/">
+    <link rel="alternate" hreflang="zh" href="https://pakhajiali.github.io/menu/catering/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://pakhajiali.github.io/menu/catering/">
 
     <!-- OPEN GRAPH -->
     <meta property="og:type" content="website">
@@ -33,12 +33,14 @@
     <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/menu/favicon.svg">
+    <link rel="shortcut icon" href="/menu/favicon.ico">
 
-    <!-- FONT AWESOME & CSS -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS – Using absolute path to avoid missing file -->
+    <link rel="stylesheet" href="/menu/catering/style.css">
 
     <!-- STRUCTURED DATA -->
     <script type="application/ld+json">
@@ -51,6 +53,7 @@
         ]
     }
     </script>
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -75,6 +78,7 @@
         "serviceOutput": { "@type": "FoodEstablishment", "name": "Halal Catering Service" }
     }
     </script>
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -92,7 +96,7 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- ====== HEADER ====== -->
     <header class="catering-header fade-in">
         <div class="header-container">
             <a href="/menu/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Menu</a>
@@ -108,7 +112,7 @@
                     <i class="fab fa-whatsapp"></i> Book Now
                 </a>
             </div>
-            <!-- Language Switcher (Static links) -->
+            <!-- Language Switcher -->
             <div class="language-switcher">
                 <a href="/menu/catering/" class="lang-btn active">🇬🇧 EN</a>
                 <a href="/menu/catering/ms/" class="lang-btn">🇲🇾 BM</a>
@@ -117,7 +121,7 @@
         </div>
     </header>
 
-    <!-- WHY CATERING -->
+    <!-- ====== WHY CATERING ====== -->
     <section class="catering-services reveal">
         <div class="container">
             <h2>Why Choose Us for Catering?</h2>
@@ -157,7 +161,7 @@
         </div>
     </section>
 
-    <!-- CATERING SERVICES -->
+    <!-- ====== CATERING SERVICES ====== -->
     <section class="catering-services reveal" style="background:#fff; padding-top:0;">
         <div class="container">
             <h2>Our Catering Services</h2>
@@ -203,7 +207,7 @@
         </div>
     </section>
 
-    <!-- SAMPLE MENUS -->
+    <!-- ====== SAMPLE MENUS ====== -->
     <section class="sample-menu reveal" id="corporate">
         <div class="container">
             <h2>Popular Catering Menus</h2>
@@ -273,7 +277,7 @@
         </div>
     </section>
 
-    <!-- SERVICE AREAS -->
+    <!-- ====== SERVICE AREAS ====== -->
     <section class="why-choose reveal">
         <div class="container">
             <h2>Areas We Serve</h2>
@@ -293,7 +297,7 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ====== FAQ ====== -->
     <section class="sample-menu reveal" style="background:#fff;">
         <div class="container">
             <h2>Frequently Asked Questions</h2>
@@ -327,7 +331,7 @@
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ====== CTA ====== -->
     <section class="cta-section reveal">
         <div class="container">
             <h2>Ready to Book Your Event?</h2>
@@ -343,27 +347,28 @@
         </div>
     </section>
 
-      <!-- FOOTER (Malay) -->
+    <!-- ====== FOOTER ====== -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>Restoran Pak Haji Ali <br>&amp; Muiz Hot Chicken</h3>
-                <p><i class="fas fa-location-dot"></i> Subang Jaya (USJ 8) &bull; <i class="fas fa-certificate"></i> Halal JAKIM</p>
+                <p><i class="fas fa-location-dot"></i> Subang Jaya (USJ 8) &bull; <i class="fas fa-certificate"></i> JAKIM Halal</p>
             </div>
             <div class="footer-contact">
                 <a href="tel:+60179081447"><i class="fas fa-phone"></i> 017-908 1447</a>
                 <a href="https://wa.me/60179081447" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="https://share.google/wY2Fl17aFlKV6AY2h" target="_blank" rel="noopener"><i class="fas fa-map-pin"></i> Google Maps</a>
-                <a href="/menu/"><i class="fas fa-utensils"></i> Menu Utama</a>
-                <a href="/menu/blog/"><i class="fas fa-pen-fancy"></i> Baca Blog Kami</a>
+                <a href="/menu/"><i class="fas fa-utensils"></i> Main Menu</a>
+                <a href="/menu/blog/"><i class="fas fa-pen-fancy"></i> Read Our Blog</a>
             </div>
             <div class="footer-copy">
-                <p>&copy; 2026 Restoran Pak Haji Ali &amp; Muiz Hot Chicken. Hak cipta terpelihara.</p>
+                <p>&copy; 2026 Restoran Pak Haji Ali &amp; Muiz Hot Chicken. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="../script.js" defer></script>
+    <!-- ====== JAVASCRIPT – Using absolute path ====== -->
+    <script src="/menu/catering/script.js" defer></script>
 
 </body>
 </html>
