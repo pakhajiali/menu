@@ -1226,93 +1226,85 @@ img {
     box-shadow: 0 4px 12px rgba(214, 40, 40, 0.4);
 }
 /* ============================================
-   GOOGLE RATING BADGE (Horizontal – No Numbers)
+   HORIZONTAL SCROLLABLE REVIEWS (Carousel-style)
    ============================================ */
-.rating-badge {
-    max-width: 1200px;
-    margin: 16px auto 0;
-    padding: 0 16px;
-}
 
-.rating-badge-inner {
-    background: #ffffff;
-    border-radius: 60px;
-    padding: 12px 24px;
+/* The grid becomes a horizontal flex container */
+.reviews-grid {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    flex-wrap: nowrap;           /* Prevents wrapping to next line */
+    gap: 24px;
+    overflow-x: auto;            /* Enables horizontal scrolling */
+    padding: 10px 4px 20px 4px;  /* Space for scrollbar and shadows */
+    scroll-snap-type: x mandatory; /* Snaps cards into view */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-behavior: smooth;
 }
 
-.rating-badge-left {
+/* Each card has a fixed width and snaps into place */
+.review-card {
+    flex: 0 0 320px;            /* Fixed width – cards don't shrink */
+    scroll-snap-align: start;   /* Snaps to the left edge */
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.04);
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    /* Keep all your existing card styles */
 }
 
-.rating-badge-left i {
-    color: #4285F4;
-    font-size: 22px;
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
-.rating-badge-left span {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--dark);
+/* ---- Optional: Beautiful custom scrollbar ---- */
+.reviews-grid::-webkit-scrollbar {
+    height: 6px;
 }
 
-.rating-badge-center {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.reviews-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
 }
 
-.rating-stars-display {
-    color: #ffb703;
-    font-size: 20px;
-    letter-spacing: 2px;
+.reviews-grid::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
 }
 
-.rating-badge-right a {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: 0.2s;
+.reviews-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
-.rating-badge-right a:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
+/* Firefox scrollbar styling */
+.reviews-grid {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #f1f1f1;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .rating-badge-inner {
-        border-radius: 16px;
-        padding: 12px 16px;
-        justify-content: center;
-        text-align: center;
-    }
-    .rating-badge-left {
-        width: 100%;
-        justify-content: center;
-    }
-    .rating-badge-center {
-        width: 100%;
-        justify-content: center;
-    }
-    .rating-badge-right {
-        width: 100%;
-        justify-content: center;
+/* ---- Responsive: On mobile, cards can be slightly smaller ---- */
+@media (max-width: 480px) {
+    .review-card {
+        flex: 0 0 280px;        /* Slightly smaller cards on phones */
+        padding: 18px 20px;
     }
 }
+
+/* ---- Hide scrollbar completely (optional, for ultra-clean look) ---- */
+/* Uncomment this if you want to hide the scrollbar but still allow scrolling */
+/*
+.reviews-grid::-webkit-scrollbar {
+    display: none;
+}
+.reviews-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+*/
 
 /* ============================================
    RESPONSIVE
