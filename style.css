@@ -65,7 +65,16 @@ body {
     max-width: 100%;
     margin: 0;
 }
+.review-card {
+    transition: none !important;
+}
 
+.review-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+}
 a {
     text-decoration: none;
     color: inherit;
