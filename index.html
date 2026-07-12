@@ -306,20 +306,20 @@
         </div>
     </noscript>
     
-<!-- ====== HEADER – Logo on Top, Solid Purple Text Bar Below ====== -->
+<!-- ====== HEADER – Logo on Top, Text Below (Fully Visible & LCP-Friendly) ====== -->
 <header style="background: linear-gradient(145deg, #0f0f1a, #1a1a2e); border-bottom: 3px solid #d62828;">
 
-    <!-- Full-width Logo Image (no overlay) -->
+    <!-- Full-width Logo Image -->
     <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya USJ 8" 
          style="display: block; width: 100%; height: auto; max-height: 400px; object-fit: cover; background: #1a1a2e;" 
          width="800" height="400" loading="eager" decoding="async" fetchpriority="high">
 
-    <!-- Solid Purple Text Bar – Sits BELOW the image, fully visible -->
+    <!-- Solid Purple Text Bar – Sits BELOW the image, in normal document flow -->
     <div style="background: linear-gradient(145deg, #0f0f1a, #1a1a2e); padding: 20px 80px 20px 24px; color: #fff;">
         
         <div style="max-width: 1200px; margin: 0 auto;">
 
-            <!-- ===== FULL RESTAURANT NAME ===== -->
+            <!-- ===== H1 – NOW IN NORMAL DOCUMENT FLOW (LCP will detect it) ===== -->
             <h1 style="font-size: 28px; font-weight: 800; margin: 0; line-height: 1.2; color: #fff;">
                 Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)
             </h1>
