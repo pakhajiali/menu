@@ -306,64 +306,55 @@
         </div>
     </noscript>
     
-<!-- ====== HEADER – Logo on Top, Text Below (Fully Visible & LCP-Friendly) ====== -->
-<header style="background: linear-gradient(145deg, #0f0f1a, #1a1a2e); border-bottom: 3px solid #d62828;">
+<!-- ====== HEADER – Compact Purple Banner (No Logo Image) ====== -->
+<header style="background: linear-gradient(145deg, #0f0f1a, #1a1a2e); border-bottom: 3px solid #d62828; padding: 24px 80px 24px 24px; color: #fff;">
 
-    <!-- Full-width Logo Image -->
-    <img src="logo.webp" alt="Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya USJ 8" 
-         style="display: block; width: 100%; height: auto; max-height: 400px; object-fit: cover; background: #1a1a2e;" 
-         width="800" height="400" loading="eager" decoding="async" fetchpriority="high">
+    <div style="max-width: 1200px; margin: 0 auto;">
 
-    <!-- Solid Purple Text Bar – Sits BELOW the image, in normal document flow -->
-    <div style="background: linear-gradient(145deg, #0f0f1a, #1a1a2e); padding: 20px 80px 20px 24px; color: #fff;">
-        
-        <div style="max-width: 1200px; margin: 0 auto;">
+        <!-- ===== FULL RESTAURANT NAME ===== -->
+        <h1 style="font-size: 30px; font-weight: 800; margin: 0; line-height: 1.2; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+            Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)
+        </h1>
 
-            <!-- ===== H1 – NOW IN NORMAL DOCUMENT FLOW (LCP will detect it) ===== -->
-            <h1 style="font-size: 28px; font-weight: 800; margin: 0; line-height: 1.2; color: #fff;">
-                Restoran Pak Haji Ali & Muiz Hot Chicken - Subang Jaya (USJ 8)
-            </h1>
+        <p style="font-size: 16px; opacity: 0.9; margin: 4px 0 14px; color: #fff;">
+            <i class="fas fa-calendar-alt"></i> Established 1 May 2026
+        </p>
 
-            <p style="font-size: 15px; opacity: 0.9; margin: 4px 0 12px; color: #fff;">
-                <i class="fas fa-calendar-alt"></i> Established 1 May 2026
-            </p>
-
-            <!-- Badges -->
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
-                <span style="background: rgba(214,40,40,0.3); border: 1px solid rgba(214,40,40,0.4); color: #ffb703; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;">
-                    <i class="fas fa-star"></i> 5★ Rated
-                </span>
-                <span style="background: rgba(46,204,113,0.2); border: 1px solid rgba(46,204,113,0.3); color: #2ecc71; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;">
-                    <i class="fas fa-shield-halved"></i> JAKIM Halal
-                </span>
-                <span style="background: rgba(108,46,154,0.3); border: 1px solid rgba(108,46,154,0.3); color: #b07cd8; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;">
-                    <i class="fas fa-certificate"></i> MeSTI Certified
-                </span>
-            </div>
-
-            <!-- Navigation & Language -->
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1);">
-
-                <a href="/menu/catering/" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s;">
-                    <i class="fas fa-utensils"></i> Catering
-                </a>
-                <a href="/menu/blog/" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s;">
-                    <i class="fas fa-pen-fancy"></i> Blog
-                </a>
-                <a href="/menu/company-profile.html" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s;">
-                    <i class="fas fa-file-pdf"></i> Profile
-                </a>
-
-                <span style="flex: 1;"></span>
-
-                <div style="display: flex; gap: 6px;">
-                    <a href="/menu/" style="padding: 4px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; background: #d62828; color: #fff; text-decoration: none;">EN</a>
-                    <a href="/menu/ms/" style="padding: 4px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none;">BM</a>
-                    <a href="/menu/zh/" style="padding: 4px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none;">中文</a>
-                </div>
-            </div>
-
+        <!-- Badges -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+            <span style="background: rgba(214,40,40,0.3); border: 1px solid rgba(214,40,40,0.4); color: #ffb703; padding: 4px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;">
+                <i class="fas fa-star"></i> 5★ Rated
+            </span>
+            <span style="background: rgba(46,204,113,0.2); border: 1px solid rgba(46,204,113,0.3); color: #2ecc71; padding: 4px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;">
+                <i class="fas fa-shield-halved"></i> JAKIM Halal
+            </span>
+            <span style="background: rgba(108,46,154,0.3); border: 1px solid rgba(108,46,154,0.3); color: #b07cd8; padding: 4px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;">
+                <i class="fas fa-certificate"></i> MeSTI Certified
+            </span>
         </div>
+
+        <!-- Navigation & Language -->
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1);">
+
+            <a href="/menu/catering/" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 18px; border-radius: 30px; font-size: 14px; font-weight: 600; text-decoration: none; transition: 0.3s;">
+                <i class="fas fa-utensils"></i> Catering
+            </a>
+            <a href="/menu/blog/" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 18px; border-radius: 30px; font-size: 14px; font-weight: 600; text-decoration: none; transition: 0.3s;">
+                <i class="fas fa-pen-fancy"></i> Blog
+            </a>
+            <a href="/menu/company-profile.html" style="color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); padding: 5px 18px; border-radius: 30px; font-size: 14px; font-weight: 600; text-decoration: none; transition: 0.3s;">
+                <i class="fas fa-file-pdf"></i> Profile
+            </a>
+
+            <span style="flex: 1;"></span>
+
+            <div style="display: flex; gap: 6px;">
+                <a href="/menu/" style="padding: 4px 16px; border-radius: 30px; font-size: 13px; font-weight: 700; background: #d62828; color: #fff; text-decoration: none;">EN</a>
+                <a href="/menu/ms/" style="padding: 4px 16px; border-radius: 30px; font-size: 13px; font-weight: 700; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none;">BM</a>
+                <a href="/menu/zh/" style="padding: 4px 16px; border-radius: 30px; font-size: 13px; font-weight: 700; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none;">中文</a>
+            </div>
+        </div>
+
     </div>
 </header>
     
