@@ -37,15 +37,24 @@
 <!-- ===== WEB APP MANIFEST ===== -->
 <link rel="manifest" href="manifest.json">
 
-<!-- ===== PRECONNECT TO CDN (Speeds up Font Awesome) ===== -->
+<!-- ===== PRECONNECT & DNS-PREFETCH (Speeds up CDN) ===== -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare">
 
-<!-- ===== MAIN CSS ===== -->
+<!-- ===== PRELOAD FONT AWESOME (Starts loading early, doesn't block) ===== -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" fetchpriority="low">
+
+<!-- ===== MAIN CSS (Blocking – needed for above‑the‑fold styles) ===== -->
 <link rel="stylesheet" href="style.css">
 
-<!-- ===== FONT AWESOME (Normal, stable, no delay) ===== -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ===== FONT AWESOME – ASYNCHRONOUS (Non‑blocking, loads after paint) ===== -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
+<noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</noscript>
     
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
