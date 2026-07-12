@@ -312,21 +312,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ---------- Scroll reveal (for .reveal elements) ----------
-    function revealOnScroll() {
-        const reveals = document.querySelectorAll('.reveal');
-        const windowHeight = window.innerHeight;
-        const revealPoint = 120;
-        reveals.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < windowHeight - revealPoint) {
-                el.classList.add('visible');
-            }
-        });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    // Initial check on load
-    revealOnScroll();
+    // ---------- Scroll reveal (Intersection Observer – NO main-thread blocking) ----------
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // ---------- Init ----------
     loadCart();
