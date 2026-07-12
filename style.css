@@ -64,7 +64,7 @@ img {
 }
 
 /* ============================================
-   HEADER
+   HEADER (OLD – Kept for compatibility)
    ============================================ */
 .header {
     position: relative;
@@ -177,45 +177,6 @@ img {
 
 .price-disclaimer a:hover {
     text-decoration: underline;
-}
-
-/* ============================================
-   REVIEWS – INSTANT APPEAR (No fade-in)
-   ============================================ */
-
-/* Override the global .reveal animation for reviews section only */
-.reviews-section.reveal {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: none !important;
-}
-
-/* Also disable any hover/scale transitions on cards */
-.review-card {
-    transition: none !important;
-    transform: none !important;
-}
-
-.review-card:hover {
-    transform: none !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(255, 255, 255, 0.8) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Buttons – no hover effects */
-.btn-review,
-.btn-explore {
-    transition: none !important;
-}
-
-.btn-review:hover,
-.btn-explore:hover {
-    transform: none !important;
-    background: inherit !important;
-    color: inherit !important;
-    border-color: inherit !important;
-    box-shadow: inherit !important;
 }
 
 /* ============================================
@@ -624,7 +585,7 @@ img {
 .header-premium {
     background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 40%, #242446 100%);
     color: #ffffff;
-    padding: 50px 20px 35px;
+    padding: 80px 20px 35px; /* Increased top padding to avoid cart icon overlap */
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -874,11 +835,11 @@ img {
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE – PREMIUM HEADER
    ============================================ */
 @media (max-width: 768px) {
     .header-premium {
-        padding: 35px 16px 25px;
+        padding: 70px 16px 25px;
     }
 
     .header-brand-name {
@@ -916,7 +877,7 @@ img {
 
 @media (max-width: 480px) {
     .header-premium {
-        padding: 25px 12px 20px;
+        padding: 60px 12px 20px;
     }
 
     .header-brand-name {
@@ -1196,13 +1157,20 @@ img {
 }
 
 /* ============================================
-   PREMIUM REVIEWS – Compact Horizontal Carousel
-   (STATIC – No animations, no hover effects)
+   PREMIUM REVIEWS – Horizontal Carousel
+   (No fade-in on load, but hover & smooth scroll intact)
    ============================================ */
 .reviews-section {
     padding: 12px 0 20px;
     background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
+}
+
+/* === OVERRIDE: reviews section loads instantly (no fade-in) === */
+.reviews-section.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
 }
 
 .reviews-header {
@@ -1250,7 +1218,7 @@ img {
     padding: 8px 4px 14px 4px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    /* No smooth scroll animation – removed */
+    scroll-behavior: smooth; /* Restored smooth scroll */
     -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
     mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
@@ -1269,7 +1237,14 @@ img {
     gap: 12px;
     align-items: flex-start;
     position: relative;
-    /* No transition, no hover effects */
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1); /* Restored transition */
+}
+
+.review-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(214, 40, 40, 0.10);
+    border-color: var(--primary-light);
+    background: #ffffff;
 }
 
 .review-card::before {
@@ -1325,7 +1300,7 @@ img {
     font-style: italic;
 }
 
-/* ===== REVIEW CTA BUTTONS (Static) ===== */
+/* ===== REVIEW CTA BUTTONS (with hover) ===== */
 .reviews-cta {
     text-align: center;
     margin-top: 16px;
@@ -1347,12 +1322,16 @@ img {
     font-size: 14px;
     box-shadow: var(--shadow);
     border: 2px solid rgba(214, 40, 40, 0.2);
+    transition: var(--transition);
     text-decoration: none;
-    /* No transition, no hover */
 }
 
 .btn-review:hover {
-    /* No hover effects – static */
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary);
 }
 
 .btn-review i {
@@ -1370,16 +1349,24 @@ img {
     font-weight: 600;
     font-size: 14px;
     border: 2px solid #d0d7de;
+    transition: var(--transition);
     text-decoration: none;
-    /* No transition, no hover */
 }
 
 .btn-explore:hover {
-    /* No hover effects – static */
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(214, 40, 40, 0.05);
+    transform: translateY(-2px);
 }
 
 .btn-explore i {
     font-size: 13px;
+    transition: 0.2s;
+}
+
+.btn-explore:hover i {
+    transform: translateX(4px);
 }
 
 /* ===== REVIEW SCROLLBAR ===== */
@@ -1395,6 +1382,11 @@ img {
 .reviews-grid::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 10px;
+    transition: 0.3s;
+}
+
+.reviews-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
 .reviews-grid {
@@ -2069,15 +2061,7 @@ img {
     .price-note p {
         font-size: 11px;
     }
-/* Fix cart icon overlapping the premium header */
-.header-premium {
-    padding-top: 80px;
-}
 
-/* If you use the old header with logo, keep the old padding */
-.header:not(.header-premium) {
-    padding-top: 0; /* or default */
-}
     /* Reviews Compact */
     .reviews-section {
         padding: 8px 0 16px;
