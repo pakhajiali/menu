@@ -30,15 +30,21 @@ html {
     width: 100%;
 }
 
-/* Ensure the header text is the LCP element */
+
+/* Force LCP element to render immediately */
 .header-brand-name {
-    font-size: 56px;
-    font-weight: 800;
-    line-height: 1.2;
     display: block;
-    min-height: 70px; /* Prevents collapsing */
+    min-height: 70px;
+    contain: layout style;
 }
 
+/* Ensure the heading is visible immediately */
+.header-brand-name,
+.header-brand-tagline,
+.header-brand-established {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 100px;
+}
 @media (max-width: 480px) {
     .header-brand-name {
         font-size: 34px;
