@@ -180,6 +180,45 @@ img {
 }
 
 /* ============================================
+   REVIEWS – INSTANT APPEAR (No fade-in)
+   ============================================ */
+
+/* Override the global .reveal animation for reviews section only */
+.reviews-section.reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
+}
+
+/* Also disable any hover/scale transitions on cards */
+.review-card {
+    transition: none !important;
+    transform: none !important;
+}
+
+.review-card:hover {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Buttons – no hover effects */
+.btn-review,
+.btn-explore {
+    transition: none !important;
+}
+
+.btn-review:hover,
+.btn-explore:hover {
+    transform: none !important;
+    background: inherit !important;
+    color: inherit !important;
+    border-color: inherit !important;
+    box-shadow: inherit !important;
+}
+
+/* ============================================
    CART ICON
    ============================================ */
 .cart-icon {
