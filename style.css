@@ -66,6 +66,82 @@ body {
     margin: 0;
 }
 
+/* ===== COMPACT HEADER – Leaves room for cart icon ===== */
+.compact-header {
+    padding: 24px 130px 24px 24px !important; /* 130px right padding = room for cart */
+    background: linear-gradient(145deg, #0f0f1a, #1a1a2e);
+    border-bottom: 3px solid #d62828;
+}
+
+.compact-header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.compact-header .subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin: 4px 0 14px;
+    color: #fff;
+}
+
+.compact-header .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.compact-header .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .compact-header {
+        padding: 20px 70px 20px 16px !important;
+    }
+    .compact-header h1 {
+        font-size: 22px;
+    }
+    .compact-header .subtitle {
+        font-size: 14px;
+    }
+    .compact-header .badges span {
+        font-size: 11px !important;
+        padding: 3px 12px !important;
+    }
+    .compact-header .nav-links a {
+        font-size: 12px !important;
+        padding: 4px 12px !important;
+    }
+    .compact-header .lang-links a {
+        font-size: 11px !important;
+        padding: 3px 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .compact-header {
+        padding: 16px 60px 16px 12px !important;
+    }
+    .compact-header h1 {
+        font-size: 18px;
+    }
+    .compact-header .subtitle {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}
+
 a {
     text-decoration: none;
     color: inherit;
