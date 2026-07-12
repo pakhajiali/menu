@@ -132,11 +132,11 @@ img {
    ============================================ */
 .cart-icon {
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 12px;
+    right: 12px;
     background: var(--white);
     color: var(--primary);
-    padding: 12px 24px;
+    padding: 6px 12px;
     border-radius: 50px;
     display: flex;
     align-items: center;
