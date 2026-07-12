@@ -37,24 +37,14 @@
 <!-- ===== WEB APP MANIFEST ===== -->
 <link rel="manifest" href="manifest.json">
 
-<!-- ===== PRECONNECT & DNS-PREFETCH (Speeds up CDN) ===== -->
+<!-- ===== PRECONNECT TO CDN (Speeds up Font Awesome) ===== -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://cdnjs.cloudflare">
 
-<!-- ===== PRELOAD FONT AWESOME (Starts loading early, doesn't block) ===== -->
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" fetchpriority="low">
-
-<!-- ===== MAIN CSS (Blocking – needed for above‑the‑fold styles) ===== -->
+<!-- ===== MAIN CSS ===== -->
 <link rel="stylesheet" href="style.css">
 
-<!-- ===== FONT AWESOME – ASYNCHRONOUS (Non‑blocking, loads after paint) ===== -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      media="print"
-      onload="this.media='all'; this.onload=null;">
-<noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</noscript>
+<!-- ===== FONT AWESOME (Normal, stable) ===== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
