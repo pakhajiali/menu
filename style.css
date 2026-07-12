@@ -44,23 +44,6 @@ body {
     margin: 0;
 }
 
-/* ============================================
-   REMOVE ALL FADE-IN ANIMATIONS (GLOBAL)
-   ============================================ */
-
-/* Completely disable the reveal animation for ALL elements */
-.reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
-
-/* Also remove the visible class – it's no longer needed */
-.reveal.visible {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
 a {
     text-decoration: none;
     color: inherit;
