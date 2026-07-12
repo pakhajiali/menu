@@ -71,7 +71,7 @@ body {
    COMPACT HEADER – Text sits BELOW the cart icon
    ============================================ */
 .compact-header {
-    padding: 80px 130px 24px 24px !important; /* 80px top padding = cart sits above text */
+    padding: 82px 130px 24px 24px !important; /* 80px top padding = cart sits above text */
     background: linear-gradient(145deg, #0f0f1a, #1a1a2e);
     border-bottom: 3px solid #d62828;
 }
