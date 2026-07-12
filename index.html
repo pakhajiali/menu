@@ -30,25 +30,71 @@
     <meta name="twitter:description" content="Established on 1 May 2026, our JAKIM Halal-certified restaurant in Subang Jaya USJ 8 specializing in crispy Muiz Hot Chicken, authentic local Nasi Kandar, and flavorful Malaysian-Thai cuisine.">
     <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
     
-<!-- Favicon -->
+<!-- ===== FAVICON ===== -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" href="favicon.ico">
 
-<!-- Web App Manifest -->
+<!-- ===== WEB APP MANIFEST ===== -->
 <link rel="manifest" href="manifest.json">
 
-<!-- Main CSS (keep blocking) -->
+<!-- ===== PRECONNECT TO CDN (Speeds up Font Awesome) ===== -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- ===== PRELOAD FONT AWESOME (Starts loading early, but doesn't block) ===== -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" fetchpriority="low">
+
+<!-- ===== MAIN CSS (Blocking – needed for above‑the‑fold styles) ===== -->
 <link rel="stylesheet" href="style.css">
 
-<!-- Font Awesome delayed -->
+<!-- ===== FONT AWESOME – ASYNCHRONOUS (Non‑blocking, loads after paint) ===== -->
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-media="print"
-onload="this.media='all'">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
 <noscript>
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </noscript>
+
+<!-- ===== PREVENT ICON FLASH (No layout shift, no flash) ===== -->
+<style>
+    /* Hide icons until Font Awesome loads – prevents flash */
+    .fa,
+    .fas,
+    .far,
+    .fal,
+    .fab,
+    .fa-solid,
+    .fa-regular,
+    .fa-light,
+    .fa-brands {
+        visibility: hidden;
+    }
+    /* When Font Awesome loads, icons become visible */
+    .fa-loaded .fa,
+    .fa-loaded .fas,
+    .fa-loaded .far,
+    .fa-loaded .fal,
+    .fa-loaded .fab,
+    .fa-loaded .fa-solid,
+    .fa-loaded .fa-regular,
+    .fa-loaded .fa-light,
+    .fa-loaded .fa-brands {
+        visibility: visible;
+    }
+</style>
+
+<!-- ===== JAVASCRIPT TO SHOW ICONS ONCE LOADED ===== -->
+<script>
+    // Once Font Awesome loads, show icons
+    document.addEventListener('load', function() {
+        document.documentElement.classList.add('fa-loaded');
+    });
+    // Fallback: if Font Awesome fails to load, still show icons after 3s
+    setTimeout(function() {
+        document.documentElement.classList.add('fa-loaded');
+    }, 3000);
+</script>
     
     <!-- ========== STRUCTURED DATA ========== -->
     <script type="application/ld+json">
