@@ -1158,6 +1158,7 @@ img {
 
 /* ============================================
    PREMIUM REVIEWS – Compact Horizontal Carousel
+   (STATIC – No animations, no hover effects)
    ============================================ */
 .reviews-section {
     padding: 12px 0 20px;
@@ -1210,7 +1211,7 @@ img {
     padding: 8px 4px 14px 4px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+    /* No smooth scroll animation – removed */
     -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
     mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
@@ -1228,8 +1229,8 @@ img {
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
     position: relative;
+    /* No transition, no hover effects */
 }
 
 .review-card::before {
@@ -1243,13 +1244,6 @@ img {
     font-family: Georgia, serif;
     pointer-events: none;
     line-height: 1;
-}
-
-.review-card:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 12px 32px rgba(214, 40, 40, 0.10);
-    border-color: var(--primary-light);
-    background: #ffffff;
 }
 
 .review-avatar {
@@ -1292,7 +1286,7 @@ img {
     font-style: italic;
 }
 
-/* ===== REVIEW CTA BUTTONS ===== */
+/* ===== REVIEW CTA BUTTONS (Static) ===== */
 .reviews-cta {
     text-align: center;
     margin-top: 16px;
@@ -1314,16 +1308,12 @@ img {
     font-size: 14px;
     box-shadow: var(--shadow);
     border: 2px solid rgba(214, 40, 40, 0.2);
-    transition: var(--transition);
     text-decoration: none;
+    /* No transition, no hover */
 }
 
 .btn-review:hover {
-    background: var(--primary);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--primary);
+    /* No hover effects – static */
 }
 
 .btn-review i {
@@ -1341,24 +1331,16 @@ img {
     font-weight: 600;
     font-size: 14px;
     border: 2px solid #d0d7de;
-    transition: var(--transition);
     text-decoration: none;
+    /* No transition, no hover */
 }
 
 .btn-explore:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: rgba(214, 40, 40, 0.05);
-    transform: translateY(-2px);
+    /* No hover effects – static */
 }
 
 .btn-explore i {
     font-size: 13px;
-    transition: 0.2s;
-}
-
-.btn-explore:hover i {
-    transform: translateX(4px);
 }
 
 /* ===== REVIEW SCROLLBAR ===== */
@@ -1374,11 +1356,6 @@ img {
 .reviews-grid::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 10px;
-    transition: 0.3s;
-}
-
-.reviews-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
 }
 
 .reviews-grid {
@@ -2098,4 +2075,4 @@ img {
         font-size: 10px;
         padding: 2px 12px;
     }
-   }
+}
