@@ -2069,7 +2069,15 @@ img {
     .price-note p {
         font-size: 11px;
     }
+/* Fix cart icon overlapping the premium header */
+.header-premium {
+    padding-top: 80px;
+}
 
+/* If you use the old header with logo, keep the old padding */
+.header:not(.header-premium) {
+    padding-top: 0; /* or default */
+}
     /* Reviews Compact */
     .reviews-section {
         padding: 8px 0 16px;
