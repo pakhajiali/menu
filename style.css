@@ -66,9 +66,12 @@ body {
     margin: 0;
 }
 
-/* ===== COMPACT HEADER – Leaves room for cart icon ===== */
+
+ /* ============================================
+   COMPACT HEADER – Text sits BELOW the cart icon
+   ============================================ */
 .compact-header {
-    padding: 24px 130px 24px 24px !important; /* 130px right padding = room for cart */
+    padding: 80px 130px 24px 24px !important; /* 80px top padding = cart sits above text */
     background: linear-gradient(145deg, #0f0f1a, #1a1a2e);
     border-bottom: 3px solid #d62828;
 }
@@ -106,8 +109,27 @@ body {
 
 /* --- Mobile Adjustments --- */
 @media (max-width: 768px) {
+    .cart-icon {
+        top: 16px;
+        right: 16px;
+        padding: 10px 16px;
+        gap: 6px;
+        border-radius: 40px;
+    }
+    .cart-icon i {
+        font-size: 17px;
+    }
+    .cart-text {
+        display: none; /* Hide "Cart" text on mobile to save space */
+    }
+    .cart-count {
+        font-size: 11px;
+        min-width: 22px;
+        padding: 1px 8px;
+    }
+
     .compact-header {
-        padding: 20px 70px 20px 16px !important;
+        padding: 70px 70px 20px 16px !important;
     }
     .compact-header h1 {
         font-size: 22px;
@@ -130,8 +152,24 @@ body {
 }
 
 @media (max-width: 480px) {
+    .cart-icon {
+        top: 12px;
+        right: 12px;
+        padding: 8px 14px;
+        gap: 5px;
+        border-radius: 30px;
+    }
+    .cart-icon i {
+        font-size: 15px;
+    }
+    .cart-count {
+        font-size: 10px;
+        min-width: 20px;
+        padding: 1px 6px;
+    }
+
     .compact-header {
-        padding: 16px 60px 16px 12px !important;
+        padding: 60px 60px 16px 12px !important;
     }
     .compact-header h1 {
         font-size: 18px;
@@ -140,7 +178,7 @@ body {
         font-size: 12px;
         margin-bottom: 10px;
     }
-}
+}       
 
 a {
     text-decoration: none;
