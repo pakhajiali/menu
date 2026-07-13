@@ -19,7 +19,9 @@
     <!-- Open Graph -->
     <meta property="og:title" content="No. 1 Restaurant in Selangor & Malaysia | Restoran Pak Haji Ali & Muiz Hot Chicken">
     <meta property="og:description" content="No. 1 restaurant in Selangor, Malaysia. JAKIM Halal certified. Best crispy Muiz Hot Chicken, Nasi Kandar, and Malaysian-Thai cuisine in Subang Jaya USJ 8.">
-    <meta property="og:image" content="https://pakhajiali.github.io/menu/logo.webp">
+    <meta property="og:image" content="https://pakhajiali.github.io/menu/muizhotchicken.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://pakhajiali.github.io/menu/best-restaurant-selangor.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Restoran Pak Haji Ali & Muiz Hot Chicken">
@@ -28,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="No. 1 Restaurant in Selangor & Malaysia | Muiz Hot Chicken">
     <meta name="twitter:description" content="No. 1 restaurant in Selangor, Malaysia. JAKIM Halal certified. Best crispy Muiz Hot Chicken and Nasi Kandar in Subang Jaya USJ 8.">
-    <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
+    <meta name="twitter:image" content="https://pakhajiali.github.io/menu/muizhotchicken.webp">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -38,7 +40,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- STRUCTURED DATA – Organization -->
+    <!-- ===== STRUCTURED DATA – Organization (with image) ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -47,7 +49,8 @@
             "name": "Restoran Pak Haji Ali & Muiz Hot Chicken",
             "description": "No. 1 restaurant in Selangor and Malaysia. JAKIM Halal certified restaurant in Subang Jaya USJ 8 specializing in Muiz Hot Chicken, Nasi Kandar, and Malaysian-Thai cuisine.",
             "url": "https://pakhajiali.github.io/menu/",
-            "logo": "https://pakhajiali.github.io/menu/logo.webp",
+            "logo": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "telephone": "+60179081447",
             "address": {
                 "@type": "PostalAddress",
@@ -66,7 +69,7 @@
         }
     </script>
 
-    <!-- STRUCTURED DATA – Local Business with Service -->
+    <!-- ===== STRUCTURED DATA – Local Business (with image) ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -75,6 +78,7 @@
             "name": "Restoran Pak Haji Ali & Muiz Hot Chicken",
             "description": "No. 1 restaurant in Selangor and Malaysia. Best crispy fried chicken, Nasi Kandar, and Malaysian-Thai cuisine in Subang Jaya.",
             "url": "https://pakhajiali.github.io/menu/",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "telephone": "+60179081447",
             "priceRange": "RM5 - RM25",
             "servesCuisine": ["Malaysian", "Thai", "Nasi Kandar", "Fried Chicken", "Tomyam"],
@@ -90,13 +94,14 @@
         }
     </script>
 
-    <!-- STRUCTURED DATA – Product for Signature Dishes -->
+    <!-- ===== STRUCTURED DATA – Product (with image) ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Product",
             "name": "Muiz Hot Chicken",
             "description": "Signature crispy fried chicken marinated with 12 herbs and spices, double-coated for extra crispiness. The best fried chicken in Selangor.",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "brand": {
                 "@type": "Brand",
                 "name": "Muiz Hot Chicken"
@@ -111,7 +116,7 @@
         }
     </script>
 
-    <!-- STRUCTURED DATA – WebPage -->
+    <!-- ===== STRUCTURED DATA – WebPage (with image) ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -119,6 +124,7 @@
             "name": "No. 1 Restaurant in Selangor & Malaysia",
             "description": "Restoran Pak Haji Ali & Muiz Hot Chicken - the best restaurant in Selangor and Malaysia. JAKIM Halal certified. Serving the best Muiz Hot Chicken in Subang Jaya USJ 8.",
             "url": "https://pakhajiali.github.io/menu/best-restaurant-selangor.html",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "isPartOf": {
                 "@type": "WebSite",
                 "url": "https://pakhajiali.github.io/menu/"
@@ -126,7 +132,7 @@
         }
     </script>
 
-    <!-- STRUCTURED DATA – FAQ (SEO Rich Snippets) -->
+    <!-- ===== STRUCTURED DATA – FAQ ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -372,7 +378,7 @@
         /* ===== FEATURED IMAGE ===== */
         .featured-image {
             width: 100%;
-            max-height: 350px;
+            max-height: 400px;
             object-fit: cover;
             border-radius: 16px;
             margin: 16px 0;
@@ -493,6 +499,9 @@
                 <span class="badge-purple"><i class="fas fa-certificate"></i> MeSTI Certified</span>
                 <span class="badge-red"><i class="fas fa-star"></i> 5★ Rated</span>
             </div>
+
+            <!-- ===== FEATURED IMAGE ===== -->
+            <img src="muizhotchicken.webp" alt="Muiz Hot Chicken - No. 1 Fried Chicken in Selangor & Malaysia" class="featured-image" width="800" height="400" loading="eager" decoding="async" fetchpriority="high">
 
             <div style="margin-top:20px;">
                 <a href="/menu/" class="cta-landing no-print">
