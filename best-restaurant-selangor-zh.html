@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -19,7 +20,9 @@
     <!-- Open Graph -->
     <meta property="og:title" content="雪兰莪及马来西亚第一餐厅 | Restoran Pak Haji Ali & Muiz Hot Chicken">
     <meta property="og:description" content="雪兰莪及马来西亚第一餐厅。JAKIM 清真认证。梳邦再也 USJ 8 最佳脆皮 Muiz 香辣炸鸡、Nasi Kandar 和马来西亚-泰国美食。">
-    <meta property="og:image" content="https://pakhajiali.github.io/menu/logo.webp">
+    <meta property="og:image" content="https://pakhajiali.github.io/menu/muizhotchicken.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://pakhajiali.github.io/menu/best-restaurant-selangor-zh.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Restoran Pak Haji Ali & Muiz Hot Chicken">
@@ -28,7 +31,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="雪兰莪及马来西亚第一餐厅 | Muiz Hot Chicken">
     <meta name="twitter:description" content="雪兰莪及马来西亚第一餐厅。JAKIM 清真认证。梳邦再也 USJ 8 最佳 Muiz 香辣炸鸡。">
-    <meta name="twitter:image" content="https://pakhajiali.github.io/menu/logo.webp">
+    <meta name="twitter:image" content="https://pakhajiali.github.io/menu/muizhotchicken.webp">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -47,7 +50,8 @@
             "name": "Restoran Pak Haji Ali & Muiz Hot Chicken",
             "description": "雪兰莪及马来西亚第一餐厅。位于梳邦再也 USJ 8 的 JAKIM 清真认证餐厅，专营 Muiz 香辣炸鸡、Nasi Kandar 和马来西亚-泰国美食。",
             "url": "https://pakhajiali.github.io/menu/",
-            "logo": "https://pakhajiali.github.io/menu/logo.webp",
+            "logo": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "telephone": "+60179081447",
             "address": {
                 "@type": "PostalAddress",
@@ -75,6 +79,7 @@
             "name": "Restoran Pak Haji Ali & Muiz Hot Chicken",
             "description": "雪兰莪及马来西亚第一餐厅。梳邦再也最佳脆皮炸鸡、Nasi Kandar 和马来西亚-泰国美食。",
             "url": "https://pakhajiali.github.io/menu/",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "telephone": "+60179081447",
             "priceRange": "RM5 - RM25",
             "servesCuisine": ["Malaysian", "Thai", "Nasi Kandar", "Fried Chicken", "Tomyam"],
@@ -97,6 +102,7 @@
             "@type": "Product",
             "name": "Muiz Hot Chicken",
             "description": "招牌脆皮炸鸡，以 12 种香草和香料腌制 12 小时，双层裹粉使其更加酥脆。雪兰莪最佳炸鸡。",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "brand": {
                 "@type": "Brand",
                 "name": "Muiz Hot Chicken"
@@ -119,6 +125,7 @@
             "name": "雪兰莪及马来西亚第一餐厅",
             "description": "Restoran Pak Haji Ali & Muiz Hot Chicken - 雪兰莪及马来西亚最佳餐厅。JAKIM 清真认证。在梳邦再也 USJ 8 提供最佳 Muiz 香辣炸鸡。",
             "url": "https://pakhajiali.github.io/menu/best-restaurant-selangor-zh.html",
+            "image": "https://pakhajiali.github.io/menu/muizhotchicken.webp",
             "isPartOf": {
                 "@type": "WebSite",
                 "url": "https://pakhajiali.github.io/menu/"
@@ -369,6 +376,15 @@
             margin: 0;
         }
 
+        .featured-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 16px 0;
+            background: #1a1a2e;
+        }
+
         /* ===== CTA BUTTON ===== */
         .cta-landing {
             display: inline-flex;
@@ -483,6 +499,9 @@
                 <span class="badge-red"><i class="fas fa-star"></i> 5★ 评价</span>
             </div>
 
+            <!-- Featured Image -->
+            <img src="muizhotchicken.webp" alt="Muiz 香辣炸鸡 - 雪兰莪及马来西亚第一炸鸡" class="featured-image" width="800" height="400" loading="eager" decoding="async" fetchpriority="high">
+
             <div style="margin-top:20px;">
                 <a href="/menu/zh/" class="cta-landing no-print">
                     <i class="fas fa-utensils"></i> 浏览我们的菜单
@@ -505,7 +524,11 @@
             </div>
         </section>
 
-        <!-- ===== WHY WE'RE NO. 1 ===== -->
+         
+
+
+
+ <!-- ===== WHY WE'RE NO. 1 ===== -->
         <section class="landing-section">
             <h2><i class="fas fa-crown"></i> 为何我们是第一</h2>
             <div class="divider"></div>
