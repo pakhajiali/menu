@@ -354,6 +354,96 @@
 
             <span style="flex: 1;"></span>
 
+            
+<!-- ===== IOS-STYLE BANNER TO NEW PWA VERSION ===== -->
+<div style="
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(135deg, #d62828, #b01e1e);
+    padding: 10px 16px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(214, 40, 40, 0.3);
+">
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    ">
+        <span style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        ">
+            <span style="
+                background: rgba(255,255,255,0.2);
+                border-radius: 30px;
+                padding: 2px 12px;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #ffb703;
+            ">✨ New</span>
+            <span>iOS App Interface Now Available</span>
+        </span>
+        
+        <a href="https://pakhajiali.github.io/muizhotchicken/" target="_blank" rel="noopener noreferrer" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #d62828;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+        "
+        onmouseover="this.style.transform='scale(1.04)'; this.style.boxShadow='0 6px 24px rgba(0,0,0,0.2)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 12px rgba(0,0,0,0.15)';"
+        >
+            <i class="fas fa-arrow-right" style="font-size: 12px;"></i>
+            Try New Interface
+        </a>
+
+        <!-- Close button (optional) -->
+        <button onclick="this.parentElement.parentElement.style.display='none'" style="
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        "
+        onmouseover="this.style.background='rgba(255,255,255,0.3)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.15)'"
+        aria-label="Dismiss banner">
+            ✕
+        </button>
+    </div>
+</div>
+            
+
             <div style="display: flex; gap: 6px;">
                 <a href="/menu/" style="padding: 3px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; background: #d62828; color: #fff; text-decoration: none;">EN</a>
                 <a href="/menu/ms/" style="padding: 3px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none;">BM</a>
